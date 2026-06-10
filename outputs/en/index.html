@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mentalc is a simple game site for quick brain training, mental math, and puzzle games. More games for focus and calculation practice will be added over time."
+    />
+    <title>Brain Training, Mental Math, and Puzzle Games - Mentalc</title>
+    <link rel="canonical" href="https://mentalc.net/en/" />
+    <link rel="alternate" hreflang="ja" href="https://mentalc.net/" />
+    <link rel="alternate" hreflang="en" href="https://mentalc.net/en/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://mentalc.net/zh/" />
+    <link rel="alternate" hreflang="de" href="https://mentalc.net/de/" />
+    <link rel="alternate" hreflang="nl" href="https://mentalc.net/nl/" />
+    <link rel="alternate" hreflang="ko" href="https://mentalc.net/ko/" />
+    <link rel="alternate" hreflang="x-default" href="https://mentalc.net/" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6132093149042122"
+      crossorigin="anonymous"
+    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GH29NN7Y5D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-GH29NN7Y5D");
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Mentalc</h1>
+        <p data-i18n="tagline">Simple brain training for short breaks.</p>
+      </div>
+      <div class="topbar-tools">
+        <label class="language-control">
+          <span data-i18n="language">言語</span>
+          <select id="languageSelect">
+            <option value="ja">日本語</option>
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+            <option value="de">Deutsch</option>
+            <option value="nl">Nederlands</option>
+            <option value="ko">한국어</option>
+          </select>
+        </label>
+        <div class="mini-stats is-hidden" data-i18n-aria="progressStatus" aria-label="進行状況">
+          <span id="progressText">0 / 20</span>
+          <span id="timerText">00:00.0</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="workspace" data-i18n-aria="gameArea" aria-label="暗算ゲーム">
+        <div id="gameSelectPanel" class="panel">
+          <div class="panel-head">
+            <div>
+              <h2 data-i18n="gameSelectTitle">ゲーム選択</h2>
+              <p class="panel-subtitle" data-i18n="gameSelectIntro">
+                Mentalc is a simple game site for quick brain training, mental math, and puzzle games.
+              </p>
+            </div>
+          </div>
+
+          <div class="game-select-grid">
+            <article class="game-card">
+              <div>
+                <span class="game-card-label" data-i18n="mentalMathLabel">Mental math game</span>
+                <h3 data-i18n="mentalMathTitle">Mentalc</h3>
+                <p data-i18n="mentalMathBody">Choose digits, operations, and question count to practice calculation speed.</p>
+              </div>
+              <button id="openMentalMathButton" class="primary-button" type="button" data-i18n="playMentalMath">Play this game</button>
+            </article>
+
+            <article class="game-card">
+              <div>
+                <span class="game-card-label" data-i18n="polyominoLabel">パズル</span>
+                <h3 data-i18n="polyominoTitle">Polyole</h3>
+                <p data-i18n="polyominoBody">形の違うピースを並べて、正方形の盤面をすき間なく埋めます。</p>
+              </div>
+              <button id="openPolyominoButton" class="primary-button" type="button" data-i18n="playPolyomino">このゲームで遊ぶ</button>
+            </article>
+          </div>
+        </div>
+
+        <div id="setupPanel" class="panel is-hidden">
+          <div class="panel-head">
+            <h2 data-i18n="settings">設定</h2>
+            <div class="panel-actions">
+              <button id="backToGamesButton" class="ghost-button" type="button" data-i18n="backToGames">ゲーム選択へ戻る</button>
+              <button id="startButton" class="primary-button" type="button" data-i18n="start">開始</button>
+            </div>
+          </div>
+
+          <div class="settings-grid">
+            <div class="setting-control">
+              <div class="setting-label">
+                <span data-i18n="leftDigits">左の桁数</span>
+                <strong id="leftDigitsValue">1桁</strong>
+              </div>
+              <input id="leftDigits" type="range" min="1" max="4" value="1" />
+            </div>
+
+            <div class="setting-control">
+              <div class="setting-label">
+                <span data-i18n="rightDigits">右の桁数</span>
+                <strong id="rightDigitsValue">1桁</strong>
+              </div>
+              <input id="rightDigits" type="range" min="1" max="4" value="1" />
+            </div>
+
+            <div class="setting-control">
+              <div class="setting-label">
+                <span data-i18n="operation">演算</span>
+                <strong id="operationValue">足し算</strong>
+              </div>
+              <input id="operation" type="range" min="0" max="3" value="0" />
+            </div>
+
+            <div class="setting-control question-control">
+              <div class="setting-label">
+                <span data-i18n="questionCount">問題数</span>
+                <input id="questionCount" type="number" min="1" max="200" value="20" />
+              </div>
+              <input id="questionCountSlider" type="range" min="1" max="200" value="20" />
+            </div>
+          </div>
+        </div>
+
+        <div id="gamePanel" class="panel game-panel is-hidden">
+          <div class="question-row">
+            <span id="questionText" class="question">3 + 5</span>
+            <span id="answerText" class="answer" aria-live="polite"></span>
+          </div>
+          <div id="feedbackText" class="feedback" aria-live="polite">テンキーで入力</div>
+
+          <div class="keypad" data-i18n-aria="keypad" aria-label="テンキー">
+            <button type="button" data-key="7">7</button>
+            <button type="button" data-key="8">8</button>
+            <button type="button" data-key="9">9</button>
+            <button type="button" data-key="4">4</button>
+            <button type="button" data-key="5">5</button>
+            <button type="button" data-key="6">6</button>
+            <button type="button" data-key="1">1</button>
+            <button type="button" data-key="2">2</button>
+            <button type="button" data-key="3">3</button>
+            <button type="button" data-key="-">-</button>
+            <button type="button" data-key="0">0</button>
+            <button type="button" data-key="backspace">⌫</button>
+          </div>
+
+          <div class="game-actions">
+            <button id="resetButton" class="ghost-button" type="button" data-i18n="backToSettings">設定へ戻る</button>
+          </div>
+        </div>
+
+        <div id="resultPanel" class="panel is-hidden">
+          <div class="panel-head">
+            <h2 data-i18n="result">結果</h2>
+            <div class="result-actions">
+              <button id="retryButton" class="primary-button" type="button" data-i18n="retry">もう一度</button>
+              <button id="backToSetupButton" class="ghost-button" type="button" data-i18n="backToSettings">設定へ戻る</button>
+            </div>
+          </div>
+          <div class="result-grid">
+            <div>
+              <span data-i18n="questionCount">問題数</span>
+              <strong id="questionTotalStat">20問</strong>
+            </div>
+            <div>
+              <span data-i18n="totalTime">合計時間</span>
+              <strong id="totalTimeStat">00:00.0</strong>
+            </div>
+            <div>
+              <span data-i18n="averageTime">平均時間</span>
+              <strong id="averageTimeStat">0.0秒</strong>
+            </div>
+          </div>
+          <div class="history-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="question">問題</th>
+                  <th data-i18n="answer">答え</th>
+                  <th data-i18n="time">時間</th>
+                  <th data-i18n="mistakes">ミス</th>
+                </tr>
+              </thead>
+              <tbody id="historyBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="polyominoPanel" class="panel polyomino-panel is-hidden">
+          <div class="panel-head">
+            <div>
+              <h2 data-i18n="polyominoTitle">Polyole</h2>
+              <p class="panel-subtitle" data-i18n="polyominoIntro">ピースを選び、盤面をすき間なく埋めてください。</p>
+            </div>
+            <div class="panel-actions">
+              <button id="polyominoBackButton" class="ghost-button" type="button" data-i18n="backToGames">ゲーム選択へ戻る</button>
+              <button id="polyominoNewButton" class="primary-button" type="button" data-i18n="newPuzzle">新しい問題</button>
+            </div>
+          </div>
+
+          <div class="polyomino-settings">
+            <div class="setting-control">
+              <div class="setting-label">
+                <span data-i18n="boardSize">盤面サイズ</span>
+                <input id="polyominoSizeInput" type="number" min="3" max="8" value="5" />
+              </div>
+              <input id="polyominoSizeSlider" type="range" min="3" max="8" value="5" />
+            </div>
+            <div class="polyomino-actions">
+              <button id="polyominoRotateButton" class="ghost-button" type="button" data-i18n="rotatePiece">回転</button>
+              <button id="polyominoUndoButton" class="ghost-button" type="button" data-i18n="undoMove">戻す</button>
+              <button id="polyominoResetButton" class="ghost-button" type="button" data-i18n="resetPuzzle">リセット</button>
+            </div>
+          </div>
+
+          <p id="polyominoStatus" class="polyomino-status" aria-live="polite"></p>
+
+          <div class="polyomino-play">
+            <div id="polyominoBoard" class="polyomino-board" aria-label="ポリオミノ盤面"></div>
+            <div id="polyominoPieces" class="polyomino-pieces" aria-label="ポリオミノピース"></div>
+          </div>
+
+          <div id="polyoleResult" class="polyole-result is-hidden">
+            <h3 data-i18n="polyoleResultTitle">Polyole 結果</h3>
+            <p data-i18n="completedBoard">完成した盤面</p>
+            <div class="result-grid">
+              <div>
+                <span data-i18n="boardSize">盤面サイズ</span>
+                <strong id="polyoleResultSize">5 x 5</strong>
+              </div>
+              <div>
+                <span data-i18n="totalTime">合計時間</span>
+                <strong id="polyoleResultTime">00:00.0</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="ad-slot" data-i18n-aria="ad" aria-label="広告">
+        <div id="adFallback" class="ad-fallback">
+          <span data-i18n="ad">広告</span>
+          <p data-i18n="adPlaceholder">ここに広告枠を配置</p>
+        </div>
+        <div id="adsenseContainer" class="adsense-container" aria-hidden="true"></div>
+      </aside>
+    </main>
+
+    <section class="site-info" aria-label="Site information">
+      <div class="info-grid">
+        <article class="info-panel record-panel mental-game-info is-hidden">
+          <div class="info-head">
+            <h2 data-i18n="recordsTitle">最近の記録</h2>
+            <button id="clearRecordsButton" class="ghost-button compact-button" type="button" data-i18n="clearRecords">消去</button>
+          </div>
+          <p id="recordSummary" class="record-summary" data-i18n="noRecords">まだ記録はありません。</p>
+          <ol id="recordList" class="record-list"></ol>
+        </article>
+
+        <article class="info-panel mental-game-info is-hidden">
+          <h2 data-i18n="aboutTitle">Mentalcについて</h2>
+          <p data-i18n="aboutBody">
+            Mentalcは、足し算、引き算、掛け算、割り算を短い時間で練習できる暗算ゲームです。桁数と問題数を自由に変えて、暗算練習、計算力トレーニング、脳トレに使えます。
+          </p>
+        </article>
+
+        <article class="info-panel mental-game-info is-hidden">
+          <h2 data-i18n="howToTitle">使い方</h2>
+          <p data-i18n="howToBody">
+            左右の桁数、演算、問題数を選んで開始します。答えは画面のテンキーかキーボードで入力できます。正解すると自動で次の問題に進み、最後に時間と履歴を確認できます。
+          </p>
+        </article>
+
+        <article class="info-panel mental-game-info is-hidden">
+          <h2 data-i18n="practiceTitle">暗算練習のコツ</h2>
+          <p data-i18n="practiceBody">
+            最初は1桁の足し算を少ない問題数で始め、慣れてきたら桁数や掛け算を増やすのがおすすめです。毎回の記録を見ながら、正確さを保ったまま少しずつ時間を縮めましょう。
+          </p>
+        </article>
+
+        <article class="info-panel record-panel polyole-game-info is-hidden">
+          <div class="info-head">
+            <h2 data-i18n="polyoleRecordsTitle">Polyole 最近の記録</h2>
+            <button id="clearPolyoleRecordsButton" class="ghost-button compact-button" type="button" data-i18n="clearRecords">消去</button>
+          </div>
+          <p id="polyoleRecordSummary" class="record-summary" data-i18n="noRecords">まだ記録はありません。</p>
+          <ol id="polyoleRecordList" class="record-list"></ol>
+        </article>
+
+        <article class="info-panel polyole-game-info is-hidden">
+          <h2 data-i18n="polyoleAboutTitle">About Polyole</h2>
+          <p data-i18n="polyoleAboutBody">Polyole is a puzzle game where you fill a square board with different shaped pieces.</p>
+        </article>
+
+        <article class="info-panel polyole-game-info is-hidden">
+          <h2 data-i18n="polyoleHowToTitle">How to Play Polyole</h2>
+          <p data-i18n="polyoleHowToBody">Choose the board size, select a piece, and click the board to place it. Rotate pieces as needed and fill every cell.</p>
+        </article>
+
+        <article class="info-panel polyole-game-info is-hidden">
+          <h2 data-i18n="polyoleTipsTitle">Polyole Tips</h2>
+          <p data-i18n="polyoleTipsBody">Start with large pieces or pieces that fit corners. Use rotate and undo when the board gets tight.</p>
+        </article>
+
+        <article class="info-panel home-info legal-panel">
+          <details>
+            <summary data-i18n="privacyTitle">プライバシーポリシー</summary>
+            <p data-i18n="privacyBody">
+              Mentalcは、ゲームの最近の記録をこの端末のブラウザ内に保存します。サーバーへ送信しません。広告配信を行う場合、広告事業者がCookie等を使用することがあります。
+            </p>
+          </details>
+        </article>
+
+        <article class="info-panel home-info legal-panel">
+          <details>
+            <summary data-i18n="termsTitle">利用規約</summary>
+            <p data-i18n="termsBody">
+              Mentalcは暗算練習を目的とした無料ゲームです。正確性や継続的な提供を保証するものではありません。利用者は自己の責任で本サイトを利用します。
+            </p>
+          </details>
+        </article>
+
+        <article class="info-panel home-info legal-panel">
+          <details>
+            <summary data-i18n="contactTitle">お問い合わせ</summary>
+            <p data-i18n="contactBody">
+              Please use the Google Form for inquiries.
+            </p>
+            <a id="contactFormLink" class="contact-link is-hidden" href="#" target="_blank" rel="noopener" data-i18n="contactFormLink">
+              お問い合わせフォームを開く
+            </a>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Mentalc</span>
+      <a href="/en/#gameSelectPanel" data-i18n="footerBack">ゲームへ戻る</a>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
