@@ -30,7 +30,9 @@ const els = {
   polyominoRotateButton: document.querySelector("#polyominoRotateButton"),
   polyominoUndoButton: document.querySelector("#polyominoUndoButton"),
   polyominoResetButton: document.querySelector("#polyominoResetButton"),
+  polyominoStartButton: document.querySelector("#polyominoStartButton"),
   polyominoStatus: document.querySelector("#polyominoStatus"),
+  polyominoPlay: document.querySelector(".polyomino-play"),
   polyominoBoard: document.querySelector("#polyominoBoard"),
   polyominoPieces: document.querySelector("#polyominoPieces"),
   polyoleResult: document.querySelector("#polyoleResult"),
@@ -115,13 +117,14 @@ const translations = {
     undoMove: "戻す",
     resetPuzzle: "リセット",
     selectPiece: "ピースを選んでください。",
-    placePiece: "盤面をクリックして配置します。",
+    placePiece: "ピースを盤面へドラッグして配置します。",
+    polyominoReady: "盤面サイズを選んで開始してください。",
     invalidPlacement: "そこには置けません。",
     puzzleComplete: "完成です。",
     polyoleAboutTitle: "Polyoleについて",
     polyoleAboutBody: "Polyoleは、形の違うピースを正方形の盤面にすき間なく配置するパズルゲームです。盤面サイズを変えて、空間認識や試行錯誤を短い時間で練習できます。",
     polyoleHowToTitle: "Polyoleの遊び方",
-    polyoleHowToBody: "盤面サイズを選び、ピースを選択して盤面をクリックします。必要に応じてピースを回転させ、すべてのマスを埋めると完成です。",
+    polyoleHowToBody: "盤面サイズを選んで開始します。ピースを盤面へドラッグして配置し、必要に応じて回転や戻す操作を使います。すべてのマスを埋めると完成です。",
     polyoleTipsTitle: "Polyoleのコツ",
     polyoleTipsBody: "大きなピースや角に合うピースから置くと進めやすくなります。置けないときは回転や戻す操作を使い、盤面のすき間を減らしましょう。",
     polyoleResultTitle: "Polyole 結果",
@@ -207,13 +210,14 @@ const translations = {
     undoMove: "Undo",
     resetPuzzle: "Reset",
     selectPiece: "Choose a piece.",
-    placePiece: "Click the board to place it.",
+    placePiece: "Drag a piece onto the board to place it.",
+    polyominoReady: "Choose a board size, then press Start.",
     invalidPlacement: "It cannot be placed there.",
     puzzleComplete: "Complete.",
     polyoleAboutTitle: "About Polyole",
     polyoleAboutBody: "Polyole is a puzzle game where you fill a square board with different shaped pieces. Change the board size to practice spatial thinking and trial-and-error in short sessions.",
     polyoleHowToTitle: "How to Play Polyole",
-    polyoleHowToBody: "Choose the board size, select a piece, and click the board to place it. Rotate pieces as needed and fill every cell to complete the puzzle.",
+    polyoleHowToBody: "Choose a board size and start. Drag pieces onto the board, rotate or undo as needed, and fill every cell to complete the puzzle.",
     polyoleTipsTitle: "Polyole Tips",
     polyoleTipsBody: "Start with large pieces or pieces that fit corners. When space gets tight, rotate pieces or undo moves to reduce awkward gaps.",
     polyoleResultTitle: "Polyole Result",
@@ -299,13 +303,14 @@ const translations = {
     undoMove: "撤销",
     resetPuzzle: "重置",
     selectPiece: "请选择一个方块。",
-    placePiece: "点击棋盘进行放置。",
+    placePiece: "将方块拖到棋盘上进行放置。",
+    polyominoReady: "请选择棋盘大小，然后点击开始。",
     invalidPlacement: "不能放在这里。",
     puzzleComplete: "完成了。",
     polyoleAboutTitle: "关于 Polyole",
     polyoleAboutBody: "Polyole 是一款用不同形状的方块填满正方形棋盘的益智游戏。你可以调整棋盘大小，在短时间内练习空间思考和试错能力。",
     polyoleHowToTitle: "Polyole 的玩法",
-    polyoleHowToBody: "选择棋盘大小，选择方块并点击棋盘放置。根据需要旋转方块，填满所有格子即可完成。",
+    polyoleHowToBody: "选择棋盘大小并开始。将方块拖到棋盘上放置，必要时使用旋转或撤销，填满所有格子即可完成。",
     polyoleTipsTitle: "Polyole 技巧",
     polyoleTipsBody: "可以先放较大的方块或适合角落的方块。放不下时使用旋转或撤销，尽量减少难处理的空隙。",
     polyoleResultTitle: "Polyole 结果",
@@ -391,13 +396,14 @@ const translations = {
     undoMove: "Rueckgaengig",
     resetPuzzle: "Zuruecksetzen",
     selectPiece: "Waehle ein Teil.",
-    placePiece: "Klicke auf das Feld, um es zu legen.",
+    placePiece: "Ziehe ein Teil auf das Feld, um es zu legen.",
+    polyominoReady: "Waehle die Feldgroesse und druecke Start.",
     invalidPlacement: "Dort passt es nicht.",
     puzzleComplete: "Fertig.",
     polyoleAboutTitle: "Ueber Polyole",
     polyoleAboutBody: "Polyole ist ein Puzzlespiel, bei dem du ein quadratisches Feld mit verschieden geformten Teilen ohne Luecken fuellst. Mit verschiedenen Feldgroessen trainierst du raeumliches Denken und Ausprobieren.",
     polyoleHowToTitle: "So spielst du Polyole",
-    polyoleHowToBody: "Waehle die Feldgroesse, waehle ein Teil und klicke auf das Feld. Drehe Teile bei Bedarf und fuelle alle Zellen, um das Puzzle abzuschliessen.",
+    polyoleHowToBody: "Waehle die Feldgroesse und starte. Ziehe Teile auf das Feld, drehe sie bei Bedarf oder mache Zuege rueckgaengig. Fuellst du alle Zellen, ist das Puzzle geloest.",
     polyoleTipsTitle: "Tipps fuer Polyole",
     polyoleTipsBody: "Beginne mit grossen Teilen oder passenden Eckteilen. Wenn es eng wird, helfen Drehen und Rueckgaengig, um schwierige Luecken zu vermeiden.",
     polyoleResultTitle: "Polyole Ergebnis",
@@ -483,13 +489,14 @@ const translations = {
     undoMove: "Ongedaan",
     resetPuzzle: "Reset",
     selectPiece: "Kies een stuk.",
-    placePiece: "Klik op het bord om het te plaatsen.",
+    placePiece: "Sleep een stuk naar het bord om het te plaatsen.",
+    polyominoReady: "Kies een bordgrootte en druk op Start.",
     invalidPlacement: "Dat past daar niet.",
     puzzleComplete: "Voltooid.",
     polyoleAboutTitle: "Over Polyole",
     polyoleAboutBody: "Polyole is een puzzelspel waarin je een vierkant bord vult met verschillend gevormde stukken. Met verschillende bordgroottes oefen je ruimtelijk inzicht en uitproberen in korte sessies.",
     polyoleHowToTitle: "Hoe speel je Polyole",
-    polyoleHowToBody: "Kies de bordgrootte, selecteer een stuk en klik op het bord om het te plaatsen. Draai stukken waar nodig en vul alle vakjes om de puzzel te voltooien.",
+    polyoleHowToBody: "Kies de bordgrootte en start. Sleep stukken naar het bord, draai ze of maak zetten ongedaan wanneer nodig. Vul alle vakjes om de puzzel te voltooien.",
     polyoleTipsTitle: "Polyole tips",
     polyoleTipsBody: "Begin met grote stukken of stukken die in hoeken passen. Gebruik draaien en ongedaan maken wanneer er lastige gaten ontstaan.",
     polyoleResultTitle: "Polyole resultaat",
@@ -575,13 +582,14 @@ const translations = {
     undoMove: "되돌리기",
     resetPuzzle: "리셋",
     selectPiece: "조각을 선택하세요.",
-    placePiece: "판을 클릭해 배치합니다.",
+    placePiece: "조각을 판 위로 드래그해 배치합니다.",
+    polyominoReady: "판 크기를 선택한 뒤 시작을 누르세요.",
     invalidPlacement: "그곳에는 놓을 수 없습니다.",
     puzzleComplete: "완성했습니다.",
     polyoleAboutTitle: "Polyole 소개",
     polyoleAboutBody: "Polyole은 서로 다른 모양의 조각으로 정사각형 판을 빈틈없이 채우는 퍼즐 게임입니다. 판 크기를 바꾸며 공간 감각과 시행착오를 짧게 연습할 수 있습니다.",
     polyoleHowToTitle: "Polyole 플레이 방법",
-    polyoleHowToBody: "판 크기를 고르고 조각을 선택한 뒤 판을 클릭해 놓습니다. 필요하면 조각을 회전하고 모든 칸을 채우면 완성입니다.",
+    polyoleHowToBody: "판 크기를 고르고 시작합니다. 조각을 판 위로 드래그해 놓고, 필요하면 회전이나 되돌리기를 사용하세요. 모든 칸을 채우면 완성입니다.",
     polyoleTipsTitle: "Polyole 팁",
     polyoleTipsBody: "큰 조각이나 모서리에 맞는 조각부터 놓으면 쉽습니다. 빈틈이 애매할 때는 회전과 되돌리기를 사용하세요.",
     polyoleResultTitle: "Polyole 결과",
@@ -654,6 +662,7 @@ let state = createInitialState();
 let timerId = null;
 const polyominoColors = ["#1d6f62", "#6f7f45", "#2f6f8c", "#8a6f2f", "#8a4b43", "#5e6b7c", "#6f5d8f", "#3f7a66"];
 let polyominoState = createPolyominoState();
+let polyominoDrag = null;
 
 function createInitialState() {
   return {
@@ -678,6 +687,7 @@ function createInitialState() {
 function createPolyominoState() {
   return {
     size: 5,
+    isStarted: false,
     pieces: [],
     board: [],
     selectedId: null,
@@ -907,7 +917,8 @@ function startGame() {
 
 function showPanel(name) {
   currentPanel = name;
-  document.body.classList.toggle("is-game-screen", name === "game" || name === "polyomino");
+  document.body.classList.toggle("is-game-screen", name === "game");
+  document.body.classList.remove("is-polyole-complete");
   window.scrollTo(0, 0);
   els.gameSelectPanel.classList.toggle("is-hidden", name !== "select");
   els.setupPanel.classList.toggle("is-hidden", name !== "setup");
@@ -1249,19 +1260,50 @@ function openPolyomino() {
   setHomeInfoVisible(false);
   showPanel("polyomino");
   syncPolyominoSize(els.polyominoSizeInput.value);
-  createPolyominoPuzzle();
+  preparePolyominoSetup();
+}
+
+function preparePolyominoSetup() {
+  stopTimer();
+  const size = syncPolyominoSize(els.polyominoSizeInput.value);
+  polyominoState = createPolyominoState();
+  polyominoState.size = size;
+  els.timerText.textContent = "00:00.0";
+  els.progressText.textContent = "0 / 0";
+  els.polyominoStatus.textContent = t("polyominoReady");
+  els.polyominoBoard.innerHTML = "";
+  els.polyominoPieces.innerHTML = "";
+  els.polyominoPlay.classList.add("is-hidden");
+  els.polyoleResult.classList.add("is-hidden");
+  els.polyominoPanel.classList.remove("is-complete");
+  els.polyominoStartButton.disabled = false;
+  els.polyominoRotateButton.disabled = true;
+  els.polyominoUndoButton.disabled = true;
+  els.polyominoResetButton.disabled = true;
+  document.body.classList.remove("is-game-screen");
+  document.body.classList.remove("is-polyole-complete");
 }
 
 function createPolyominoPuzzle() {
   const size = syncPolyominoSize(els.polyominoSizeInput.value);
   polyominoState = createPolyominoState();
   polyominoState.size = size;
+  polyominoState.isStarted = true;
   polyominoState.startedAt = performance.now();
   polyominoState.board = Array.from({ length: size }, () => Array(size).fill(null));
   polyominoState.pieces = createPolyominoPieces(size);
   polyominoState.selectedId = polyominoState.pieces[0]?.id ?? null;
   els.timerText.textContent = "00:00.0";
+  els.progressText.textContent = `0 / ${polyominoState.pieces.length}`;
+  els.polyominoPlay.classList.remove("is-hidden");
   els.polyoleResult.classList.add("is-hidden");
+  els.polyominoPanel.classList.remove("is-complete");
+  els.polyominoStartButton.disabled = true;
+  els.polyominoRotateButton.disabled = false;
+  els.polyominoUndoButton.disabled = false;
+  els.polyominoResetButton.disabled = false;
+  document.body.classList.add("is-game-screen");
+  document.body.classList.remove("is-polyole-complete");
   renderPolyomino();
   startTimer();
 }
@@ -1478,10 +1520,85 @@ function selectPolyominoPiece(pieceId) {
   if (!piece || piece.placed) {
     return;
   }
+  const keepRotation = polyominoState.selectedId === pieceId;
   polyominoState.selectedId = pieceId;
-  polyominoState.rotation = 0;
+  polyominoState.rotation = keepRotation ? polyominoState.rotation : 0;
   polyominoState.preview = null;
   renderPolyomino();
+}
+
+function startPolyominoDrag(event, pieceId) {
+  const piece = getPolyominoPiece(pieceId);
+  if (!piece || piece.placed || !polyominoState.isStarted) {
+    return;
+  }
+
+  event.preventDefault();
+  const keepRotation = polyominoState.selectedId === pieceId;
+  polyominoState.selectedId = pieceId;
+  polyominoState.rotation = keepRotation ? polyominoState.rotation : 0;
+  polyominoState.preview = null;
+  renderPolyomino();
+
+  const ghost = document.createElement("div");
+  ghost.className = "polyomino-drag-ghost";
+  ghost.appendChild(createPolyominoPreview(piece, polyominoState.rotation));
+  document.body.appendChild(ghost);
+
+  polyominoDrag = { pieceId, ghost };
+  movePolyominoDrag(event.clientX, event.clientY);
+  window.addEventListener("pointermove", handlePolyominoDragMove);
+  window.addEventListener("pointerup", endPolyominoDrag);
+  window.addEventListener("pointercancel", cancelPolyominoDrag);
+}
+
+function movePolyominoDrag(x, y) {
+  if (!polyominoDrag) {
+    return;
+  }
+
+  polyominoDrag.ghost.style.left = `${x}px`;
+  polyominoDrag.ghost.style.top = `${y}px`;
+
+  const target = document.elementFromPoint(x, y);
+  const cell = target?.closest?.("[data-row][data-col]");
+  if (cell && els.polyominoBoard.contains(cell)) {
+    updatePolyominoPreview(Number(cell.dataset.row), Number(cell.dataset.col));
+    return;
+  }
+
+  polyominoState.preview = null;
+  applyPolyominoPreview();
+  els.polyominoStatus.textContent = t("placePiece");
+}
+
+function handlePolyominoDragMove(event) {
+  event.preventDefault();
+  movePolyominoDrag(event.clientX, event.clientY);
+}
+
+function endPolyominoDrag(event) {
+  event.preventDefault();
+  const preview = polyominoState.preview;
+  cleanupPolyominoDrag();
+  if (preview?.canPlace) {
+    placePolyominoPiece(preview.row, preview.col);
+    return;
+  }
+  clearPolyominoPreview();
+}
+
+function cancelPolyominoDrag() {
+  cleanupPolyominoDrag();
+  clearPolyominoPreview();
+}
+
+function cleanupPolyominoDrag() {
+  window.removeEventListener("pointermove", handlePolyominoDragMove);
+  window.removeEventListener("pointerup", endPolyominoDrag);
+  window.removeEventListener("pointercancel", cancelPolyominoDrag);
+  polyominoDrag?.ghost.remove();
+  polyominoDrag = null;
 }
 
 function rotatePolyominoPiece() {
@@ -1544,6 +1661,10 @@ function undoPolyominoMove() {
 }
 
 function resetPolyominoPuzzle() {
+  if (!polyominoState.isStarted || polyominoState.pieces.length === 0) {
+    preparePolyominoSetup();
+    return;
+  }
   const size = polyominoState.size;
   polyominoState.board = Array.from({ length: size }, () => Array(size).fill(null));
   polyominoState.pieces.forEach((piece) => {
@@ -1557,6 +1678,8 @@ function resetPolyominoPuzzle() {
   polyominoState.totalTime = 0;
   els.timerText.textContent = "00:00.0";
   els.polyoleResult.classList.add("is-hidden");
+  els.polyominoPanel.classList.remove("is-complete");
+  document.body.classList.remove("is-polyole-complete");
   renderPolyomino();
   startTimer();
 }
@@ -1584,6 +1707,8 @@ function updatePolyominoStatus() {
 function showPolyoleResult() {
   els.polyoleResultSize.textContent = `${polyominoState.size} x ${polyominoState.size}`;
   els.polyoleResultTime.textContent = formatDuration(polyominoState.totalTime);
+  els.polyominoPanel.classList.add("is-complete");
+  document.body.classList.add("is-polyole-complete");
   els.polyoleResult.classList.remove("is-hidden");
 }
 
@@ -1636,21 +1761,28 @@ els.startButton.addEventListener("click", startGame);
 els.backToGamesButton.addEventListener("click", resetToGameSelect);
 els.polyominoBackButton.addEventListener("click", resetToGameSelect);
 els.polyominoNewButton.addEventListener("click", createPolyominoPuzzle);
+els.polyominoStartButton.addEventListener("click", createPolyominoPuzzle);
 els.polyominoRotateButton.addEventListener("click", rotatePolyominoPiece);
 els.polyominoUndoButton.addEventListener("click", undoPolyominoMove);
 els.polyominoResetButton.addEventListener("click", resetPolyominoPuzzle);
 els.polyominoSizeInput.addEventListener("input", () => {
   syncPolyominoSize(els.polyominoSizeInput.value);
-  createPolyominoPuzzle();
+  preparePolyominoSetup();
 });
 els.polyominoSizeSlider.addEventListener("input", () => {
   syncPolyominoSize(els.polyominoSizeSlider.value);
-  createPolyominoPuzzle();
+  preparePolyominoSetup();
 });
 els.polyominoPieces.addEventListener("click", (event) => {
   const button = event.target.closest("[data-piece-id]");
   if (button) {
     selectPolyominoPiece(button.dataset.pieceId);
+  }
+});
+els.polyominoPieces.addEventListener("pointerdown", (event) => {
+  const button = event.target.closest("[data-piece-id]");
+  if (button) {
+    startPolyominoDrag(event, button.dataset.pieceId);
   }
 });
 els.polyominoBoard.addEventListener("click", (event) => {

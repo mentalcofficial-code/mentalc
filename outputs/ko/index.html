@@ -73,21 +73,29 @@
 
           <div class="game-select-grid">
             <article class="game-card">
+              <img class="game-card-image" src="/assets/mentalc-card.png" alt="Mentalc" loading="lazy" />
               <div>
                 <span class="game-card-label" data-i18n="mentalMathLabel">암산 게임</span>
                 <h3 data-i18n="mentalMathTitle">Mentalc</h3>
                 <p data-i18n="mentalMathBody">자릿수, 연산, 문제 수를 선택해 계산력과 빠른 반응을 연습합니다.</p>
               </div>
-              <button id="openMentalMathButton" class="primary-button" type="button" data-i18n="playMentalMath">이 게임 플레이</button>
+              <div class="game-card-links">
+                <button id="openMentalMathButton" class="primary-button" type="button" data-i18n="playMentalMath">이 게임 플레이</button>
+                <a class="detail-link" href="/ko/mentalc/">자세히 보기</a>
+              </div>
             </article>
 
             <article class="game-card">
+              <img class="game-card-image" src="/assets/polyole-card.png" alt="Polyole" loading="lazy" />
               <div>
                 <span class="game-card-label" data-i18n="polyominoLabel">パズル</span>
                 <h3 data-i18n="polyominoTitle">Polyole</h3>
                 <p data-i18n="polyominoBody">形の違うピースを並べて、正方形の盤面をすき間なく埋めます。</p>
               </div>
-              <button id="openPolyominoButton" class="primary-button" type="button" data-i18n="playPolyomino">このゲームで遊ぶ</button>
+              <div class="game-card-links">
+                <button id="openPolyominoButton" class="primary-button" type="button" data-i18n="playPolyomino">このゲームで遊ぶ</button>
+                <a class="detail-link" href="/ko/polyole/">자세히 보기</a>
+              </div>
             </article>
           </div>
         </div>
@@ -221,6 +229,7 @@
               <input id="polyominoSizeSlider" type="range" min="3" max="8" value="5" />
             </div>
             <div class="polyomino-actions">
+              <button id="polyominoStartButton" class="primary-button" type="button" data-i18n="start">開始</button>
               <button id="polyominoRotateButton" class="ghost-button" type="button" data-i18n="rotatePiece">回転</button>
               <button id="polyominoUndoButton" class="ghost-button" type="button" data-i18n="undoMove">戻す</button>
               <button id="polyominoResetButton" class="ghost-button" type="button" data-i18n="resetPuzzle">リセット</button>
@@ -229,7 +238,7 @@
 
           <p id="polyominoStatus" class="polyomino-status" aria-live="polite"></p>
 
-          <div class="polyomino-play">
+          <div class="polyomino-play is-hidden">
             <div id="polyominoBoard" class="polyomino-board" aria-label="ポリオミノ盤面"></div>
             <div id="polyominoPieces" class="polyomino-pieces" aria-label="ポリオミノピース"></div>
           </div>
