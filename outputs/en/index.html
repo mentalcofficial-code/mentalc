@@ -4,6 +4,15 @@
     <base href="/" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:site_name" content="Mentalc" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mentalc" />
+    <meta property="og:description" content="Brain training, mental math, and puzzle games." />
+    <meta property="og:image" content="https://mentalc.net/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://mentalc.net/assets/og-image.png" />
     <meta
       name="description"
       content="Mentalc is a simple game site for quick brain training, mental math, and puzzle games. More games for focus and calculation practice will be added over time."
@@ -105,6 +114,7 @@
             <h2 data-i18n="settings">設定</h2>
             <div class="panel-actions">
               <button id="backToGamesButton" class="ghost-button" type="button" data-i18n="backToGames">ゲーム選択へ戻る</button>
+              <button id="dailyChallengeButton" class="ghost-button daily-button" type="button" data-i18n="dailyChallenge">Daily Challenge</button>
               <button id="startButton" class="primary-button" type="button" data-i18n="start">開始</button>
             </div>
           </div>
@@ -175,6 +185,7 @@
           <div class="panel-head">
             <h2 data-i18n="result">結果</h2>
             <div class="result-actions">
+              <button id="shareMentalcButton" class="ghost-button share-button" type="button" data-i18n="shareResult">Share</button>
               <button id="retryButton" class="primary-button" type="button" data-i18n="retry">もう一度</button>
               <button id="backToSetupButton" class="ghost-button" type="button" data-i18n="backToSettings">設定へ戻る</button>
             </div>
@@ -229,6 +240,7 @@
               <input id="polyominoSizeSlider" type="range" min="3" max="8" value="5" />
             </div>
             <div class="polyomino-actions">
+              <button id="polyominoDailyButton" class="ghost-button daily-button" type="button" data-i18n="polyoleDailyChallenge">Daily Challenge</button>
               <button id="polyominoStartButton" class="primary-button" type="button" data-i18n="start">開始</button>
               <button id="polyominoRotateButton" class="ghost-button" type="button" data-i18n="rotatePiece">回転</button>
               <button id="polyominoUndoButton" class="ghost-button" type="button" data-i18n="undoMove">戻す</button>
@@ -255,6 +267,9 @@
                 <span data-i18n="totalTime">合計時間</span>
                 <strong id="polyoleResultTime">00:00.0</strong>
               </div>
+            </div>
+            <div class="result-actions result-share-actions">
+              <button id="sharePolyoleButton" class="ghost-button share-button" type="button" data-i18n="shareResult">Share</button>
             </div>
           </div>
         </div>
@@ -362,6 +377,6 @@
       <a href="/en/#gameSelectPanel" data-i18n="footerBack">ゲームへ戻る</a>
     </footer>
 
-    <script src="./app.js"></script>
+    <script src="./app.js?v=20260611-5"></script>
   </body>
 </html>

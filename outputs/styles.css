@@ -389,6 +389,17 @@ button:disabled {
   padding: 0 16px;
 }
 
+.daily-button {
+  border-color: rgba(29, 111, 98, 0.35);
+  color: var(--accent-dark);
+  background: #f3f8f3;
+}
+
+.share-button {
+  border-color: rgba(29, 111, 98, 0.35);
+  color: var(--accent-dark);
+}
+
 .game-panel {
   display: grid;
   gap: 22px;
@@ -462,6 +473,10 @@ button:disabled {
   gap: 10px;
   flex-wrap: wrap;
   justify-content: flex-end;
+}
+
+.result-share-actions {
+  margin-top: 14px;
 }
 
 .polyomino-panel {

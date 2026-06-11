@@ -21,6 +21,7 @@ const els = {
   openMentalMathButton: document.querySelector("#openMentalMathButton"),
   openPolyominoButton: document.querySelector("#openPolyominoButton"),
   startButton: document.querySelector("#startButton"),
+  dailyChallengeButton: document.querySelector("#dailyChallengeButton"),
   backToGamesButton: document.querySelector("#backToGamesButton"),
   polyominoPanel: document.querySelector("#polyominoPanel"),
   polyominoBackButton: document.querySelector("#polyominoBackButton"),
@@ -31,6 +32,7 @@ const els = {
   polyominoUndoButton: document.querySelector("#polyominoUndoButton"),
   polyominoResetButton: document.querySelector("#polyominoResetButton"),
   polyominoStartButton: document.querySelector("#polyominoStartButton"),
+  polyominoDailyButton: document.querySelector("#polyominoDailyButton"),
   polyominoStatus: document.querySelector("#polyominoStatus"),
   polyominoPlay: document.querySelector(".polyomino-play"),
   polyominoBoard: document.querySelector("#polyominoBoard"),
@@ -44,6 +46,8 @@ const els = {
   resetButton: document.querySelector("#resetButton"),
   retryButton: document.querySelector("#retryButton"),
   backToSetupButton: document.querySelector("#backToSetupButton"),
+  shareMentalcButton: document.querySelector("#shareMentalcButton"),
+  sharePolyoleButton: document.querySelector("#sharePolyoleButton"),
   clearRecordsButton: document.querySelector("#clearRecordsButton"),
   questionText: document.querySelector("#questionText"),
   answerText: document.querySelector("#answerText"),
@@ -86,10 +90,17 @@ const languageUrls = {
 
 const recordStorageKey = "mentalc-records-v1";
 const polyoleRecordStorageKey = "polyole-records-v1";
+const dailyChallengeQuestionCount = 5;
 
 const translations = {
   ja: {
     htmlLang: "ja",
+    dailyChallenge: "デイリーチャレンジ",
+    dailyChallengeRecord: "デイリー",
+    polyoleDailyChallenge: "デイリーチャレンジ",
+    shareResult: "共有",
+    shareMentalcText: "Mentalcで{questions}を{time}でクリアしました。",
+    sharePolyoleText: "Polyoleの{size}を{time}でクリアしました。",
     siteTagline: "短く遊べる、シンプルな脳トレ。",
     tagline: "暗算を、短く淡々と。",
     language: "言語",
@@ -183,6 +194,12 @@ const translations = {
   },
   en: {
     htmlLang: "en",
+    dailyChallenge: "Daily Challenge",
+    dailyChallengeRecord: "Daily",
+    polyoleDailyChallenge: "Daily Challenge",
+    shareResult: "Share",
+    shareMentalcText: "I cleared {questions} on Mentalc in {time}.",
+    sharePolyoleText: "I cleared Polyole {size} in {time}.",
     siteTagline: "Simple brain training for short breaks.",
     tagline: "Mental math, short and steady.",
     language: "Language",
@@ -276,6 +293,12 @@ const translations = {
   },
   zh: {
     htmlLang: "zh-Hans",
+    dailyChallenge: "每日挑战",
+    dailyChallengeRecord: "每日",
+    polyoleDailyChallenge: "每日挑战",
+    shareResult: "分享",
+    shareMentalcText: "我在 Mentalc 中用 {time} 完成了 {questions}。",
+    sharePolyoleText: "我用 {time} 完成了 Polyole {size}。",
     siteTagline: "短时间即可游玩的简洁脑力训练。",
     tagline: "心算，简短而平稳。",
     language: "语言",
@@ -369,6 +392,12 @@ const translations = {
   },
   de: {
     htmlLang: "de",
+    dailyChallenge: "Tageschallenge",
+    dailyChallengeRecord: "Taeglich",
+    polyoleDailyChallenge: "Tageschallenge",
+    shareResult: "Teilen",
+    shareMentalcText: "Ich habe {questions} bei Mentalc in {time} geschafft.",
+    sharePolyoleText: "Ich habe Polyole {size} in {time} geschafft.",
     siteTagline: "Einfaches Gehirntraining fuer kurze Pausen.",
     tagline: "Kopfrechnen, kurz und ruhig.",
     language: "Sprache",
@@ -462,6 +491,12 @@ const translations = {
   },
   nl: {
     htmlLang: "nl",
+    dailyChallenge: "Dagelijkse uitdaging",
+    dailyChallengeRecord: "Dagelijks",
+    polyoleDailyChallenge: "Dagelijkse uitdaging",
+    shareResult: "Delen",
+    shareMentalcText: "Ik heb {questions} op Mentalc voltooid in {time}.",
+    sharePolyoleText: "Ik heb Polyole {size} voltooid in {time}.",
     siteTagline: "Eenvoudige hersentraining voor korte pauzes.",
     tagline: "Hoofdrekenen, kort en rustig.",
     language: "Taal",
@@ -555,6 +590,12 @@ const translations = {
   },
   ko: {
     htmlLang: "ko",
+    dailyChallenge: "데일리 챌린지",
+    dailyChallengeRecord: "데일리",
+    polyoleDailyChallenge: "데일리 챌린지",
+    shareResult: "공유",
+    shareMentalcText: "Mentalc에서 {questions}를 {time}에 완료했습니다.",
+    sharePolyoleText: "Polyole {size}를 {time}에 완료했습니다.",
     siteTagline: "짧게 즐기는 간단한 두뇌 훈련.",
     tagline: "암산을 짧고 차분하게.",
     language: "언어",
@@ -681,6 +722,8 @@ function createInitialState() {
     records: [],
     totalTime: 0,
     averageTime: 0,
+    isDaily: false,
+    dailyDate: "",
   };
 }
 
@@ -696,11 +739,13 @@ function createPolyominoState() {
     startedAt: 0,
     totalTime: 0,
     preview: null,
+    isDaily: false,
+    dailyDate: "",
   };
 }
 
 function t(key) {
-  return translations[currentLanguage][key];
+  return translations[currentLanguage][key] ?? translations.en[key] ?? key;
 }
 
 function clamp(value, min, max) {
@@ -842,6 +887,14 @@ function syncSettingLabels() {
 }
 
 function syncQuestionCount(value) {
+  if (value === "") {
+    els.questionCount.value = "";
+    if (!els.setupPanel.classList.contains("is-hidden")) {
+      els.progressText.textContent = "0 / -";
+    }
+    return 20;
+  }
+
   const count = clamp(Number(value) || 20, 1, 200);
   els.questionCount.value = count;
   els.questionCountSlider.value = count;
@@ -849,6 +902,10 @@ function syncQuestionCount(value) {
     els.progressText.textContent = `0 / ${count}`;
   }
   return count;
+}
+
+function commitQuestionCountInput() {
+  syncQuestionCount(els.questionCount.value === "" ? 20 : els.questionCount.value);
 }
 
 function refreshFeedbackText() {
@@ -904,11 +961,88 @@ function makeQuestion(settings) {
   };
 }
 
+function getDailyDateKey() {
+  const today = new Date();
+  return [today.getFullYear(), String(today.getMonth() + 1).padStart(2, "0"), String(today.getDate()).padStart(2, "0")].join("-");
+}
+
+function createSeededRandom(seedText) {
+  let seed = 0;
+  for (let index = 0; index < seedText.length; index += 1) {
+    seed = (seed * 31 + seedText.charCodeAt(index)) >>> 0;
+  }
+
+  return () => {
+    seed = (seed * 1664525 + 1013904223) >>> 0;
+    return seed / 4294967296;
+  };
+}
+
+function seededInt(random, min, max) {
+  return Math.floor(random() * (max - min + 1)) + min;
+}
+
+function makeDailyQuestion(random, index) {
+  const operations = ["add", "subtract", "multiply", "add", "subtract"];
+  const operation = operations[index % operations.length];
+  let left = seededInt(random, 2, 19);
+  let right = seededInt(random, 2, 9);
+  let answer = 0;
+
+  if (operation === "add") {
+    left = seededInt(random, 10, 49);
+    right = seededInt(random, 2, 29);
+    answer = left + right;
+  }
+
+  if (operation === "subtract") {
+    left = seededInt(random, 20, 79);
+    right = seededInt(random, 2, Math.min(39, left));
+    answer = left - right;
+  }
+
+  if (operation === "multiply") {
+    left = seededInt(random, 2, 12);
+    right = seededInt(random, 2, 9);
+    answer = left * right;
+  }
+
+  return {
+    left,
+    right,
+    answer,
+    label: `${left} ${operationSymbols[operation]} ${right}`,
+  };
+}
+
+function makeDailyChallengeQuestions(dateKey) {
+  const random = createSeededRandom(`mentalc-daily-${dateKey}`);
+  return Array.from({ length: dailyChallengeQuestionCount }, (_, index) => makeDailyQuestion(random, index));
+}
+
 function startGame() {
   const settings = readSettings();
   state = createInitialState();
   state.settings = settings;
   state.questions = Array.from({ length: settings.questionCount }, () => makeQuestion(settings));
+  state.startedAt = performance.now();
+  showPanel("game");
+  startQuestion();
+  startTimer();
+}
+
+function startDailyChallenge() {
+  const dateKey = getDailyDateKey();
+  state = createInitialState();
+  state.isDaily = true;
+  state.dailyDate = dateKey;
+  state.settings = {
+    leftDigits: 2,
+    rightDigits: 1,
+    operation: "add",
+    questionCount: dailyChallengeQuestionCount,
+  };
+  state.questions = makeDailyChallengeQuestions(dateKey);
   state.startedAt = performance.now();
   showPanel("game");
   startQuestion();
@@ -1111,6 +1245,8 @@ function saveRecord() {
     operation: state.settings.operation,
     leftDigits: state.settings.leftDigits,
     rightDigits: state.settings.rightDigits,
+    isDaily: state.isDaily,
+    dailyDate: state.dailyDate,
     date: new Date().toISOString(),
   });
   saveStoredRecords(records);
@@ -1140,6 +1276,8 @@ function savePolyoleRecord() {
     size: polyominoState.size,
     pieceCount: polyominoState.pieces.length,
     totalTime: polyominoState.totalTime,
+    isDaily: polyominoState.isDaily,
+    dailyDate: polyominoState.dailyDate,
     date: new Date().toISOString(),
   });
   savePolyoleRecords(records);
@@ -1166,9 +1304,10 @@ function renderStoredRecords() {
     .map((record) => {
       const date = new Date(record.date);
       const dateLabel = Number.isNaN(date.getTime()) ? "" : date.toLocaleDateString(currentLanguage);
+      const recordLabel = record.isDaily ? t("dailyChallengeRecord") : getOperationLabel(record.operation);
       return `
         <li>
-          <span>${dateLabel} ${getOperationLabel(record.operation)}</span>
+          <span>${dateLabel} ${recordLabel}</span>
           <strong>${formatDuration(record.totalTime)}</strong>
           <small>${formatQuestionCount(record.questionCount)} / ${formatSeconds(record.averageTime / 1000)}</small>
         </li>
@@ -1196,9 +1335,10 @@ function renderPolyoleRecords() {
     .map((record) => {
       const date = new Date(record.date);
       const dateLabel = Number.isNaN(date.getTime()) ? "" : date.toLocaleDateString(currentLanguage);
+      const recordLabel = record.isDaily ? t("dailyChallengeRecord") : `${record.size} x ${record.size}`;
       return `
         <li>
-          <span>${dateLabel} ${record.size} x ${record.size}</span>
+          <span>${dateLabel} ${recordLabel}</span>
           <strong>${formatDuration(record.totalTime)}</strong>
           <small>${record.pieceCount} ${t("pieceUnit")}</small>
         </li>
@@ -1213,6 +1353,47 @@ function formatDuration(ms) {
   const seconds = Math.floor((totalTenths % 600) / 10);
   const tenths = totalTenths % 10;
   return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}.${tenths}`;
+}
+
+function getShareUrl() {
+  return languageUrls[currentLanguage] ? new URL(languageUrls[currentLanguage], window.location.origin).href : window.location.origin;
+}
+
+function openFallbackShare(text, url) {
+  const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+  window.open(shareUrl, "_blank", "noopener,noreferrer");
+}
+
+async function shareResult(text) {
+  const url = getShareUrl();
+  const title = "Mentalc";
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ title, text, url });
+      return;
+    } catch (error) {
+      if (error?.name === "AbortError") {
+        return;
+      }
+    }
+  }
+
+  openFallbackShare(text, url);
+}
+
+function shareMentalcResult() {
+  const text = t("shareMentalcText")
+    .replace("{questions}", formatQuestionCount(state.settings.questionCount))
+    .replace("{time}", formatDuration(state.totalTime));
+  shareResult(`${text} #Mentalc`);
+}
+
+function sharePolyoleResult() {
+  const text = t("sharePolyoleText")
+    .replace("{size}", `${polyominoState.size} x ${polyominoState.size}`)
+    .replace("{time}", formatDuration(polyominoState.totalTime));
+  shareResult(`${text} #Mentalc #Polyole`);
 }
 
 function resetToSetup() {
@@ -1286,12 +1467,25 @@ function preparePolyominoSetup() {
 
 function createPolyominoPuzzle() {
   const size = syncPolyominoSize(els.polyominoSizeInput.value);
+  startPolyominoPuzzle(size, createPolyominoPieces(size), false, "");
+}
+
+function startDailyPolyominoChallenge() {
+  const dateKey = getDailyDateKey();
+  const size = 5;
+  syncPolyominoSize(size);
+  startPolyominoPuzzle(size, createPolyominoPieces(size, createSeededRandom(`polyole-daily-${dateKey}`)), true, dateKey);
+}
+
+function startPolyominoPuzzle(size, pieces, isDaily, dailyDate) {
   polyominoState = createPolyominoState();
   polyominoState.size = size;
+  polyominoState.isDaily = isDaily;
+  polyominoState.dailyDate = dailyDate;
   polyominoState.isStarted = true;
   polyominoState.startedAt = performance.now();
   polyominoState.board = Array.from({ length: size }, () => Array(size).fill(null));
-  polyominoState.pieces = createPolyominoPieces(size);
+  polyominoState.pieces = pieces;
   polyominoState.selectedId = polyominoState.pieces[0]?.id ?? null;
   els.timerText.textContent = "00:00.0";
   els.progressText.textContent = `0 / ${polyominoState.pieces.length}`;
@@ -1308,7 +1502,7 @@ function createPolyominoPuzzle() {
   startTimer();
 }
 
-function createPolyominoPieces(size) {
+function createPolyominoPieces(size, random = Math.random) {
   const unused = new Set();
   for (let row = 0; row < size; row += 1) {
     for (let col = 0; col < size; col += 1) {
@@ -1318,10 +1512,10 @@ function createPolyominoPieces(size) {
 
   const pieces = [];
   while (unused.size > 0) {
-    const startKey = randomFromArray([...unused]);
+    const startKey = randomFromArray([...unused], random);
     const [startRow, startCol] = startKey.split(",").map(Number);
     const remaining = unused.size;
-    const targetSize = remaining <= 5 ? remaining : randomInt(3, 5);
+    const targetSize = remaining <= 5 ? remaining : seededInt(random, 3, 5);
     const cells = [{ row: startRow, col: startCol }];
     unused.delete(startKey);
 
@@ -1340,7 +1534,7 @@ function createPolyominoPieces(size) {
         break;
       }
 
-      const next = randomFromArray(candidates);
+      const next = randomFromArray(candidates, random);
       unused.delete(`${next.row},${next.col}`);
       cells.push(next);
     }
@@ -1371,8 +1565,12 @@ function getNeighborCells(row, col, size) {
   ].filter((cell) => cell.row >= 0 && cell.row < size && cell.col >= 0 && cell.col < size);
 }
 
-function randomFromArray(items) {
-  return items[randomInt(0, items.length - 1)];
+function randomFromArray(items, random) {
+  if (!random) {
+    return items[randomInt(0, items.length - 1)];
+  }
+
+  return items[seededInt(random, 0, items.length - 1)];
 }
 
 function renderPolyomino() {
@@ -1753,14 +1951,17 @@ window.addEventListener("keydown", (event) => {
 });
 
 els.languageSelect.addEventListener("change", () => handleLanguageChange(els.languageSelect.value));
+els.questionCount.addEventListener("focus", () => els.questionCount.select());
 els.questionCount.addEventListener("input", () => syncQuestionCount(els.questionCount.value));
 els.questionCountSlider.addEventListener("input", () => syncQuestionCount(els.questionCountSlider.value));
 els.openMentalMathButton.addEventListener("click", openMentalMath);
 els.openPolyominoButton.addEventListener("click", openPolyomino);
 els.startButton.addEventListener("click", startGame);
+els.dailyChallengeButton.addEventListener("click", startDailyChallenge);
 els.backToGamesButton.addEventListener("click", resetToGameSelect);
 els.polyominoBackButton.addEventListener("click", resetToGameSelect);
 els.polyominoNewButton.addEventListener("click", createPolyominoPuzzle);
+els.polyominoDailyButton.addEventListener("click", startDailyPolyominoChallenge);
 els.polyominoStartButton.addEventListener("click", createPolyominoPuzzle);
 els.polyominoRotateButton.addEventListener("click", rotatePolyominoPiece);
 els.polyominoUndoButton.addEventListener("click", undoPolyominoMove);
@@ -1806,8 +2007,17 @@ els.polyominoBoard.addEventListener("mouseover", (event) => {
 });
 els.polyominoBoard.addEventListener("mouseleave", clearPolyominoPreview);
 els.resetButton.addEventListener("click", resetToSetup);
-els.retryButton.addEventListener("click", startGame);
+els.retryButton.addEventListener("click", () => {
+  if (state.isDaily) {
+    startDailyChallenge();
+    return;
+  }
+
+  startGame();
+});
 els.backToSetupButton.addEventListener("click", resetToSetup);
+els.shareMentalcButton.addEventListener("click", shareMentalcResult);
+els.sharePolyoleButton.addEventListener("click", sharePolyoleResult);
 els.clearRecordsButton.addEventListener("click", clearStoredRecords);
 els.clearPolyoleRecordsButton.addEventListener("click", clearPolyoleRecords);
 els.footerBackLink.addEventListener("click", handleFooterBack);
