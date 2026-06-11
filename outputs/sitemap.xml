@@ -7,6 +7,9 @@
     <loc>https://mentalc.net/en/</loc>
   </url>
   <url>
+    <loc>https://mentalc.net/es/</loc>
+  </url>
+  <url>
     <loc>https://mentalc.net/zh/</loc>
   </url>
   <url>
@@ -22,16 +25,34 @@
     <loc>https://mentalc.net/mentalc/</loc>
   </url>
   <url>
+    <loc>https://mentalc.net/mentalc/two-digit-multiplication/</loc>
+  </url>
+  <url>
     <loc>https://mentalc.net/polyole/</loc>
   </url>
   <url>
     <loc>https://mentalc.net/en/mentalc/</loc>
   </url>
   <url>
+    <loc>https://mentalc.net/en/mentalc/two-digit-multiplication/</loc>
+  </url>
+  <url>
     <loc>https://mentalc.net/en/polyole/</loc>
   </url>
   <url>
+    <loc>https://mentalc.net/es/mentalc/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/es/mentalc/two-digit-multiplication/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/es/polyole/</loc>
+  </url>
+  <url>
     <loc>https://mentalc.net/zh/mentalc/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/zh/mentalc/two-digit-multiplication/</loc>
   </url>
   <url>
     <loc>https://mentalc.net/zh/polyole/</loc>
@@ -40,16 +61,25 @@
     <loc>https://mentalc.net/de/mentalc/</loc>
   </url>
   <url>
+    <loc>https://mentalc.net/de/mentalc/two-digit-multiplication/</loc>
+  </url>
+  <url>
     <loc>https://mentalc.net/de/polyole/</loc>
   </url>
   <url>
     <loc>https://mentalc.net/nl/mentalc/</loc>
   </url>
   <url>
+    <loc>https://mentalc.net/nl/mentalc/two-digit-multiplication/</loc>
+  </url>
+  <url>
     <loc>https://mentalc.net/nl/polyole/</loc>
   </url>
   <url>
     <loc>https://mentalc.net/ko/mentalc/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/ko/mentalc/two-digit-multiplication/</loc>
   </url>
   <url>
     <loc>https://mentalc.net/ko/polyole/</loc>

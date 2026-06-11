@@ -251,6 +251,30 @@ h2 {
   text-decoration: underline;
 }
 
+.detail-article-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.detail-article-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.68);
+  color: var(--accent-dark);
+  font-weight: 650;
+  padding: 0 12px;
+  text-decoration: none;
+}
+
+.detail-article-links a:hover {
+  background: #edf5f2;
+}
+
 .detail-layout {
   display: grid;
   gap: 22px;
@@ -765,6 +789,101 @@ tbody tr:last-child td {
   line-height: 1.7;
 }
 
+.article-layout {
+  width: min(920px, calc(100% - 32px));
+  margin: 28px auto 42px;
+}
+
+.article-body {
+  display: grid;
+  gap: 22px;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.breadcrumb a {
+  color: var(--accent-dark);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.article-hero,
+.article-section,
+.article-cta {
+  display: grid;
+  gap: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: clamp(18px, 3vw, 30px);
+}
+
+.article-hero h1 {
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 1.12;
+}
+
+.article-section h2,
+.article-cta h2 {
+  font-size: clamp(22px, 3vw, 30px);
+}
+
+.article-body p,
+.article-body li {
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.article-main-image,
+.article-image {
+  width: 100%;
+  border: 1px solid rgba(36, 37, 32, 0.08);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.article-main-image {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.article-image {
+  object-fit: contain;
+}
+
+.article-formula-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.article-formula-list div {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfbf9;
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 700;
+  padding: 14px;
+}
+
+.article-steps {
+  display: grid;
+  gap: 8px;
+  padding-left: 22px;
+}
+
 .home-info.legal-panel {
   border: 0;
   background: transparent;
@@ -923,6 +1042,15 @@ tbody tr:last-child td {
   .topbar {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .article-layout {
+    width: min(100% - 24px, 920px);
+    margin: 16px auto 28px;
+  }
+
+  .article-formula-list {
+    grid-template-columns: 1fr;
   }
 
   .mini-stats {
