@@ -336,6 +336,15 @@ const translations = {
     practiceTitle: "暗算練習のコツ",
     practiceBody:
       "最初は1桁の足し算を少ない問題数で始め、慣れてきたら桁数や掛け算を増やすのがおすすめです。毎回の記録を見ながら、正確さを保ったまま少しずつ時間を縮めましょう。",
+    siteGuideTitle: "Mentalcでできること",
+    siteGuideBody:
+      "Mentalcでは、足し算、引き算、掛け算、割り算の暗算練習を自分のペースで行えます。問題数、左右の桁数、演算を選べるため、1桁の計算練習から2桁以上の暗算トレーニングまで段階的に使えます。",
+    siteGuideHowTitle: "短い時間で練習しやすい設計",
+    siteGuideHowBody:
+      "解答はテンキーで入力でき、正解するとすぐ次の問題へ進みます。結果画面では合計タイム、正答率、最近の記録を確認できるので、毎日の計算力トレーニングに使いやすい構成です。",
+    siteGuideArticleTitle: "暗算方法の記事",
+    siteGuideArticleBody:
+      "2桁×2桁の掛け算を分配法則で考える記事も用意しています。ゲームで練習する前に考え方を確認すると、暗算の手順を身につけやすくなります。",
     recordsTitle: "最近の記録",
     clearRecords: "消去",
     noRecords: "まだ記録はありません。",
@@ -435,6 +444,15 @@ const translations = {
     practiceTitle: "Practice Tips",
     practiceBody:
       "Start with a small set of one-digit addition questions. As you get comfortable, increase the digit length or add multiplication. Use your recent records to reduce time gradually while keeping your answers accurate.",
+    siteGuideTitle: "What you can practice with Mentalc",
+    siteGuideBody:
+      "Mentalc lets you practice addition, subtraction, multiplication, and division at your own pace. You can choose the question count, digit length, and operation, so the game works for quick arithmetic practice, mental math drills, and gradual calculation training.",
+    siteGuideHowTitle: "Built for short daily sessions",
+    siteGuideHowBody:
+      "Enter answers with the on-screen keypad or your keyboard. When an answer is correct, the next question appears immediately. The result screen shows total time, accuracy, and recent records, making it easy to track steady progress.",
+    siteGuideArticleTitle: "Mental math learning article",
+    siteGuideArticleBody:
+      "Mentalc also includes an article on multiplying two-digit numbers mentally. Reading the method before practicing can make the game more useful for building calculation habits.",
     recordsTitle: "Recent Records",
     clearRecords: "Clear",
     noRecords: "No records yet.",
@@ -537,6 +555,15 @@ const translations = {
     practiceTitle: "Consejos de práctica",
     practiceBody:
       "Empieza con pocas sumas de una cifra. Cuando te sientas cómodo, aumenta las cifras o prueba multiplicaciones. Usa tus registros recientes para mejorar el tiempo sin perder precisión.",
+    siteGuideTitle: "Qué puedes practicar con Mentalc",
+    siteGuideBody:
+      "Mentalc permite practicar suma, resta, multiplicación y división a tu ritmo. Puedes elegir el número de preguntas, las cifras y la operación para entrenar cálculo mental y rapidez aritmética.",
+    siteGuideHowTitle: "Diseñado para sesiones cortas",
+    siteGuideHowBody:
+      "Introduce respuestas con el teclado en pantalla o el teclado físico. Al acertar, aparece la siguiente pregunta de inmediato. El resultado muestra tiempo, precisión y registros recientes.",
+    siteGuideArticleTitle: "Artículo de cálculo mental",
+    siteGuideArticleBody:
+      "También hay un artículo sobre multiplicar números de dos cifras mentalmente para aprender el método antes de practicar.",
     recordsTitle: "Registros recientes",
     clearRecords: "Borrar",
     noRecords: "Aún no hay registros.",
@@ -634,6 +661,15 @@ const translations = {
     practiceTitle: "Dicas de prática",
     practiceBody:
       "Comece com poucas perguntas de adição de um dígito. Depois aumente os dígitos ou pratique multiplicação para melhorar o cálculo mental.",
+    siteGuideTitle: "O que treinar com Mentalc",
+    siteGuideBody:
+      "Mentalc permite praticar adição, subtração, multiplicação e divisão no seu ritmo. Escolha número de perguntas, dígitos e operação para treino de cálculo mental.",
+    siteGuideHowTitle: "Feito para sessões curtas",
+    siteGuideHowBody:
+      "Digite as respostas no teclado da tela ou no teclado físico. Ao acertar, a próxima pergunta aparece imediatamente. O resultado mostra tempo, precisão e registros recentes.",
+    siteGuideArticleTitle: "Artigo de cálculo mental",
+    siteGuideArticleBody:
+      "Há também um artigo sobre multiplicar números de dois dígitos mentalmente para aprender o método antes de praticar.",
     recordsTitle: "Registros recentes",
     clearRecords: "Limpar",
     noRecords: "Ainda não há registros.",
@@ -730,6 +766,15 @@ const translations = {
     practiceTitle: "Conseils d'entraînement",
     practiceBody:
       "Commencez avec quelques additions à un chiffre. Augmentez ensuite les chiffres ou essayez la multiplication pour progresser en calcul mental.",
+    siteGuideTitle: "Que pratiquer avec Mentalc",
+    siteGuideBody:
+      "Mentalc permet de pratiquer addition, soustraction, multiplication et division à votre rythme. Choisissez le nombre de questions, les chiffres et l'opération pour travailler le calcul mental.",
+    siteGuideHowTitle: "Conçu pour de courtes sessions",
+    siteGuideHowBody:
+      "Saisissez les réponses avec le pavé à l'écran ou le clavier. Après une bonne réponse, la question suivante apparaît immédiatement. Le résultat indique le temps, la précision et les records récents.",
+    siteGuideArticleTitle: "Article de calcul mental",
+    siteGuideArticleBody:
+      "Un article explique aussi comment multiplier mentalement deux nombres à deux chiffres avant de pratiquer.",
     recordsTitle: "Records récents",
     clearRecords: "Effacer",
     noRecords: "Aucun record pour le moment.",
@@ -1372,20 +1417,22 @@ function formatDigitOption(value, ui) {
 
 function updateMainUiText() {
   const ui = getMainText();
-  const utilityDetails = document.querySelectorAll(".utility-links details");
-  utilityDetails[0]?.querySelector("summary") && (utilityDetails[0].querySelector("summary").textContent = ui.privacy);
-  utilityDetails[0]?.querySelector("p") && (utilityDetails[0].querySelector("p").textContent = t("privacyBody"));
-  utilityDetails[1]?.querySelector("summary") && (utilityDetails[1].querySelector("summary").textContent = ui.terms);
-  utilityDetails[1]?.querySelector("p") && (utilityDetails[1].querySelector("p").textContent = t("termsBody"));
-
   const utilityLinks = document.querySelectorAll(".utility-links a");
   if (utilityLinks[0]) {
-    utilityLinks[0].textContent = ui.contact;
-    utilityLinks[0].href = contactFormUrls[currentLanguage] || contactFormUrls.ja;
+    utilityLinks[0].textContent = ui.privacy;
+    utilityLinks[0].href = "/privacy/";
   }
   if (utilityLinks[1]) {
-    utilityLinks[1].textContent = ui.article;
-    utilityLinks[1].href = ui.articleUrl;
+    utilityLinks[1].textContent = ui.terms;
+    utilityLinks[1].href = "/terms/";
+  }
+  if (utilityLinks[2]) {
+    utilityLinks[2].textContent = ui.contact;
+    utilityLinks[2].href = "/contact/";
+  }
+  if (utilityLinks[3]) {
+    utilityLinks[3].textContent = ui.article;
+    utilityLinks[3].href = ui.articleUrl;
   }
 
   document.querySelectorAll('.quick-row[data-setting="questionCount"] button[data-value]').forEach((button) => {
@@ -1732,7 +1779,7 @@ function startDailyChallenge() {
 
 function showPanel(name) {
   currentPanel = name;
-  const fullScreenPanel = name === "game" || name === "setup" || name === "result";
+  const fullScreenPanel = name === "game" || name === "result";
   document.body.classList.toggle("is-game-screen", fullScreenPanel);
   document.body.classList.remove("is-polyole-complete");
   window.scrollTo(0, 0);
@@ -2782,39 +2829,39 @@ els.quickRightDigits?.addEventListener("focus", () => {
   quickCustomActive.rightDigits = true;
   updateQuickSettingsUI();
 });
-els.openMentalMathButton.addEventListener("click", openMentalMath);
-els.openPolyominoButton.addEventListener("click", openPolyomino);
+els.openMentalMathButton?.addEventListener("click", openMentalMath);
+els.openPolyominoButton?.addEventListener("click", openPolyomino);
 els.startButton.addEventListener("click", startGame);
 els.dailyChallengeButton.addEventListener("click", startDailyChallenge);
 els.backToGamesButton.addEventListener("click", resetToGameSelect);
-els.polyominoBackButton.addEventListener("click", resetToGameSelect);
-els.polyominoNewButton.addEventListener("click", createPolyominoPuzzle);
-els.polyominoDailyButton.addEventListener("click", startDailyPolyominoChallenge);
-els.polyominoStartButton.addEventListener("click", createPolyominoPuzzle);
-els.polyominoRotateButton.addEventListener("click", rotatePolyominoPiece);
-els.polyominoUndoButton.addEventListener("click", undoPolyominoMove);
-els.polyominoResetButton.addEventListener("click", resetPolyominoPuzzle);
-els.polyominoSizeInput.addEventListener("input", () => {
+els.polyominoBackButton?.addEventListener("click", resetToGameSelect);
+els.polyominoNewButton?.addEventListener("click", createPolyominoPuzzle);
+els.polyominoDailyButton?.addEventListener("click", startDailyPolyominoChallenge);
+els.polyominoStartButton?.addEventListener("click", createPolyominoPuzzle);
+els.polyominoRotateButton?.addEventListener("click", rotatePolyominoPiece);
+els.polyominoUndoButton?.addEventListener("click", undoPolyominoMove);
+els.polyominoResetButton?.addEventListener("click", resetPolyominoPuzzle);
+els.polyominoSizeInput?.addEventListener("input", () => {
   syncPolyominoSize(els.polyominoSizeInput.value);
   preparePolyominoSetup();
 });
-els.polyominoSizeSlider.addEventListener("input", () => {
+els.polyominoSizeSlider?.addEventListener("input", () => {
   syncPolyominoSize(els.polyominoSizeSlider.value);
   preparePolyominoSetup();
 });
-els.polyominoPieces.addEventListener("click", (event) => {
+els.polyominoPieces?.addEventListener("click", (event) => {
   const button = event.target.closest("[data-piece-id]");
   if (button) {
     selectPolyominoPiece(button.dataset.pieceId);
   }
 });
-els.polyominoPieces.addEventListener("pointerdown", (event) => {
+els.polyominoPieces?.addEventListener("pointerdown", (event) => {
   const button = event.target.closest("[data-piece-id]");
   if (button) {
     startPolyominoDrag(event, button.dataset.pieceId);
   }
 });
-els.polyominoBoard.addEventListener("click", (event) => {
+els.polyominoBoard?.addEventListener("click", (event) => {
   const cell = event.target.closest("[data-row][data-col]");
   if (cell) {
     const row = Number(cell.dataset.row);
@@ -2827,13 +2874,13 @@ els.polyominoBoard.addEventListener("click", (event) => {
     }
   }
 });
-els.polyominoBoard.addEventListener("mouseover", (event) => {
+els.polyominoBoard?.addEventListener("mouseover", (event) => {
   const cell = event.target.closest("[data-row][data-col]");
   if (cell) {
     updatePolyominoPreview(Number(cell.dataset.row), Number(cell.dataset.col));
   }
 });
-els.polyominoBoard.addEventListener("mouseleave", clearPolyominoPreview);
+els.polyominoBoard?.addEventListener("mouseleave", clearPolyominoPreview);
 els.resetButton.addEventListener("click", resetToSetup);
 els.retryButton.addEventListener("click", () => {
   if (state.isDaily) {
@@ -2855,9 +2902,9 @@ els.simpleRetryButton?.addEventListener("click", () => {
   startGame();
 });
 els.shareMentalcImageButton?.addEventListener("click", shareMentalcImageResult);
-els.sharePolyoleButton.addEventListener("click", sharePolyoleResult);
+els.sharePolyoleButton?.addEventListener("click", sharePolyoleResult);
 els.clearRecordsButton.addEventListener("click", clearStoredRecords);
-els.clearPolyoleRecordsButton.addEventListener("click", clearPolyoleRecords);
+els.clearPolyoleRecordsButton?.addEventListener("click", clearPolyoleRecords);
 els.footerBackLink.addEventListener("click", handleFooterBack);
 
 applyTheme(getInitialTheme());

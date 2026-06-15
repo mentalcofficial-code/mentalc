@@ -1432,6 +1432,15 @@ body.is-mental-only .footer {
   display: none;
 }
 
+body.is-mental-only:not(.is-game-screen) .site-info,
+body.is-mental-only:not(.is-game-screen) .footer {
+  display: block;
+}
+
+body.is-mental-only:not(.is-game-screen) .footer {
+  display: flex;
+}
+
 body.is-mental-only .utility-links {
   display: flex;
   align-items: center;
