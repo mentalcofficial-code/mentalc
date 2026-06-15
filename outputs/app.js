@@ -18,6 +18,10 @@ const els = {
   operationValue: document.querySelector("#operationValue"),
   questionCount: document.querySelector("#questionCount"),
   questionCountSlider: document.querySelector("#questionCountSlider"),
+  quickSettings: document.querySelector(".quick-settings"),
+  quickQuestionCount: document.querySelector("#quickQuestionCount"),
+  quickLeftDigits: document.querySelector("#quickLeftDigits"),
+  quickRightDigits: document.querySelector("#quickRightDigits"),
   openMentalMathButton: document.querySelector("#openMentalMathButton"),
   openPolyominoButton: document.querySelector("#openPolyominoButton"),
   startButton: document.querySelector("#startButton"),
@@ -47,6 +51,10 @@ const els = {
   retryButton: document.querySelector("#retryButton"),
   backToSetupButton: document.querySelector("#backToSetupButton"),
   shareMentalcButton: document.querySelector("#shareMentalcButton"),
+  shareMentalcImageButton: document.querySelector("#shareMentalcImageButton"),
+  simpleShareMentalcButton: document.querySelector("#simpleShareMentalcButton"),
+  homeButton: document.querySelector("#homeButton"),
+  simpleRetryButton: document.querySelector("#simpleRetryButton"),
   sharePolyoleButton: document.querySelector("#sharePolyoleButton"),
   clearRecordsButton: document.querySelector("#clearRecordsButton"),
   questionText: document.querySelector("#questionText"),
@@ -57,6 +65,8 @@ const els = {
   questionTotalStat: document.querySelector("#questionTotalStat"),
   totalTimeStat: document.querySelector("#totalTimeStat"),
   averageTimeStat: document.querySelector("#averageTimeStat"),
+  simpleTotalTimeStat: document.querySelector("#simpleTotalTimeStat"),
+  accuracyStat: document.querySelector("#accuracyStat"),
   historyBody: document.querySelector("#historyBody"),
   recordSummary: document.querySelector("#recordSummary"),
   recordList: document.querySelector("#recordList"),
@@ -90,6 +100,117 @@ const languageUrls = {
   ko: "/ko/",
 };
 
+const mainUiText = {
+  ja: {
+    privacy: "プライバシー",
+    terms: "規約",
+    contact: "お問い合わせ",
+    article: "記事",
+    questionUnitShort: "問",
+    digitUnitShort: "桁",
+    time: "タイム",
+    accuracy: "正答率",
+    shareResult: "結果をシェア",
+    share: "シェア",
+    home: "HOME",
+    retry: "RETRY",
+    articleUrl: "/mentalc/two-digit-multiplication/",
+  },
+  en: {
+    privacy: "Privacy",
+    terms: "Terms",
+    contact: "Contact",
+    article: "Article",
+    questionUnitShort: "Q",
+    digitUnitShort: "digit",
+    digitUnitPlural: "digits",
+    time: "Time",
+    accuracy: "Accuracy",
+    shareResult: "Share result",
+    share: "Share",
+    home: "HOME",
+    retry: "RETRY",
+    articleUrl: "/en/mentalc/two-digit-multiplication/",
+  },
+  es: {
+    privacy: "Privacidad",
+    terms: "Términos",
+    contact: "Contacto",
+    article: "Artículo",
+    questionUnitShort: "P",
+    digitUnitShort: "cifra",
+    digitUnitPlural: "cifras",
+    time: "Tiempo",
+    accuracy: "Precisión",
+    shareResult: "Compartir resultado",
+    share: "Compartir",
+    home: "INICIO",
+    retry: "REINTENTAR",
+    articleUrl: "/es/mentalc/two-digit-multiplication/",
+  },
+  zh: {
+    privacy: "隐私",
+    terms: "条款",
+    contact: "联系",
+    article: "文章",
+    questionUnitShort: "题",
+    digitUnitShort: "位",
+    time: "时间",
+    accuracy: "正确率",
+    shareResult: "分享结果",
+    share: "分享",
+    home: "主页",
+    retry: "重试",
+    articleUrl: "/zh/mentalc/two-digit-multiplication/",
+  },
+  de: {
+    privacy: "Datenschutz",
+    terms: "Regeln",
+    contact: "Kontakt",
+    article: "Artikel",
+    questionUnitShort: "A",
+    digitUnitShort: "St.",
+    time: "Zeit",
+    accuracy: "Treffer",
+    shareResult: "Ergebnis teilen",
+    share: "Teilen",
+    home: "HOME",
+    retry: "NEU",
+    articleUrl: "/de/mentalc/two-digit-multiplication/",
+  },
+  nl: {
+    privacy: "Privacy",
+    terms: "Voorwaarden",
+    contact: "Contact",
+    article: "Artikel",
+    questionUnitShort: "V",
+    digitUnitShort: "cijfer",
+    digitUnitPlural: "cijfers",
+    time: "Tijd",
+    accuracy: "Score",
+    shareResult: "Resultaat delen",
+    share: "Delen",
+    home: "HOME",
+    retry: "OPNIEUW",
+    articleUrl: "/nl/mentalc/two-digit-multiplication/",
+  },
+  ko: {
+    privacy: "개인정보",
+    terms: "약관",
+    contact: "문의",
+    article: "글",
+    questionUnitShort: "문",
+    digitUnitShort: "자",
+    time: "시간",
+    accuracy: "정확도",
+    shareResult: "결과 공유",
+    share: "공유",
+    home: "HOME",
+    retry: "RETRY",
+    articleUrl: "/ko/mentalc/two-digit-multiplication/",
+  },
+};
+
 const recordStorageKey = "mentalc-records-v1";
 const polyoleRecordStorageKey = "polyole-records-v1";
 const dailyChallengeQuestionCount = 5;
@@ -97,18 +218,18 @@ const dailyChallengeQuestionCount = 5;
 const translations = {
   ja: {
     htmlLang: "ja",
-    dailyChallenge: "デイリーチャレンジ",
+    dailyChallenge: "D",
     dailyChallengeRecord: "デイリー",
     polyoleDailyChallenge: "デイリーチャレンジ",
     shareResult: "共有",
-    shareMentalcText: "Mentalcで{questions}を{time}でクリアしました。",
+    shareMentalcText: "Mentalc {time} / 1問 {average}",
     sharePolyoleText: "Polyoleの{size}を{time}でクリアしました。",
     siteTagline: "短く遊べる、シンプルな脳トレ。",
     tagline: "暗算を、短く淡々と。",
     language: "言語",
     progressStatus: "進行状況",
     gameArea: "暗算ゲーム",
-    settings: "設定",
+    settings: "SET",
     gameSelectTitle: "ゲーム選択",
     gameSelectIntro:
       "Mentalcは、暗算ゲーム、計算練習、脳トレ、ロジックパズルを短い時間で遊べるシンプルなゲームサイトです。集中力、計算力、空間認識を鍛えるゲームを追加していきます。",
@@ -144,23 +265,23 @@ const translations = {
     completedBoard: "完成した盤面",
     polyoleRecordsTitle: "Polyole 最近の記録",
     pieceUnit: "ピース",
-    backToGames: "ゲーム選択へ戻る",
-    start: "開始",
-    leftDigits: "左の桁数",
-    rightDigits: "右の桁数",
-    operation: "演算",
-    questionCount: "問題数",
-    result: "結果",
-    retry: "もう一度",
-    backToSettings: "設定へ戻る",
-    totalTime: "合計時間",
-    averageTime: "平均時間",
+    backToGames: "戻る",
+    start: "START",
+    leftDigits: "左",
+    rightDigits: "右",
+    operation: "式",
+    questionCount: "問",
+    result: "RESULT",
+    retry: "AGAIN",
+    backToSettings: "SET",
+    totalTime: "TIME",
+    averageTime: "1問",
     question: "問題",
     answer: "答え",
     time: "時間",
     mistakes: "ミス",
     keypad: "テンキー",
-    inputHint: "テンキーで入力",
+    inputHint: "",
     wrong: "違います",
     ad: "広告",
     adPlaceholder: "ここに広告枠を配置",
@@ -245,10 +366,10 @@ const translations = {
     pieceUnit: "pieces",
     backToGames: "Back to games",
     start: "Start",
-    leftDigits: "Left digits",
-    rightDigits: "Right digits",
-    operation: "Operation",
-    questionCount: "Questions",
+    leftDigits: "L",
+    rightDigits: "R",
+    operation: "Op",
+    questionCount: "Q",
     result: "Result",
     retry: "Retry",
     backToSettings: "Back to settings",
@@ -347,10 +468,10 @@ const translations = {
     pieceUnit: "piezas",
     backToGames: "Volver a juegos",
     start: "Iniciar",
-    leftDigits: "Cifras izquierdas",
-    rightDigits: "Cifras derechas",
-    operation: "Operación",
-    questionCount: "Preguntas",
+    leftDigits: "Izq.",
+    rightDigits: "Der.",
+    operation: "Op.",
+    questionCount: "Preg.",
     result: "Resultado",
     retry: "Reintentar",
     backToSettings: "Volver a configuración",
@@ -446,10 +567,10 @@ const translations = {
     pieceUnit: "块",
     backToGames: "返回游戏选择",
     start: "开始",
-    leftDigits: "左侧位数",
-    rightDigits: "右侧位数",
-    operation: "运算",
-    questionCount: "题数",
+    leftDigits: "左",
+    rightDigits: "右",
+    operation: "式",
+    questionCount: "题",
     result: "结果",
     retry: "再来一次",
     backToSettings: "返回设置",
@@ -545,10 +666,10 @@ const translations = {
     pieceUnit: "Teile",
     backToGames: "Zurueck zur Spielauswahl",
     start: "Start",
-    leftDigits: "Linke Stellen",
-    rightDigits: "Rechte Stellen",
-    operation: "Rechenart",
-    questionCount: "Aufgaben",
+    leftDigits: "L",
+    rightDigits: "R",
+    operation: "Op",
+    questionCount: "Aufg.",
     result: "Ergebnis",
     retry: "Erneut",
     backToSettings: "Zurueck zu den Einstellungen",
@@ -644,10 +765,10 @@ const translations = {
     pieceUnit: "stukken",
     backToGames: "Terug naar spellen",
     start: "Start",
-    leftDigits: "Linker cijfers",
-    rightDigits: "Rechter cijfers",
-    operation: "Bewerking",
-    questionCount: "Vragen",
+    leftDigits: "L",
+    rightDigits: "R",
+    operation: "Op",
+    questionCount: "Vr.",
     result: "Resultaat",
     retry: "Opnieuw",
     backToSettings: "Terug naar instellingen",
@@ -743,10 +864,10 @@ const translations = {
     pieceUnit: "조각",
     backToGames: "게임 선택으로 돌아가기",
     start: "시작",
-    leftDigits: "왼쪽 자릿수",
-    rightDigits: "오른쪽 자릿수",
-    operation: "연산",
-    questionCount: "문제 수",
+    leftDigits: "왼",
+    rightDigits: "오",
+    operation: "식",
+    questionCount: "문",
     result: "결과",
     retry: "다시 하기",
     backToSettings: "설정으로 돌아가기",
@@ -795,17 +916,22 @@ const translations = {
 
 const operationKeys = ["add", "subtract", "multiply", "divide"];
 const operationSymbols = {
-  add: "+",
-  subtract: "-",
+  add: "＋",
+  subtract: "−",
   multiply: "×",
   divide: "÷",
 };
 
 let currentLanguage = "ja";
 let currentPanel = "select";
+const quickCustomActive = {
+  questionCount: false,
+  leftDigits: false,
+  rightDigits: false,
+};
 let state = createInitialState();
 let timerId = null;
-const polyominoColors = ["#1d6f62", "#6f7f45", "#2f6f8c", "#8a6f2f", "#8a4b43", "#5e6b7c", "#6f5d8f", "#3f7a66"];
+const polyominoColors = ["#b8dfcf", "#d8e8b8", "#c8dceb", "#f1e4b8", "#e8c4c4", "#d9d4ef", "#c8e6e1", "#f0d3df"];
 let polyominoState = createPolyominoState();
 let polyominoDrag = null;
 
@@ -861,8 +987,7 @@ function getOperationKey() {
 }
 
 function getOperationLabel(operationKey = getOperationKey()) {
-  const index = operationKeys.indexOf(operationKey);
-  return t("operations")[index < 0 ? 0 : index];
+  return operationSymbols[operationKey] || operationSymbols.add;
 }
 
 function formatDigits(value) {
@@ -877,13 +1002,41 @@ function formatSeconds(value) {
   return `${value.toFixed(1)}${t("secondUnit")}`;
 }
 
+function formatPreciseSeconds(milliseconds) {
+  return `${(milliseconds / 1000).toFixed(2)}秒`;
+}
+
+function clampNumericInput(input, min, max) {
+  if (!input || input.value === "") {
+    return "";
+  }
+  const rawValue = input.value.replace(/\D/g, "");
+  if (rawValue === "") {
+    input.value = "";
+    return "";
+  }
+  const value = clamp(Number(rawValue) || min, min, max);
+  input.value = value;
+  return value;
+}
+
+function getAccuracyPercent() {
+  const total = Math.max(1, state.settings.questionCount);
+  const correct = clamp(total - state.mistakes, 0, total);
+  return Math.round((correct / total) * 100);
+}
+
 function readSettings() {
-  const questionCount = clamp(Number(els.questionCount.value) || 20, 1, 200);
+  const questionCount = clamp(Number(els.questionCount.value) || 20, 1, 500);
   syncQuestionCount(questionCount);
+  const leftDigits = clamp(Number(els.leftDigits.value) || 1, 1, 10);
+  const rightDigits = clamp(Number(els.rightDigits.value) || 1, 1, 10);
+  els.leftDigits.value = leftDigits;
+  els.rightDigits.value = rightDigits;
 
   return {
-    leftDigits: Number(els.leftDigits.value),
-    rightDigits: Number(els.rightDigits.value),
+    leftDigits,
+    rightDigits,
     operation: getOperationKey(),
     questionCount,
   };
@@ -893,6 +1046,7 @@ function applyLanguage(language) {
   currentLanguage = translations[language] ? language : "ja";
   els.languageSelect.value = currentLanguage;
   document.documentElement.lang = t("htmlLang");
+  document.body.classList.add("is-mental-only");
 
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     node.textContent = t(node.dataset.i18n);
@@ -913,6 +1067,7 @@ function applyLanguage(language) {
   updateContactFormLink();
   updateFooterBackLink();
   updateTagline();
+  updateMainUiText();
 }
 
 function getInitialLanguage() {
@@ -939,6 +1094,60 @@ function updateContactFormLink() {
 
   els.contactFormLink.href = contactFormUrl;
   els.contactFormLink.classList.remove("is-hidden");
+}
+
+function getMainText() {
+  return mainUiText[currentLanguage] || mainUiText.ja;
+}
+
+function joinCountUnit(value, unit) {
+  return /[A-Za-z.]/.test(unit) ? `${value} ${unit}` : `${value}${unit}`;
+}
+
+function formatDigitOption(value, ui) {
+  const unit = Number(value) === 1 ? ui.digitUnitShort : ui.digitUnitPlural || ui.digitUnitShort;
+  return joinCountUnit(value, unit);
+}
+
+function updateMainUiText() {
+  const ui = getMainText();
+  const utilityDetails = document.querySelectorAll(".utility-links details");
+  utilityDetails[0]?.querySelector("summary") && (utilityDetails[0].querySelector("summary").textContent = ui.privacy);
+  utilityDetails[0]?.querySelector("p") && (utilityDetails[0].querySelector("p").textContent = t("privacyBody"));
+  utilityDetails[1]?.querySelector("summary") && (utilityDetails[1].querySelector("summary").textContent = ui.terms);
+  utilityDetails[1]?.querySelector("p") && (utilityDetails[1].querySelector("p").textContent = t("termsBody"));
+
+  const utilityLinks = document.querySelectorAll(".utility-links a");
+  if (utilityLinks[0]) {
+    utilityLinks[0].textContent = ui.contact;
+    utilityLinks[0].href = contactFormUrls[currentLanguage] || contactFormUrls.ja;
+  }
+  if (utilityLinks[1]) {
+    utilityLinks[1].textContent = ui.article;
+    utilityLinks[1].href = ui.articleUrl;
+  }
+
+  document.querySelectorAll('.quick-row[data-setting="questionCount"] button[data-value]').forEach((button) => {
+    button.textContent = joinCountUnit(button.dataset.value, ui.questionUnitShort);
+  });
+  document.querySelectorAll('.quick-row[data-setting="leftDigits"] button[data-value], .quick-row[data-setting="rightDigits"] button[data-value]').forEach((button) => {
+    button.textContent = formatDigitOption(button.dataset.value, ui);
+  });
+  const questionUnitLabel = document.querySelector("#quickQuestionCount + span");
+  const leftUnitLabel = document.querySelector("#quickLeftDigits + span");
+  const rightUnitLabel = document.querySelector("#quickRightDigits + span");
+  if (questionUnitLabel) questionUnitLabel.textContent = ui.questionUnitShort;
+  if (leftUnitLabel) leftUnitLabel.textContent = ui.digitUnitShort;
+  if (rightUnitLabel) rightUnitLabel.textContent = ui.digitUnitShort;
+
+  const simpleSpans = document.querySelectorAll(".simple-result span");
+  if (simpleSpans[0]) simpleSpans[0].textContent = ui.time;
+  if (simpleSpans[1]) simpleSpans[1].textContent = ui.accuracy;
+  if (simpleSpans[2]) simpleSpans[2].textContent = ui.shareResult;
+  if (els.simpleShareMentalcButton) els.simpleShareMentalcButton.textContent = ui.share;
+  if (els.shareMentalcButton) els.shareMentalcButton.textContent = ui.share;
+  if (els.homeButton) els.homeButton.textContent = ui.home;
+  if (els.simpleRetryButton) els.simpleRetryButton.textContent = ui.retry;
 }
 
 function updateFooterBackLink() {
@@ -984,10 +1193,82 @@ function initAdsense() {
   });
 }
 
+function updateQuickSettingsUI() {
+  if (!els.quickSettings) {
+    return;
+  }
+
+  const values = {
+    questionCount: String(els.questionCount.value),
+    leftDigits: String(els.leftDigits.value),
+    rightDigits: String(els.rightDigits.value),
+    operation: String(els.operation.value),
+  };
+
+  els.quickSettings.querySelectorAll(".quick-row").forEach((row) => {
+    const setting = row.dataset.setting;
+    const isCustomActive = Boolean(quickCustomActive[setting]);
+    row.querySelectorAll("button[data-value]").forEach((button) => {
+      button.classList.toggle("is-selected", !isCustomActive && button.dataset.value === values[setting]);
+    });
+    const customLabel = row.querySelector("label");
+    customLabel?.classList.toggle("is-selected", isCustomActive);
+  });
+
+  if (document.activeElement !== els.quickQuestionCount) {
+    els.quickQuestionCount.value = els.questionCount.value;
+  }
+  if (document.activeElement !== els.quickLeftDigits) {
+    els.quickLeftDigits.value = els.leftDigits.value;
+  }
+  if (document.activeElement !== els.quickRightDigits) {
+    els.quickRightDigits.value = els.rightDigits.value;
+  }
+}
+
+function setQuickSetting(setting, value, source = "button") {
+  if (source === "input" && Object.prototype.hasOwnProperty.call(quickCustomActive, setting)) {
+    quickCustomActive[setting] = true;
+  }
+  if (source === "button" && Object.prototype.hasOwnProperty.call(quickCustomActive, setting)) {
+    quickCustomActive[setting] = false;
+  }
+
+  if (setting === "questionCount") {
+    syncQuestionCount(value);
+  }
+
+  if (setting === "leftDigits") {
+    els.leftDigits.value = clamp(Number(value) || 1, 1, 10);
+  }
+
+  if (setting === "rightDigits") {
+    els.rightDigits.value = clamp(Number(value) || 1, 1, 10);
+  }
+
+  if (setting === "operation") {
+    els.operation.value = clamp(Number(value) || 0, 0, operationKeys.length - 1);
+  }
+
+  syncSettingLabels();
+}
+
+function syncQuickQuestionInput() {
+  quickCustomActive.questionCount = true;
+  const value = clampNumericInput(els.quickQuestionCount, 1, 500);
+  syncQuestionCount(value);
+}
+
+function syncQuickDigitInput(input, setting) {
+  const value = clampNumericInput(input, 1, 10);
+  setQuickSetting(setting, value, "input");
+}
+
 function syncSettingLabels() {
   els.leftDigitsValue.textContent = formatDigits(els.leftDigits.value);
   els.rightDigitsValue.textContent = formatDigits(els.rightDigits.value);
   els.operationValue.textContent = getOperationLabel();
+  updateQuickSettingsUI();
 }
 
 function syncQuestionCount(value) {
@@ -999,12 +1280,16 @@ function syncQuestionCount(value) {
     return 20;
   }
 
-  const count = clamp(Number(value) || 20, 1, 200);
+  const count = clamp(Number(value) || 20, 1, 500);
   els.questionCount.value = count;
   els.questionCountSlider.value = count;
+  if (document.activeElement !== els.quickQuestionCount) {
+    els.quickQuestionCount.value = count;
+  }
   if (!els.setupPanel.classList.contains("is-hidden")) {
     els.progressText.textContent = `0 / ${count}`;
   }
+  updateQuickSettingsUI();
   return count;
 }
 
@@ -1034,27 +1319,27 @@ function randomInt(min, max) {
 function makeQuestion(settings) {
   let left = randomByDigits(settings.leftDigits);
   let right = randomByDigits(settings.rightDigits);
-  let answer = 0;
+  let answer = "0";
 
   if (settings.operation === "add") {
-    answer = left + right;
+    answer = String(BigInt(left) + BigInt(right));
   }
 
   if (settings.operation === "subtract") {
     if (right > left) {
       [left, right] = [right, left];
     }
-    answer = left - right;
+    answer = String(BigInt(left) - BigInt(right));
   }
 
   if (settings.operation === "multiply") {
-    answer = left * right;
+    answer = String(BigInt(left) * BigInt(right));
   }
 
   if (settings.operation === "divide") {
     right = Math.max(1, right);
-    answer = randomByDigits(settings.leftDigits);
-    left = answer * right;
+    answer = String(randomByDigits(settings.leftDigits));
+    left = String(BigInt(answer) * BigInt(right));
   }
 
   return {
@@ -1155,7 +1440,8 @@ function startDailyChallenge() {
 
 function showPanel(name) {
   currentPanel = name;
-  document.body.classList.toggle("is-game-screen", name === "game");
+  const fullScreenPanel = name === "game" || name === "setup" || name === "result";
+  document.body.classList.toggle("is-game-screen", fullScreenPanel);
   document.body.classList.remove("is-polyole-complete");
   window.scrollTo(0, 0);
   els.gameSelectPanel.classList.toggle("is-hidden", name !== "select");
@@ -1236,6 +1522,14 @@ function handleKey(value) {
     return;
   }
 
+  if (value === "clear") {
+    state.input = "";
+    els.feedbackText.textContent = t("inputHint");
+    els.feedbackText.classList.remove("is-error");
+    renderInput();
+    return;
+  }
+
   if (value === "-" && state.input.length === 0) {
     state.input = "-";
     renderInput();
@@ -1257,9 +1551,9 @@ function renderInput() {
 
 function checkAnswer() {
   const current = state.questions[state.currentIndex];
-  const inputNumber = Number(state.input);
+  const expected = String(current.answer);
 
-  if (inputNumber === current.answer) {
+  if (state.input === expected) {
     const answeredAt = performance.now();
     state.records.push({
       label: current.label,
@@ -1278,7 +1572,6 @@ function checkAnswer() {
     return;
   }
 
-  const expected = String(current.answer);
   const unsignedInput = state.input.replace("-", "");
   const mightStillMatch = state.input === "-" || expected.startsWith(unsignedInput);
   if (state.input.length >= expected.length || !mightStillMatch) {
@@ -1311,6 +1604,12 @@ function refreshResultStats() {
   els.questionTotalStat.textContent = formatQuestionCount(state.settings.questionCount);
   els.totalTimeStat.textContent = formatDuration(state.totalTime);
   els.averageTimeStat.textContent = formatSeconds(state.averageTime / 1000);
+  if (els.simpleTotalTimeStat) {
+    els.simpleTotalTimeStat.textContent = formatPreciseSeconds(state.totalTime);
+  }
+  if (els.accuracyStat) {
+    els.accuracyStat.textContent = `${getAccuracyPercent()}%`;
+  }
 }
 
 function renderHistory() {
@@ -1487,10 +1786,99 @@ async function shareResult(text) {
 }
 
 function shareMentalcResult() {
-  const text = t("shareMentalcText")
-    .replace("{questions}", formatQuestionCount(state.settings.questionCount))
-    .replace("{time}", formatDuration(state.totalTime));
+  const ui = getMainText();
+  const text = `Mentalc ${ui.time} ${formatPreciseSeconds(state.totalTime)} / ${ui.accuracy} ${getAccuracyPercent()}%`;
   shareResult(`${text} #Mentalc`);
+}
+
+function createMentalcShareText() {
+  return `Mentalc ${formatDuration(state.totalTime)} / ${formatSeconds(state.averageTime / 1000)} #Mentalc`;
+}
+
+function createMentalcResultImageBlob() {
+  return new Promise((resolve) => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 1080;
+    canvas.height = 1080;
+    const context = canvas.getContext("2d");
+    const gradient = context.createLinearGradient(0, 0, 1080, 1080);
+    gradient.addColorStop(0, "#fbf7f2");
+    gradient.addColorStop(0.55, "#f3fbf7");
+    gradient.addColorStop(1, "#fffbed");
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    context.fillStyle = "#fffdf8";
+    context.strokeStyle = "#e7dfd6";
+    context.lineWidth = 6;
+    roundRect(context, 110, 110, 860, 860, 34);
+    context.fill();
+    context.stroke();
+
+    context.fillStyle = "#4f5a56";
+    context.textAlign = "center";
+    context.font = "700 92px system-ui, sans-serif";
+    context.fillText("Mentalc", 540, 280);
+
+    context.font = "500 36px system-ui, sans-serif";
+    context.fillStyle = "#87908b";
+    context.fillText("RESULT", 540, 350);
+
+    context.fillStyle = "#5f8f82";
+    context.font = "700 112px system-ui, sans-serif";
+    context.fillText(formatDuration(state.totalTime), 540, 510);
+
+    context.fillStyle = "#4f5a56";
+    context.font = "600 44px system-ui, sans-serif";
+    context.fillText(`1問 ${formatSeconds(state.averageTime / 1000)}`, 540, 620);
+
+    context.fillStyle = "#b8dfcf";
+    roundRect(context, 340, 750, 400, 88, 44);
+    context.fill();
+    context.fillStyle = "#40534d";
+    context.font = "650 34px system-ui, sans-serif";
+    context.fillText("mentalc.net", 540, 806);
+
+    canvas.toBlob(resolve, "image/png");
+  });
+}
+
+function roundRect(context, x, y, width, height, radius) {
+  context.beginPath();
+  context.moveTo(x + radius, y);
+  context.lineTo(x + width - radius, y);
+  context.quadraticCurveTo(x + width, y, x + width, y + radius);
+  context.lineTo(x + width, y + height - radius);
+  context.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  context.lineTo(x + radius, y + height);
+  context.quadraticCurveTo(x, y + height, x, y + height - radius);
+  context.lineTo(x, y + radius);
+  context.quadraticCurveTo(x, y, x + radius, y);
+  context.closePath();
+}
+
+async function shareMentalcImageResult() {
+  const blob = await createMentalcResultImageBlob();
+  const file = new File([blob], "mentalc-result.png", { type: "image/png" });
+  const text = createMentalcShareText();
+
+  if (navigator.canShare?.({ files: [file] }) && navigator.share) {
+    try {
+      await navigator.share({ title: "Mentalc", text, files: [file] });
+      return;
+    } catch (error) {
+      if (error?.name === "AbortError") {
+        return;
+      }
+    }
+  }
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "mentalc-result.png";
+  link.click();
+  URL.revokeObjectURL(link.href);
+  shareResult(text);
 }
 
 function sharePolyoleResult() {
@@ -1518,15 +1906,7 @@ function openMentalMath() {
 }
 
 function resetToGameSelect() {
-  stopTimer();
-  state = createInitialState();
-  showPanel("select");
-  setMentalGameInfoVisible(false);
-  setPolyoleGameInfoVisible(false);
-  setHomeInfoVisible(true);
-  syncSettingLabels();
-  syncQuestionCount(els.questionCount.value);
-  els.timerText.textContent = "00:00.0";
+  resetToSetup();
 }
 
 function syncPolyominoSize(value) {
@@ -2058,6 +2438,30 @@ els.languageSelect.addEventListener("change", () => handleLanguageChange(els.lan
 els.questionCount.addEventListener("focus", () => els.questionCount.select());
 els.questionCount.addEventListener("input", () => syncQuestionCount(els.questionCount.value));
 els.questionCountSlider.addEventListener("input", () => syncQuestionCount(els.questionCountSlider.value));
+els.quickSettings?.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-value]");
+  if (!button) {
+    return;
+  }
+  const row = button.closest(".quick-row");
+  setQuickSetting(row.dataset.setting, button.dataset.value);
+});
+els.quickQuestionCount?.addEventListener("input", syncQuickQuestionInput);
+els.quickQuestionCount?.addEventListener("focus", () => {
+  quickCustomActive.questionCount = true;
+  updateQuickSettingsUI();
+});
+els.quickQuestionCount?.addEventListener("blur", () => commitQuestionCountInput());
+els.quickLeftDigits?.addEventListener("input", () => syncQuickDigitInput(els.quickLeftDigits, "leftDigits"));
+els.quickLeftDigits?.addEventListener("focus", () => {
+  quickCustomActive.leftDigits = true;
+  updateQuickSettingsUI();
+});
+els.quickRightDigits?.addEventListener("input", () => syncQuickDigitInput(els.quickRightDigits, "rightDigits"));
+els.quickRightDigits?.addEventListener("focus", () => {
+  quickCustomActive.rightDigits = true;
+  updateQuickSettingsUI();
+});
 els.openMentalMathButton.addEventListener("click", openMentalMath);
 els.openPolyominoButton.addEventListener("click", openPolyomino);
 els.startButton.addEventListener("click", startGame);
@@ -2121,11 +2525,21 @@ els.retryButton.addEventListener("click", () => {
 });
 els.backToSetupButton.addEventListener("click", resetToSetup);
 els.shareMentalcButton.addEventListener("click", shareMentalcResult);
+els.simpleShareMentalcButton?.addEventListener("click", shareMentalcResult);
+els.homeButton?.addEventListener("click", resetToSetup);
+els.simpleRetryButton?.addEventListener("click", () => {
+  if (state.isDaily) {
+    startDailyChallenge();
+    return;
+  }
+  startGame();
+});
+els.shareMentalcImageButton?.addEventListener("click", shareMentalcImageResult);
 els.sharePolyoleButton.addEventListener("click", sharePolyoleResult);
 els.clearRecordsButton.addEventListener("click", clearStoredRecords);
 els.clearPolyoleRecordsButton.addEventListener("click", clearPolyoleRecords);
 els.footerBackLink.addEventListener("click", handleFooterBack);
 
 applyLanguage(getInitialLanguage());
-resetToGameSelect();
+resetToSetup();
 initAdsense();
