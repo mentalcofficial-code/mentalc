@@ -4,7 +4,13 @@
     <base href="/" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:site_name" content="Mentalc" />
+        <script>
+      try {
+        const savedTheme = localStorage.getItem("mentalc-theme");
+        const systemTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = savedTheme === "dark" || savedTheme === "light" ? savedTheme : systemTheme;
+      } catch {}
+    </script><meta property="og:site_name" content="Mentalc" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Mentalc" />
     <meta property="og:description" content="Brain training, mental math, and puzzle games." />
@@ -17,7 +23,7 @@
     <title>Polyole - Gratis Polyomino Puzzelspel</title>
     <link rel="canonical" href="https://mentalc.net/nl/polyole/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/styles.css?v=20260614-mental-only" />
+    <link rel="stylesheet" href="/styles.css?v=20260615-theme-position1" />
   </head>
   <body>
     <header class="topbar"><div><h1>Polyole</h1><p>Vul het vierkant precies.</p></div><a class="top-link" href="/nl/">Terug naar spellen</a></header>
@@ -27,3 +33,5 @@
     </main>
   </body>
 </html>
+
+

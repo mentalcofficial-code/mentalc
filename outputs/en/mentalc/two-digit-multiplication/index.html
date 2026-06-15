@@ -4,7 +4,13 @@
     <base href="/" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:site_name" content="Mentalc" />
+        <script>
+      try {
+        const savedTheme = localStorage.getItem("mentalc-theme");
+        const systemTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = savedTheme === "dark" || savedTheme === "light" ? savedTheme : systemTheme;
+      } catch {}
+    </script><meta property="og:site_name" content="Mentalc" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="How to Multiply Two-Digit Numbers Mentally - Mentalc" />
     <meta property="og:description" content="Learn a simple two-digit multiplication mental math method with 23 x 45, using place value and the distributive property." />
@@ -16,16 +22,18 @@
     <meta name="description" content="A clear two-digit multiplication mental math method. Use 23 x 45 to practice splitting numbers into tens and ones, then combine partial products for faster mental calculation." />
     <title>How to Multiply Two-Digit Numbers Mentally | 23 x 45 Method - Mentalc</title>
     <link rel="canonical" href="https://mentalc.net/en/mentalc/two-digit-multiplication/" />
-    <link rel="alternate" hreflang="ja" href="https://mentalc.net/mentalc/two-digit-multiplication/" />
+    <link rel="alternate" hreflang="ja" href="https://mentalc.net/ja/mentalc/two-digit-multiplication/" />
     <link rel="alternate" hreflang="en" href="https://mentalc.net/en/mentalc/two-digit-multiplication/" />
     <link rel="alternate" hreflang="es" href="https://mentalc.net/es/mentalc/two-digit-multiplication/" />
+    <link rel="alternate" hreflang="pt" href="https://mentalc.net/pt/mentalc/two-digit-multiplication/" />
+    <link rel="alternate" hreflang="fr" href="https://mentalc.net/fr/mentalc/two-digit-multiplication/" />
     <link rel="alternate" hreflang="zh" href="https://mentalc.net/zh/mentalc/two-digit-multiplication/" />
     <link rel="alternate" hreflang="de" href="https://mentalc.net/de/mentalc/two-digit-multiplication/" />
     <link rel="alternate" hreflang="nl" href="https://mentalc.net/nl/mentalc/two-digit-multiplication/" />
     <link rel="alternate" hreflang="ko" href="https://mentalc.net/ko/mentalc/two-digit-multiplication/" />
-    <link rel="alternate" hreflang="x-default" href="https://mentalc.net/mentalc/two-digit-multiplication/" />
+    <link rel="alternate" hreflang="x-default" href="https://mentalc.net/en/mentalc/two-digit-multiplication/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/styles.css?v=20260615-article-top-records" />
+    <link rel="stylesheet" href="/styles.css?v=20260615-ja-article1" />
   </head>
   <body class="article-page">
     <header class="topbar"><div><h1>Mentalc</h1><p>Simple mental math for short breaks.</p></div></header>
@@ -56,12 +64,16 @@
           <p>Add 800 + 100 + 120 + 15 to get 1,035. This method works well for mental calculation practice because it keeps every step predictable.</p>
           <img class="article-image" src="/assets/articles/two-digit-multiplication-flow.png" alt="23 x 45 equals 1,035 using partial products" />
         </section>
-        <section class="article-cta"><h2>Practice with Mentalc</h2><p>Use the Mentalc multiplication settings to practice two-digit multiplication, arithmetic drills, and mental math speed training.</p>          <a class="article-home-link" href="/en/">Back to Home</a>
+        <section class="article-cta"><h2>Practice with Mentalc</h2><p>Use the Mentalc multiplication settings to practice two-digit multiplication, arithmetic drills, and mental math speed training.</p>          <a class="article-home-link" href="/">Back to Home</a>
 </section>
       </article>
     </main>
   </body>
 </html>
+
+
+
+
 
 
 

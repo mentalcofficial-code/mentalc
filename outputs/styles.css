@@ -15,6 +15,23 @@
   --shadow: 0 16px 36px rgba(128, 118, 105, 0.12);
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #202725;
+  --surface: #28312e;
+  --surface-soft: #303a36;
+  --line: #46534e;
+  --text: #eef4ef;
+  --muted: #b7c2bc;
+  --accent: #94cdb8;
+  --accent-dark: #b7ead7;
+  --accent-blue: #9fbfd3;
+  --accent-yellow: #dfd09f;
+  --accent-rose: #d8a7a7;
+  --danger: #e5a5a5;
+  --shadow: 0 16px 36px rgba(0, 0, 0, 0.26);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -107,6 +124,69 @@ h1 {
   background: var(--surface);
   color: var(--text);
   padding: 0 10px;
+}
+
+.theme-toggle {
+  width: 42px;
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1;
+  padding: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  background: var(--surface-soft);
+}
+
+:root[data-theme="dark"] .topbar,
+:root[data-theme="dark"] body.is-game-screen .topbar,
+:root[data-theme="dark"] .article-page .topbar {
+  background: rgba(32, 39, 37, 0.94);
+}
+
+:root[data-theme="dark"] .mini-stats span,
+:root[data-theme="dark"] .utility-links a,
+:root[data-theme="dark"] .utility-links summary,
+:root[data-theme="dark"] .setup-records,
+:root[data-theme="dark"] .game-card,
+:root[data-theme="dark"] .panel,
+:root[data-theme="dark"] .result-card,
+:root[data-theme="dark"] .info-panel,
+:root[data-theme="dark"] .polyomino-panel,
+:root[data-theme="dark"] .article-home-link {
+  background: var(--surface);
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .quick-settings,
+:root[data-theme="dark"] .setup-records .record-list li,
+:root[data-theme="dark"] .setting-control,
+:root[data-theme="dark"] .keypad button,
+:root[data-theme="dark"] .article-formula-list div,
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select {
+  background: var(--surface-soft);
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .primary-button,
+:root[data-theme="dark"] .start-button,
+:root[data-theme="dark"] .primary-link {
+  color: #21312c;
+}
+
+:root[data-theme="dark"] .answer {
+  background: var(--surface);
+}
+
+:root[data-theme="dark"] .feedback.is-miss {
+  background: rgba(113, 60, 60, 0.7);
+  color: #ffe4e4;
 }
 
 .mini-stats {
@@ -563,6 +643,22 @@ button:disabled {
 
 .feedback.is-error {
   color: var(--danger);
+}
+
+.feedback.is-miss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  width: max-content;
+  min-width: 96px;
+  padding: 6px 16px;
+  border: 2px solid var(--pastel-red);
+  border-radius: 999px;
+  background: rgba(255, 224, 224, 0.72);
+  color: #9f4d4d;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .keypad {
@@ -1363,9 +1459,31 @@ body.is-mental-only .topbar {
 }
 
 body.is-mental-only .topbar-tools {
-  display: grid;
-  justify-items: end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
   gap: 6px;
+}
+
+body.is-mental-only .language-control {
+  order: 1;
+}
+
+body.is-mental-only .theme-toggle {
+  order: 2;
+  width: 34px;
+  min-height: 34px;
+  font-size: 16px;
+}
+
+body.is-mental-only .mini-stats {
+  order: 3;
+}
+
+body.is-mental-only .utility-links {
+  order: 4;
+  width: 100%;
 }
 
 body.is-mental-only .layout {
@@ -1492,7 +1610,7 @@ body.is-mental-only .quick-row {
 }
 
 body.is-mental-only .operation-row {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 body.is-mental-only .quick-row button,
@@ -1719,6 +1837,7 @@ body.is-game-screen .polyole-result .result-grid div {
   body.is-mental-only .language-control {
     display: flex;
     gap: 4px;
+    width: auto;
   }
 
   body.is-mental-only .language-control span {
@@ -1729,6 +1848,12 @@ body.is-game-screen .polyole-result .result-grid div {
     max-width: 92px;
     min-height: 28px;
     font-size: 11px;
+  }
+
+  body.is-mental-only .theme-toggle {
+    width: 28px;
+    min-height: 28px;
+    font-size: 13px;
   }
 
   body.is-game-screen .topbar-tools {

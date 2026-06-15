@@ -1,13 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mentalc.net/</loc>
   </url>
   <url>
-    <loc>https://mentalc.net/en/</loc>
+    <loc>https://mentalc.net/ja/</loc>
   </url>
   <url>
     <loc>https://mentalc.net/es/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/pt/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/fr/</loc>
   </url>
   <url>
     <loc>https://mentalc.net/zh/</loc>
@@ -22,13 +28,19 @@
     <loc>https://mentalc.net/ko/</loc>
   </url>
   <url>
-    <loc>https://mentalc.net/mentalc/two-digit-multiplication/</loc>
+    <loc>https://mentalc.net/ja/mentalc/two-digit-multiplication/</loc>
   </url>
   <url>
     <loc>https://mentalc.net/en/mentalc/two-digit-multiplication/</loc>
   </url>
   <url>
     <loc>https://mentalc.net/es/mentalc/two-digit-multiplication/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/pt/mentalc/two-digit-multiplication/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/fr/mentalc/two-digit-multiplication/</loc>
   </url>
   <url>
     <loc>https://mentalc.net/zh/mentalc/two-digit-multiplication/</loc>

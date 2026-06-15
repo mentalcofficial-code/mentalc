@@ -4,7 +4,13 @@
     <base href="/" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:site_name" content="Mentalc" />
+        <script>
+      try {
+        const savedTheme = localStorage.getItem("mentalc-theme");
+        const systemTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = savedTheme === "dark" || savedTheme === "light" ? savedTheme : systemTheme;
+      } catch {}
+    </script><meta property="og:site_name" content="Mentalc" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Mentalc" />
     <meta property="og:description" content="Brain training, mental math, and puzzle games." />
@@ -19,9 +25,11 @@
     />
     <title>暗算ゲーム・計算練習・脳トレパズル - Mentalc</title>
     <link rel="canonical" href="https://mentalc.net/de/" />
-    <link rel="alternate" hreflang="ja" href="https://mentalc.net/" />
-    <link rel="alternate" hreflang="en" href="https://mentalc.net/en/" />
+    <link rel="alternate" hreflang="ja" href="https://mentalc.net/ja/" />
+    <link rel="alternate" hreflang="en" href="https://mentalc.net/" />
     <link rel="alternate" hreflang="es" href="https://mentalc.net/es/" />
+    <link rel="alternate" hreflang="pt" href="https://mentalc.net/pt/" />
+    <link rel="alternate" hreflang="fr" href="https://mentalc.net/fr/" />
     <link rel="alternate" hreflang="zh-Hans" href="https://mentalc.net/zh/" />
     <link rel="alternate" hreflang="de" href="https://mentalc.net/de/" />
     <link rel="alternate" hreflang="nl" href="https://mentalc.net/nl/" />
@@ -42,7 +50,7 @@
       gtag("js", new Date());
       gtag("config", "G-GH29NN7Y5D");
     </script>
-    <link rel="stylesheet" href="./styles.css?v=20260615-main-multilang6" />
+    <link rel="stylesheet" href="./styles.css?v=20260615-ja-article1" />
   </head>
   <body>
     <header class="topbar">
@@ -57,12 +65,15 @@
             <option value="ja">日本語</option>
             <option value="en">English</option>
             <option value="es">Español</option>
+            <option value="pt">Português</option>
+            <option value="fr">Français</option>
             <option value="zh">中文</option>
             <option value="de">Deutsch</option>
             <option value="nl">Nederlands</option>
             <option value="ko">한국어</option>
           </select>
         </label>
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Dark mode" title="Dark mode">☾</button>
         <div class="mini-stats is-hidden" data-i18n-aria="progressStatus" aria-label="進行状況">
           <span id="progressText">0 / 20</span>
           <span id="timerText">00:00.0</span>
@@ -164,6 +175,7 @@
               <button type="button" data-value="1">－</button>
               <button type="button" data-value="2">×</button>
               <button type="button" data-value="3">÷</button>
+              <button type="button" data-value="4">＋−×÷</button>
             </div>
           </div>
 
@@ -198,7 +210,7 @@
                 <span data-i18n="operation">演算</span>
                 <strong id="operationValue">足し算</strong>
               </div>
-              <input id="operation" type="range" min="0" max="3" value="0" />
+              <input id="operation" type="range" min="0" max="4" value="0" />
             </div>
 
             <div class="setting-control question-control">
@@ -450,9 +462,20 @@
       <a href="#gameSelectPanel" data-i18n="footerBack">ゲームへ戻る</a>
     </footer>
 
-    <script src="./app.js?v=20260615-main-multilang6"></script>
+    <script src="./app.js?v=20260615-ja-article1"></script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -4,7 +4,13 @@
     <base href="/" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:site_name" content="Mentalc" />
+        <script>
+      try {
+        const savedTheme = localStorage.getItem("mentalc-theme");
+        const systemTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = savedTheme === "dark" || savedTheme === "light" ? savedTheme : systemTheme;
+      } catch {}
+    </script><meta property="og:site_name" content="Mentalc" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Zweistellige Multiplikation im Kopf rechnen - Mentalc" />
     <meta property="og:description" content="Lerne eine einfache Methode fuer zweistellige Multiplikation und Kopfrechnen mit dem Beispiel 23 x 45." />
@@ -16,16 +22,18 @@
     <meta name="description" content="Zweistellige Multiplikation im Kopf rechnen: Mit 23 x 45 lernst du, Zahlen in Zehner und Einer zu zerlegen und Kopfrechnen gezielt zu ueben." />
     <title>Zweistellige Multiplikation im Kopf rechnen | 23 x 45 Methode - Mentalc</title>
     <link rel="canonical" href="https://mentalc.net/de/mentalc/two-digit-multiplication/" />
-    <link rel="alternate" hreflang="ja" href="https://mentalc.net/mentalc/two-digit-multiplication/" />
+    <link rel="alternate" hreflang="ja" href="https://mentalc.net/ja/mentalc/two-digit-multiplication/" />
     <link rel="alternate" hreflang="en" href="https://mentalc.net/en/mentalc/two-digit-multiplication/" />
     <link rel="alternate" hreflang="es" href="https://mentalc.net/es/mentalc/two-digit-multiplication/" />
+    <link rel="alternate" hreflang="pt" href="https://mentalc.net/pt/mentalc/two-digit-multiplication/" />
+    <link rel="alternate" hreflang="fr" href="https://mentalc.net/fr/mentalc/two-digit-multiplication/" />
     <link rel="alternate" hreflang="zh" href="https://mentalc.net/zh/mentalc/two-digit-multiplication/" />
     <link rel="alternate" hreflang="de" href="https://mentalc.net/de/mentalc/two-digit-multiplication/" />
     <link rel="alternate" hreflang="nl" href="https://mentalc.net/nl/mentalc/two-digit-multiplication/" />
     <link rel="alternate" hreflang="ko" href="https://mentalc.net/ko/mentalc/two-digit-multiplication/" />
-    <link rel="alternate" hreflang="x-default" href="https://mentalc.net/mentalc/two-digit-multiplication/" />
+    <link rel="alternate" hreflang="x-default" href="https://mentalc.net/en/mentalc/two-digit-multiplication/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/styles.css?v=20260615-article-top-records" />
+    <link rel="stylesheet" href="/styles.css?v=20260615-ja-article1" />
   </head>
   <body class="article-page">
     <header class="topbar"><div><h1>Mentalc</h1><p>Kopfrechnen fuer kurze Pausen.</p></div></header>
@@ -42,6 +50,9 @@
     </main>
   </body>
 </html>
+
+
+
 
 
 

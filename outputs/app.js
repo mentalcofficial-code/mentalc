@@ -1,4 +1,4 @@
-const els = {
+﻿const els = {
   gameSelectPanel: document.querySelector("#gameSelectPanel"),
   setupPanel: document.querySelector("#setupPanel"),
   gamePanel: document.querySelector("#gamePanel"),
@@ -10,6 +10,7 @@ const els = {
   footerBackLink: document.querySelector("[data-i18n='footerBack']"),
   miniStats: document.querySelector(".mini-stats"),
   languageSelect: document.querySelector("#languageSelect"),
+  themeToggle: document.querySelector("#themeToggle"),
   leftDigits: document.querySelector("#leftDigits"),
   leftDigitsValue: document.querySelector("#leftDigitsValue"),
   rightDigits: document.querySelector("#rightDigits"),
@@ -84,6 +85,8 @@ const contactFormUrls = {
   ja: "https://forms.gle/HGwRtT66ERJDQq9S9",
   en: "https://forms.gle/7oGPfJhtYX4wsTbF9",
   es: "https://forms.gle/tJuFsS2Svqw41pTT6",
+  pt: "https://forms.gle/ycyajKnkNShVURBTA",
+  fr: "https://forms.gle/mhuZPjdvZ535TcoK6",
   zh: "https://forms.gle/X7c7pjYu9c1W6E8f6",
   de: "https://forms.gle/J5XhqanZigZy7Z2WA",
   nl: "https://forms.gle/5bNF625gQJNMMKjD8",
@@ -91,9 +94,11 @@ const contactFormUrls = {
 };
 
 const languageUrls = {
-  ja: "/",
-  en: "/en/",
+  ja: "/ja/",
+  en: "/",
   es: "/es/",
+  pt: "/pt/",
+  fr: "/fr/",
   zh: "/zh/",
   de: "/de/",
   nl: "/nl/",
@@ -114,7 +119,7 @@ const mainUiText = {
     share: "シェア",
     home: "HOME",
     retry: "RETRY",
-    articleUrl: "/mentalc/two-digit-multiplication/",
+    articleUrl: "/ja/mentalc/two-digit-multiplication/",
   },
   en: {
     privacy: "Privacy",
@@ -147,6 +152,38 @@ const mainUiText = {
     home: "INICIO",
     retry: "REINTENTAR",
     articleUrl: "/es/mentalc/two-digit-multiplication/",
+  },
+  pt: {
+    privacy: "Privacidade",
+    terms: "Termos",
+    contact: "Contato",
+    article: "Artigo",
+    questionUnitShort: "perg.",
+    digitUnitShort: "dígito",
+    digitUnitPlural: "dígitos",
+    time: "Tempo",
+    accuracy: "Precisão",
+    shareResult: "Compartilhar resultado",
+    share: "Compartilhar",
+    home: "INÍCIO",
+    retry: "TENTAR",
+    articleUrl: "/pt/mentalc/two-digit-multiplication/",
+  },
+  fr: {
+    privacy: "Confidentialité",
+    terms: "Conditions",
+    contact: "Contact",
+    article: "Article",
+    questionUnitShort: "Q",
+    digitUnitShort: "chiffre",
+    digitUnitPlural: "chiffres",
+    time: "Temps",
+    accuracy: "Précision",
+    shareResult: "Partager le résultat",
+    share: "Partager",
+    home: "ACCUEIL",
+    retry: "REJOUER",
+    articleUrl: "/fr/mentalc/two-digit-multiplication/",
   },
   zh: {
     privacy: "隐私",
@@ -214,6 +251,7 @@ const mainUiText = {
 const recordStorageKey = "mentalc-records-v1";
 const polyoleRecordStorageKey = "polyole-records-v1";
 const dailyChallengeQuestionCount = 5;
+const themeStorageKey = "mentalc-theme";
 
 const translations = {
   ja: {
@@ -515,6 +553,198 @@ const translations = {
       "Para comentarios, informes de errores, publicidad o consultas sobre el sitio, utiliza el formulario de Google.",
     contactFormLink: "Abrir formulario de contacto",
     footerBack: "Volver al juego",
+  },
+  pt: {
+    htmlLang: "pt",
+    dailyChallenge: "Desafio diário",
+    dailyChallengeRecord: "Diário",
+    polyoleDailyChallenge: "Desafio diário",
+    shareResult: "Compartilhar",
+    shareMentalcText: "Completei {questions} no Mentalc em {time}.",
+    sharePolyoleText: "Completei Polyole {size} em {time}.",
+    siteTagline: "Treino cerebral simples para pausas curtas.",
+    tagline: "Cálculo mental, curto e constante.",
+    language: "Idioma",
+    progressStatus: "Progresso",
+    gameArea: "Jogo de cálculo mental",
+    settings: "Configurações",
+    gameSelectTitle: "Escolha um jogo",
+    gameSelectIntro:
+      "Mentalc é um site simples de jogos para treino cerebral, cálculo mental, prática de matemática e quebra-cabeças em sessões curtas.",
+    mentalMathLabel: "Jogo de cálculo mental",
+    mentalMathTitle: "Mentalc",
+    mentalMathBody:
+      "Escolha dígitos, operações aritméticas e número de perguntas para treinar cálculo mental, velocidade de cálculo e respostas rápidas.",
+    playMentalMath: "Jogar",
+    comingSoonLabel: "Em breve",
+    comingSoonTitle: "Em breve",
+    comingSoonBody: "Mais jogos de treino cerebral serão adicionados aqui.",
+    polyominoLabel: "Quebra-cabeca",
+    polyominoTitle: "Polyole",
+    polyominoBody: "Organize pecas de formas diferentes para preencher um tabuleiro quadrado sem espacos.",
+    polyominoIntro: "Escolha uma peca e preencha o tabuleiro sem espacos.",
+    playPolyomino: "Jogar",
+    boardSize: "Tamanho",
+    newPuzzle: "Novo",
+    rotatePiece: "Girar",
+    undoMove: "Desfazer",
+    resetPuzzle: "Reiniciar",
+    selectPiece: "Escolha uma peca.",
+    placePiece: "Arraste a peca para o tabuleiro.",
+    polyominoReady: "Escolha o tamanho do tabuleiro e comece.",
+    invalidPlacement: "Nao cabe aqui.",
+    puzzleComplete: "Completo!",
+    polyoleAboutTitle: "Sobre Polyole",
+    polyoleAboutBody: "Polyole e um quebra-cabeca de logica em que voce preenche um quadrado com pecas diferentes.",
+    polyoleHowToTitle: "Como jogar Polyole",
+    polyoleHowToBody: "Arraste as pecas para o tabuleiro. Preencha todos os espacos para completar.",
+    polyoleTipsTitle: "Dicas de Polyole",
+    polyoleTipsBody: "Comece pelos cantos e pelas pecas maiores. Deixe os espacos pequenos para o final.",
+    polyoleResultTitle: "Resultado de Polyole",
+    polyoleResultSize: "Tamanho",
+    polyoleResultTime: "Tempo",
+    leftDigits: "Esq.",
+    rightDigits: "Dir.",
+    operation: "Op.",
+    questionCount: "Perg.",
+    result: "Resultado",
+    retry: "Tentar de novo",
+    backToSettings: "Voltar",
+    totalTime: "Tempo total",
+    averageTime: "Media",
+    question: "Pergunta",
+    answer: "Resposta",
+    time: "Tempo",
+    mistakes: "Erros",
+    keypad: "Teclado numerico",
+    inputHint: "Digite no teclado",
+    wrong: "Incorreto",
+    ad: "Anuncio",
+    adPlaceholder: "Espaco de anuncio",
+    digitUnit: " dígitos",
+    questionUnit: " perguntas",
+    secondUnit: " s",
+    operations: ["Adição", "Subtração", "Multiplicação", "Divisão"],
+    aboutTitle: "Sobre Mentalc",
+    aboutBody:
+      "Mentalc é um jogo de cálculo mental para praticar adição, subtração, multiplicação e divisão. Use como treino de matemática, prática de aritmética e treino cerebral.",
+    howToTitle: "Como usar",
+    howToBody:
+      "Escolha os dígitos, a operação e o número de perguntas. Digite as respostas com o teclado numérico na tela ou com o teclado físico.",
+    practiceTitle: "Dicas de prática",
+    practiceBody:
+      "Comece com poucas perguntas de adição de um dígito. Depois aumente os dígitos ou pratique multiplicação para melhorar o cálculo mental.",
+    recordsTitle: "Registros recentes",
+    clearRecords: "Limpar",
+    noRecords: "Ainda não há registros.",
+    bestRecord: "Melhor",
+    latestRecord: "Recente",
+    privacyTitle: "Política de privacidade",
+    privacyBody:
+      "Mentalc salva registros recentes apenas neste navegador. Anúncios e análises podem usar cookies ou tecnologias semelhantes.",
+    termsTitle: "Termos de uso",
+    termsBody:
+      "Mentalc é um site gratuito de jogos de cálculo mental e treino cerebral. A disponibilidade contínua não é garantida.",
+    contactTitle: "Contato",
+    contactBody: "Para comentários, erros ou publicidade, use o formulário de contato.",
+    contactFormLink: "Abrir formulário de contato",
+    footerBack: "Voltar ao jogo",
+  },
+  fr: {
+    htmlLang: "fr",
+    dailyChallenge: "Défi quotidien",
+    dailyChallengeRecord: "Quotidien",
+    polyoleDailyChallenge: "Défi quotidien",
+    shareResult: "Partager",
+    shareMentalcText: "J'ai terminé {questions} sur Mentalc en {time}.",
+    sharePolyoleText: "J'ai terminé Polyole {size} en {time}.",
+    siteTagline: "Entraînement cérébral simple pour les courtes pauses.",
+    tagline: "Calcul mental, court et régulier.",
+    language: "Langue",
+    progressStatus: "Progression",
+    gameArea: "Jeu de calcul mental",
+    settings: "Réglages",
+    gameSelectTitle: "Choisir un jeu",
+    gameSelectIntro:
+      "Mentalc est un site de jeu de calcul mental, d'entraînement au calcul et de petits exercices de logique pour progresser en quelques minutes.",
+    mentalMathLabel: "Jeu de calcul mental",
+    mentalMathTitle: "Mentalc",
+    mentalMathBody:
+      "Choisissez les chiffres, les opérations et le nombre de questions pour travailler le calcul mental, la vitesse de calcul et les automatismes.",
+    playMentalMath: "Jouer",
+    comingSoonLabel: "Bientôt",
+    comingSoonTitle: "Bientôt",
+    comingSoonBody: "D'autres jeux d'entraînement cérébral seront ajoutés ici.",
+    polyominoLabel: "Puzzle",
+    polyominoTitle: "Polyole",
+    polyominoBody: "Placez des pieces de formes differentes pour remplir un plateau carre sans espace.",
+    polyominoIntro: "Choisissez une piece et remplissez le plateau sans espace.",
+    playPolyomino: "Jouer",
+    boardSize: "Taille",
+    newPuzzle: "Nouveau",
+    rotatePiece: "Tourner",
+    undoMove: "Annuler",
+    resetPuzzle: "Reinitialiser",
+    selectPiece: "Choisissez une piece.",
+    placePiece: "Glissez la piece sur le plateau.",
+    polyominoReady: "Choisissez la taille du plateau et commencez.",
+    invalidPlacement: "Impossible ici.",
+    puzzleComplete: "Termine !",
+    polyoleAboutTitle: "A propos de Polyole",
+    polyoleAboutBody: "Polyole est un puzzle logique ou il faut remplir un carre avec des pieces differentes.",
+    polyoleHowToTitle: "Comment jouer a Polyole",
+    polyoleHowToBody: "Glissez les pieces sur le plateau. Remplissez toutes les cases pour terminer.",
+    polyoleTipsTitle: "Conseils Polyole",
+    polyoleTipsBody: "Commencez par les coins et les grandes pieces. Gardez les petits espaces pour la fin.",
+    polyoleResultTitle: "Resultat Polyole",
+    polyoleResultSize: "Taille",
+    polyoleResultTime: "Temps",
+    leftDigits: "Gauche",
+    rightDigits: "Droite",
+    operation: "Op.",
+    questionCount: "Q",
+    result: "Résultat",
+    retry: "Rejouer",
+    backToSettings: "Retour",
+    totalTime: "Temps total",
+    averageTime: "Moyenne",
+    question: "Question",
+    answer: "Réponse",
+    time: "Temps",
+    mistakes: "Erreurs",
+    keypad: "Pavé numérique",
+    inputHint: "Saisir au pavé",
+    wrong: "Incorrect",
+    ad: "Annonce",
+    adPlaceholder: "Espace publicitaire",
+    digitUnit: " chiffres",
+    questionUnit: " questions",
+    secondUnit: " s",
+    operations: ["Addition", "Soustraction", "Multiplication", "Division"],
+    aboutTitle: "À propos de Mentalc",
+    aboutBody:
+      "Mentalc est un jeu de calcul mental pour pratiquer l'addition, la soustraction, la multiplication et la division. Utilisez-le pour l'entraînement au calcul et les exercices de maths.",
+    howToTitle: "Utilisation",
+    howToBody:
+      "Choisissez les chiffres, l'opération et le nombre de questions. Saisissez les réponses avec le pavé numérique à l'écran ou le clavier.",
+    practiceTitle: "Conseils d'entraînement",
+    practiceBody:
+      "Commencez avec quelques additions à un chiffre. Augmentez ensuite les chiffres ou essayez la multiplication pour progresser en calcul mental.",
+    recordsTitle: "Records récents",
+    clearRecords: "Effacer",
+    noRecords: "Aucun record pour le moment.",
+    bestRecord: "Meilleur",
+    latestRecord: "Récent",
+    privacyTitle: "Politique de confidentialité",
+    privacyBody:
+      "Mentalc enregistre les derniers résultats uniquement dans ce navigateur. Les annonces et statistiques peuvent utiliser des cookies.",
+    termsTitle: "Conditions d'utilisation",
+    termsBody:
+      "Mentalc est un site gratuit de jeu de calcul mental et d'entraînement cérébral. La disponibilité continue n'est pas garantie.",
+    contactTitle: "Contact",
+    contactBody: "Pour vos avis, bugs ou demandes publicitaires, utilisez le formulaire de contact.",
+    contactFormLink: "Ouvrir le formulaire",
+    footerBack: "Retour au jeu",
   },
   zh: {
     htmlLang: "zh-Hans",
@@ -914,12 +1144,13 @@ const translations = {
   },
 };
 
-const operationKeys = ["add", "subtract", "multiply", "divide"];
+const operationKeys = ["add", "subtract", "multiply", "divide", "all"];
 const operationSymbols = {
   add: "＋",
   subtract: "−",
   multiply: "×",
   divide: "÷",
+  all: "＋−×÷",
 };
 
 let currentLanguage = "ja";
@@ -931,6 +1162,7 @@ const quickCustomActive = {
 };
 let state = createInitialState();
 let timerId = null;
+let missNoticeTimer = null;
 const polyominoColors = ["#b8dfcf", "#d8e8b8", "#c8dceb", "#f1e4b8", "#e8c4c4", "#d9d4ef", "#c8e6e1", "#f0d3df"];
 let polyominoState = createPolyominoState();
 let polyominoDrag = null;
@@ -1022,7 +1254,11 @@ function clampNumericInput(input, min, max) {
 
 function getAccuracyPercent() {
   const total = Math.max(1, state.settings.questionCount);
-  const correct = clamp(total - state.mistakes, 0, total);
+  const correct = clamp(
+    state.records.reduce((sum, record) => sum + (record.correct !== false && record.mistakes === 0 ? 1 : 0), 0),
+    0,
+    total
+  );
   return Math.round((correct / total) * 100);
 }
 
@@ -1072,7 +1308,32 @@ function applyLanguage(language) {
 
 function getInitialLanguage() {
   const firstPathPart = window.location.pathname.split("/").filter(Boolean)[0];
-  return translations[firstPathPart] ? firstPathPart : "ja";
+  return translations[firstPathPart] ? firstPathPart : "en";
+}
+
+function getInitialTheme() {
+  const storedTheme = localStorage.getItem(themeStorageKey);
+  if (storedTheme === "dark" || storedTheme === "light") {
+    return storedTheme;
+  }
+  return window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function applyTheme(theme) {
+  const nextTheme = theme === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = nextTheme;
+  localStorage.setItem(themeStorageKey, nextTheme);
+
+  if (els.themeToggle) {
+    const isDark = nextTheme === "dark";
+    els.themeToggle.textContent = isDark ? "☀" : "☾";
+    els.themeToggle.setAttribute("aria-label", isDark ? "Light mode" : "Dark mode");
+    els.themeToggle.title = isDark ? "Light mode" : "Dark mode";
+  }
+}
+
+function toggleTheme() {
+  applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
 }
 
 function handleLanguageChange(language) {
@@ -1317,28 +1578,34 @@ function randomInt(min, max) {
 }
 
 function makeQuestion(settings) {
+  const operation =
+    settings.operation === "all" ? operationKeys[randomInt(0, operationKeys.length - 2)] : settings.operation;
   let left = randomByDigits(settings.leftDigits);
   let right = randomByDigits(settings.rightDigits);
   let answer = "0";
 
-  if (settings.operation === "add") {
+  if (operation === "add") {
     answer = String(BigInt(left) + BigInt(right));
   }
 
-  if (settings.operation === "subtract") {
+  if (operation === "subtract") {
     if (right > left) {
       [left, right] = [right, left];
     }
     answer = String(BigInt(left) - BigInt(right));
   }
 
-  if (settings.operation === "multiply") {
+  if (operation === "multiply") {
     answer = String(BigInt(left) * BigInt(right));
   }
 
-  if (settings.operation === "divide") {
+  if (operation === "divide") {
     right = Math.max(1, right);
-    answer = String(randomByDigits(settings.leftDigits));
+    const minDividend = settings.leftDigits === 1 ? 0 : 10 ** (settings.leftDigits - 1);
+    const maxDividend = 10 ** settings.leftDigits - 1;
+    const minAnswer = Math.ceil(minDividend / right);
+    const maxAnswer = Math.max(minAnswer, Math.floor(maxDividend / right));
+    answer = String(randomInt(minAnswer, maxAnswer));
     left = String(BigInt(answer) * BigInt(right));
   }
 
@@ -1346,8 +1613,33 @@ function makeQuestion(settings) {
     left,
     right,
     answer,
-    label: `${left} ${operationSymbols[settings.operation]} ${right}`,
+    label: `${left} ${operationSymbols[operation]} ${right}`,
   };
+}
+
+function isSameQuestion(question, previousQuestion) {
+  return Boolean(
+    question &&
+      previousQuestion &&
+      question.label === previousQuestion.label &&
+      String(question.answer) === String(previousQuestion.answer)
+  );
+}
+
+function makeQuestionList(count, createQuestion) {
+  const questions = [];
+
+  for (let index = 0; index < count; index += 1) {
+    let question = createQuestion(index, 0);
+
+    for (let attempt = 1; attempt <= 30 && isSameQuestion(question, questions[questions.length - 1]); attempt += 1) {
+      question = createQuestion(index, attempt);
+    }
+
+    questions.push(question);
+  }
+
+  return questions;
 }
 
 function getDailyDateKey() {
@@ -1406,14 +1698,14 @@ function makeDailyQuestion(random, index) {
 
 function makeDailyChallengeQuestions(dateKey) {
   const random = createSeededRandom(`mentalc-daily-${dateKey}`);
-  return Array.from({ length: dailyChallengeQuestionCount }, (_, index) => makeDailyQuestion(random, index));
+  return makeQuestionList(dailyChallengeQuestionCount, (index) => makeDailyQuestion(random, index));
 }
 
 function startGame() {
   const settings = readSettings();
   state = createInitialState();
   state.settings = settings;
-  state.questions = Array.from({ length: settings.questionCount }, () => makeQuestion(settings));
+  state.questions = makeQuestionList(settings.questionCount, () => makeQuestion(settings));
   state.startedAt = performance.now();
   showPanel("game");
   startQuestion();
@@ -1496,6 +1788,10 @@ function stopTimer() {
 }
 
 function startQuestion() {
+  if (missNoticeTimer) {
+    window.clearTimeout(missNoticeTimer);
+    missNoticeTimer = null;
+  }
   state.input = "";
   state.mistakes = 0;
   state.questionStartedAt = performance.now();
@@ -1505,6 +1801,19 @@ function startQuestion() {
   els.feedbackText.textContent = t("inputHint");
   els.feedbackText.classList.remove("is-error");
   updateProgress();
+}
+
+function showMissNotice() {
+  els.feedbackText.textContent = "MISS";
+  els.feedbackText.classList.add("is-error", "is-miss");
+
+  missNoticeTimer = window.setTimeout(() => {
+    if (!els.gamePanel.classList.contains("is-hidden")) {
+      els.feedbackText.textContent = t("inputHint");
+      els.feedbackText.classList.remove("is-error", "is-miss");
+    }
+    missNoticeTimer = null;
+  }, 850);
 }
 
 function updateProgress() {
@@ -1549,38 +1858,48 @@ function renderInput() {
   els.answerText.textContent = state.input;
 }
 
+function completeQuestion(isCorrect) {
+  const current = state.questions[state.currentIndex];
+  const answeredAt = performance.now();
+
+  state.records.push({
+    label: current.label,
+    answer: current.answer,
+    input: state.input,
+    duration: answeredAt - state.questionStartedAt,
+    mistakes: isCorrect ? 0 : 1,
+    correct: isCorrect,
+  });
+
+  state.currentIndex += 1;
+
+  if (state.currentIndex >= state.questions.length) {
+    finishGame();
+    return;
+  }
+
+  startQuestion();
+  if (!isCorrect) {
+    showMissNotice();
+  }
+}
+
 function checkAnswer() {
   const current = state.questions[state.currentIndex];
   const expected = String(current.answer);
 
-  if (state.input === expected) {
-    const answeredAt = performance.now();
-    state.records.push({
-      label: current.label,
-      answer: current.answer,
-      duration: answeredAt - state.questionStartedAt,
-      mistakes: state.mistakes,
-    });
-    state.currentIndex += 1;
-
-    if (state.currentIndex >= state.questions.length) {
-      finishGame();
-      return;
-    }
-
-    startQuestion();
+  if (state.input.length < expected.length) {
+    els.feedbackText.textContent = t("inputHint");
+    els.feedbackText.classList.remove("is-error");
     return;
   }
 
-  const unsignedInput = state.input.replace("-", "");
-  const mightStillMatch = state.input === "-" || expected.startsWith(unsignedInput);
-  if (state.input.length >= expected.length || !mightStillMatch) {
-    state.mistakes += 1;
+  if (state.input === expected) {
+    completeQuestion(true);
+  } else {
     els.feedbackText.textContent = t("wrong");
     els.feedbackText.classList.add("is-error");
-  } else {
-    els.feedbackText.textContent = t("inputHint");
-    els.feedbackText.classList.remove("is-error");
+    completeQuestion(false);
   }
 }
 
@@ -2435,6 +2754,7 @@ window.addEventListener("keydown", (event) => {
 });
 
 els.languageSelect.addEventListener("change", () => handleLanguageChange(els.languageSelect.value));
+els.themeToggle?.addEventListener("click", toggleTheme);
 els.questionCount.addEventListener("focus", () => els.questionCount.select());
 els.questionCount.addEventListener("input", () => syncQuestionCount(els.questionCount.value));
 els.questionCountSlider.addEventListener("input", () => syncQuestionCount(els.questionCountSlider.value));
@@ -2540,6 +2860,7 @@ els.clearRecordsButton.addEventListener("click", clearStoredRecords);
 els.clearPolyoleRecordsButton.addEventListener("click", clearPolyoleRecords);
 els.footerBackLink.addEventListener("click", handleFooterBack);
 
+applyTheme(getInitialTheme());
 applyLanguage(getInitialLanguage());
 resetToSetup();
 initAdsense();
