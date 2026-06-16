@@ -1166,6 +1166,25 @@ tbody tr:last-child td {
   margin: 14px;
 }
 
+.article-info .article-link {
+  margin-top: 14px;
+}
+
+.article-info details {
+  display: grid;
+  gap: 10px;
+}
+
+.article-info summary {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.article-info summary + p {
+  margin-top: 10px;
+}
+
 .contact-link {
   display: inline-flex;
   align-items: center;
@@ -1425,6 +1444,10 @@ body.is-mental-only {
   overflow: hidden;
 }
 
+body.is-mental-only:not(.is-game-screen) {
+  overflow: auto;
+}
+
 body.is-mental-only .mini-stats,
 body.is-mental-only #gameSelectPanel,
 body.is-mental-only .site-info,
@@ -1468,10 +1491,10 @@ body.is-mental-only .topbar {
 }
 
 body.is-mental-only .topbar-tools {
-  display: flex;
+  display: grid;
+  grid-template-columns: max-content max-content;
   align-items: center;
   justify-content: flex-end;
-  flex-wrap: wrap;
   gap: 6px;
 }
 
@@ -1491,6 +1514,7 @@ body.is-mental-only .mini-stats {
 }
 
 body.is-mental-only .utility-links {
+  grid-column: 1 / -1;
   order: 4;
   width: 100%;
 }
@@ -1628,6 +1652,7 @@ body.is-mental-only .quick-row label {
   align-items: center;
   justify-content: center;
   gap: 1px;
+  min-width: 0;
   min-height: clamp(54px, 9dvh, 86px);
   border: 2px solid var(--line);
   border-radius: 8px;
@@ -1635,6 +1660,7 @@ body.is-mental-only .quick-row label {
   color: var(--text);
   font-size: clamp(18px, 2.6vw, 30px);
   font-weight: 650;
+  white-space: nowrap;
 }
 
 body.is-mental-only .quick-row:nth-child(1) {
@@ -1846,7 +1872,9 @@ body.is-game-screen .polyole-result .result-grid div {
   body.is-mental-only .language-control {
     display: flex;
     gap: 4px;
-    width: auto;
+    width: 100%;
+    min-width: 0;
+    justify-content: flex-end;
   }
 
   body.is-mental-only .language-control span {
@@ -1854,7 +1882,8 @@ body.is-game-screen .polyole-result .result-grid div {
   }
 
   body.is-mental-only .language-control select {
-    max-width: 92px;
+    width: min(120px, 100%);
+    max-width: 120px;
     min-height: 28px;
     font-size: 11px;
   }
@@ -1870,13 +1899,27 @@ body.is-game-screen .polyole-result .result-grid div {
   }
 
   body.is-mental-only .topbar-tools {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    width: 100%;
     max-width: none;
   }
 
   body.is-mental-only .utility-links {
+    grid-column: 1 / -1;
     gap: 4px;
     width: 100%;
     justify-content: flex-end;
+  }
+
+  body.is-mental-only:not(.is-game-screen) .topbar {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  body.is-mental-only:not(.is-game-screen) .topbar p {
+    display: none;
   }
 
   body.is-mental-only .utility-links a,
@@ -1952,6 +1995,12 @@ body.is-game-screen .polyole-result .result-grid div {
 
   body.is-mental-only .quick-row {
     gap: 5px;
+  }
+
+  body.is-mental-only .quick-row button,
+  body.is-mental-only .quick-row label {
+    padding-inline: 2px;
+    font-size: clamp(11px, 3.15vw, 15px);
   }
 
   body.is-mental-only .setup-records {

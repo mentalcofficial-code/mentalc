@@ -873,6 +873,9 @@ const translations = {
     practiceTitle: "心算练习建议",
     practiceBody:
       "建议先从少量一位数加法开始。熟悉后再增加位数或练习乘法。通过查看最近记录，在保持准确的同时逐步缩短用时。",
+    siteGuideArticleTitle: "心算方法文章",
+    siteGuideArticleBody:
+      "Mentalc 还提供关于两位数乘法心算方法的文章。练习前先了解步骤，可以更容易掌握心算思路。",
     recordsTitle: "最近记录",
     clearRecords: "清除",
     noRecords: "还没有记录。",
@@ -972,6 +975,9 @@ const translations = {
     practiceTitle: "Tipps zum Ueben",
     practiceBody:
       "Beginne mit wenigen einstelligen Additionsaufgaben. Wenn du sicherer wirst, erhoehe die Stellenzahl oder uebe Multiplikation. Nutze deine letzten Ergebnisse, um die Zeit Schritt fuer Schritt zu verbessern, ohne an Genauigkeit zu verlieren.",
+    siteGuideArticleTitle: "Artikel zum Kopfrechnen",
+    siteGuideArticleBody:
+      "Mentalc enthaelt auch einen Artikel zum Kopfrechnen mit zweistelliger Multiplikation. Lies die Methode vor dem Ueben, um die Rechenschritte leichter zu verstehen.",
     recordsTitle: "Letzte Ergebnisse",
     clearRecords: "Loeschen",
     noRecords: "Noch keine Ergebnisse.",
@@ -1071,6 +1077,9 @@ const translations = {
     practiceTitle: "Oefentips",
     practiceBody:
       "Begin met een kleine set optelsommen met een cijfer. Als dat goed gaat, verhoog je het aantal cijfers of oefen je vermenigvuldigen. Gebruik je recente resultaten om stap voor stap sneller te worden zonder nauwkeurigheid te verliezen.",
+    siteGuideArticleTitle: "Artikel over hoofdrekenen",
+    siteGuideArticleBody:
+      "Mentalc bevat ook een artikel over het hoofdrekenen van vermenigvuldigingen met twee cijfers. Lees de methode voor je oefent om de stappen beter te begrijpen.",
     recordsTitle: "Recente records",
     clearRecords: "Wissen",
     noRecords: "Nog geen records.",
@@ -1170,6 +1179,9 @@ const translations = {
     practiceTitle: "암산 연습 팁",
     practiceBody:
       "처음에는 한 자리 덧셈을 적은 문제 수로 시작해 보세요. 익숙해지면 자릿수를 늘리거나 곱셈을 연습하는 것이 좋습니다. 최근 기록을 보면서 정확도를 유지한 채 조금씩 시간을 줄여 보세요.",
+    siteGuideArticleTitle: "암산 방법 글",
+    siteGuideArticleBody:
+      "Mentalc에는 두 자리 수 곱셈을 암산하는 방법을 설명한 글도 있습니다. 연습 전에 방법을 읽으면 계산 순서를 익히는 데 도움이 됩니다.",
     recordsTitle: "최근 기록",
     clearRecords: "삭제",
     noRecords: "아직 기록이 없습니다.",
@@ -1434,6 +1446,11 @@ function updateMainUiText() {
     utilityLinks[3].textContent = ui.article;
     utilityLinks[3].href = ui.articleUrl;
   }
+
+  document.querySelectorAll(".article-link").forEach((link) => {
+    link.textContent = ui.article;
+    link.href = ui.articleUrl;
+  });
 
   document.querySelectorAll('.quick-row[data-setting="questionCount"] button[data-value]').forEach((button) => {
     button.textContent = joinCountUnit(button.dataset.value, ui.questionUnitShort);
@@ -2260,7 +2277,7 @@ function resetToSetup() {
   showPanel("setup");
   setMentalGameInfoVisible(true);
   setPolyoleGameInfoVisible(false);
-  setHomeInfoVisible(false);
+  setHomeInfoVisible(true);
   syncSettingLabels();
   syncQuestionCount(els.questionCount.value);
   els.timerText.textContent = "00:00.0";
