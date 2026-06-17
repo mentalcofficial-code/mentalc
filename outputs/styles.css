@@ -189,6 +189,34 @@ h1 {
   color: #ffe4e4;
 }
 
+:root[data-theme="dark"] body.is-mental-only .challenge-preview-card {
+  border-color: #53635d;
+  background: #28312e;
+  color: var(--text);
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] body.is-mental-only .challenge-preview-card span,
+:root[data-theme="dark"] body.is-mental-only .challenge-preview-card p {
+  color: #c7d2cc;
+}
+
+:root[data-theme="dark"] body.is-mental-only .challenge-preview-card strong,
+:root[data-theme="dark"] body.is-mental-only .daily-best-card strong {
+  color: #eef4ef;
+}
+
+:root[data-theme="dark"] body.is-mental-only .challenge-action-card .daily-button {
+  border-color: #6f8179;
+  background: #303a36;
+  color: #eef4ef;
+}
+
+:root[data-theme="dark"] body.is-mental-only .challenge-action-card .daily-button:hover {
+  border-color: var(--accent);
+  background: #35423d;
+}
+
 .mini-stats {
   display: flex;
   gap: 10px;
@@ -2278,11 +2306,27 @@ body.is-game-screen .polyole-result .result-grid div {
   overflow: hidden;
 }
 
+body.is-mental-only .challenge-action-card {
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 10px;
+  align-items: center;
+}
+
+body.is-mental-only .challenge-action-card span,
+body.is-mental-only .challenge-action-card strong,
+body.is-mental-only .challenge-action-card p,
+body.is-mental-only .challenge-action-card .daily-button {
+  grid-column: 1;
+}
+
 .menta-card {
   display: block;
-  width: min(124px, 42vw);
+  grid-column: 2;
+  grid-row: 1 / span 4;
+  width: min(96px, 28vw);
   height: auto;
-  margin: -4px 0 8px auto;
+  margin: 0;
+  align-self: center;
 }
 
 @media (max-width: 640px) {
@@ -2301,8 +2345,8 @@ body.is-game-screen .polyole-result .result-grid div {
   }
 
   .menta-card {
-    width: 96px;
-    margin: -2px 0 6px auto;
+    width: 78px;
+    margin: 0;
   }
 }
 
