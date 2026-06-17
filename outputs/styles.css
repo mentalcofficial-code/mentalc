@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   color-scheme: light;
   --bg: #fbf7f2;
   --surface: #fffdf8;
@@ -489,6 +489,10 @@ button:disabled {
 }
 
 .setup-records {
+  display: none;
+}
+
+.challenge-preview {
   display: none;
 }
 
@@ -1170,6 +1174,17 @@ tbody tr:last-child td {
   margin-top: 14px;
 }
 
+.article-info .article-extra-link {
+  margin-left: 8px;
+}
+
+@media (max-width: 520px) {
+  .article-info .article-extra-link {
+    margin-left: 0;
+  }
+}
+
+
 .article-info details {
   display: grid;
   gap: 10px;
@@ -1524,6 +1539,11 @@ body.is-mental-only .layout {
   margin: 6px auto;
 }
 
+body.is-mental-only:not(.is-game-screen) .layout {
+  height: auto;
+  min-height: calc(100dvh - 112px);
+}
+
 body.is-mental-only #setupPanel:not(.is-hidden) {
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto auto;
@@ -1547,7 +1567,7 @@ body.is-mental-only #setupPanel .panel-actions {
 }
 
 body.is-mental-only #startButton {
-  order: 3;
+  order: 4;
   width: min(520px, 100%);
   min-height: clamp(68px, 12dvh, 112px);
   justify-self: center;
@@ -1632,6 +1652,53 @@ body.is-mental-only .setup-records .record-list small {
   text-overflow: ellipsis;
 }
 
+body.is-mental-only .challenge-preview {
+  order: 3;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: min(940px, 100%);
+  justify-self: center;
+}
+
+body.is-mental-only .challenge-preview-card {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  border: 1px dashed #cfd8cb;
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.72);
+  padding: 10px 12px;
+}
+
+body.is-mental-only .challenge-preview-card span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+body.is-mental-only .challenge-preview-card strong {
+  color: var(--text);
+  font-size: 16px;
+}
+
+body.is-mental-only .challenge-preview-card p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+body.is-mental-only .challenge-action-card .daily-button {
+  width: fit-content;
+  min-height: 34px;
+  padding: 0 14px;
+  font-size: 13px;
+}
+
+body.is-mental-only .daily-best-card strong {
+  color: var(--accent-dark);
+}
+
 body.is-mental-only .settings-grid {
   display: none;
 }
@@ -1688,8 +1755,8 @@ body.is-mental-only .quick-row label:focus-within {
 }
 
 body.is-mental-only .quick-row input {
-  flex: 1 1 auto;
-  width: 100%;
+  flex: 0 1 4.2ch;
+  width: 4.2ch;
   min-width: 2.2ch;
   min-height: 38px;
   border: 0;
@@ -1707,10 +1774,13 @@ body.is-mental-only .quick-row label span {
   flex: 0 0 auto;
   font-size: 0.72em;
   line-height: 1;
+  min-width: 0;
+  text-align: left;
 }
 
 body.is-mental-only .quick-row label {
   overflow: hidden;
+  padding-inline: 8px;
 }
 
 body.is-mental-only .quick-row input::-webkit-outer-spin-button,
@@ -1958,6 +2028,11 @@ body.is-game-screen .polyole-result .result-grid div {
     margin: 4px auto;
   }
 
+  body.is-mental-only:not(.is-game-screen) .layout {
+    height: auto;
+    min-height: calc(100dvh - 104px);
+  }
+
   body.is-mental-only #setupPanel:not(.is-hidden) {
     gap: 8px;
   }
@@ -2027,6 +2102,31 @@ body.is-game-screen .polyole-result .result-grid div {
 
   body.is-mental-only .setup-records .record-list li:nth-child(n + 3) {
     display: none;
+  }
+
+  body.is-mental-only .challenge-preview {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  body.is-mental-only .challenge-preview-card {
+    gap: 3px;
+    padding: 7px 9px;
+  }
+
+  body.is-mental-only .challenge-preview-card span,
+  body.is-mental-only .challenge-preview-card p {
+    font-size: 11px;
+  }
+
+  body.is-mental-only .challenge-preview-card strong {
+    font-size: 13px;
+  }
+
+  body.is-mental-only .challenge-action-card .daily-button {
+    width: 100%;
+    min-height: 32px;
+    font-size: 12px;
   }
 
   body.is-mental-only .setting-control {
@@ -2145,3 +2245,64 @@ body.is-game-screen .polyole-result .result-grid div {
     display: none;
   }
 }
+
+
+
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.topbar-title {
+  min-width: 0;
+}
+
+.menta-header {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.menta-result {
+  display: block;
+  width: min(136px, 30vw);
+  height: auto;
+  margin: -4px auto 4px;
+}
+
+.challenge-action-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.menta-card {
+  display: block;
+  width: min(124px, 42vw);
+  height: auto;
+  margin: -4px 0 8px auto;
+}
+
+@media (max-width: 640px) {
+  .topbar-brand {
+    gap: 8px;
+  }
+
+  .menta-header {
+    width: 42px;
+    height: 42px;
+  }
+
+  .menta-result {
+    width: 104px;
+    margin-top: -6px;
+  }
+
+  .menta-card {
+    width: 96px;
+    margin: -2px 0 6px auto;
+  }
+}
+

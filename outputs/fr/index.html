@@ -50,13 +50,16 @@
       gtag("js", new Date());
       gtag("config", "G-GH29NN7Y5D");
     </script>
-    <link rel="stylesheet" href="./styles.css?v=20260616-links2" />
+    <link rel="stylesheet" href="./styles.css?v=20260617-menta3" />
   </head>
   <body>
     <header class="topbar">
-      <div>
-        <h1>Mentalc</h1>
+      <div class="topbar-brand">
+        <img class="menta-header" src="/assets/menta-header.png?v=20260617-menta2" alt="" aria-hidden="true" />
+        <div class="topbar-title">
+          <h1>Mentalc</h1>
         <p data-i18n="tagline">短く遊べる、シンプルな脳トレ。</p>
+              </div>
       </div>
       <div class="topbar-tools">
         <label class="language-control">
@@ -192,6 +195,19 @@
               <input id="questionCountSlider" type="range" min="1" max="500" value="20" />
             </div>
           </div>
+          <div class="challenge-preview" aria-label="Daily challenge">
+            <article class="challenge-preview-card challenge-action-card">
+              <span data-i18n="dailyChallengePreviewLabel">Daily Challenge</span>
+              <strong data-i18n="dailyChallengePreviewTitle">5 questions every day</strong>
+              <p data-i18n="dailyChallengePreviewBody">A fixed daily set can go here.</p>
+              <button id="dailyChallengeStartButton" class="ghost-button daily-button" type="button" data-i18n="dailyChallengeStart">Start daily</button>
+            </article>
+            <article class="challenge-preview-card daily-best-card">
+              <span data-i18n="dailyBestLabel">Today's best</span>
+              <strong id="dailyBestTime" data-i18n="dailyBestEmpty">No record yet</strong>
+              <p id="dailyBestDetail" data-i18n="dailyBestBody">Complete today's challenge to save your best time on this device.</p>
+            </article>
+          </div>
         </div>
 
         <div id="gamePanel" class="panel game-panel is-hidden">
@@ -222,6 +238,7 @@
         </div>
 
         <div id="resultPanel" class="panel is-hidden">
+          <img class="menta-result" src="/assets/menta-result.png?v=20260617-menta2" alt="" aria-hidden="true" />
           <div class="panel-head">
             <h2 data-i18n="result">結果</h2>
             <div class="result-actions">
@@ -402,6 +419,7 @@
               Mentalc also includes an article on multiplying two-digit numbers mentally. Reading the method before practicing can make the game more useful for building calculation habits.
             </p>
             <a class="contact-link article-link" href="/en/mentalc/two-digit-multiplication/" data-i18n="article">Article</a>
+          <a class="contact-link article-extra-link" href="/fr/mentalc/mental-math-multiplication-strategies/">Stratégies de multiplication</a>
           </details>
         </article>
 
@@ -443,9 +461,14 @@
       <a href="#gameSelectPanel" data-i18n="footerBack">ゲームへ戻る</a>
     </footer>
 
-    <script src="./app.js?v=20260616-links2"></script>
+    <script src="./app.js?v=20260617-menta3"></script>
   </body>
 </html>
+
+
+
+
+
 
 
 

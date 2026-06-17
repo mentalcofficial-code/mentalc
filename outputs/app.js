@@ -27,6 +27,9 @@
   openPolyominoButton: document.querySelector("#openPolyominoButton"),
   startButton: document.querySelector("#startButton"),
   dailyChallengeButton: document.querySelector("#dailyChallengeButton"),
+  dailyChallengeStartButton: document.querySelector("#dailyChallengeStartButton"),
+  dailyBestTime: document.querySelector("#dailyBestTime"),
+  dailyBestDetail: document.querySelector("#dailyBestDetail"),
   backToGamesButton: document.querySelector("#backToGamesButton"),
   polyominoPanel: document.querySelector("#polyominoPanel"),
   polyominoBackButton: document.querySelector("#polyominoBackButton"),
@@ -120,6 +123,8 @@ const mainUiText = {
     home: "HOME",
     retry: "RETRY",
     articleUrl: "/ja/mentalc/two-digit-multiplication/",
+    articleStrategies: "掛け算のコツ",
+    articleStrategiesUrl: "/ja/mentalc/mental-math-multiplication-strategies/",
   },
   en: {
     privacy: "Privacy",
@@ -136,6 +141,8 @@ const mainUiText = {
     home: "HOME",
     retry: "RETRY",
     articleUrl: "/en/mentalc/two-digit-multiplication/",
+    articleStrategies: "Multiplication strategies",
+    articleStrategiesUrl: "/en/mentalc/mental-math-multiplication-strategies/",
   },
   es: {
     privacy: "Privacidad",
@@ -152,6 +159,8 @@ const mainUiText = {
     home: "INICIO",
     retry: "REINTENTAR",
     articleUrl: "/es/mentalc/two-digit-multiplication/",
+    articleStrategies: "Estrategias de multiplicación",
+    articleStrategiesUrl: "/es/mentalc/mental-math-multiplication-strategies/",
   },
   pt: {
     privacy: "Privacidade",
@@ -168,6 +177,8 @@ const mainUiText = {
     home: "INÍCIO",
     retry: "TENTAR",
     articleUrl: "/pt/mentalc/two-digit-multiplication/",
+    articleStrategies: "Estratégias de multiplicação",
+    articleStrategiesUrl: "/pt/mentalc/mental-math-multiplication-strategies/",
   },
   fr: {
     privacy: "Confidentialité",
@@ -184,6 +195,8 @@ const mainUiText = {
     home: "ACCUEIL",
     retry: "REJOUER",
     articleUrl: "/fr/mentalc/two-digit-multiplication/",
+    articleStrategies: "Stratégies de multiplication",
+    articleStrategiesUrl: "/fr/mentalc/mental-math-multiplication-strategies/",
   },
   zh: {
     privacy: "隐私",
@@ -199,6 +212,8 @@ const mainUiText = {
     home: "主页",
     retry: "重试",
     articleUrl: "/zh/mentalc/two-digit-multiplication/",
+    articleStrategies: "乘法策略",
+    articleStrategiesUrl: "/zh/mentalc/mental-math-multiplication-strategies/",
   },
   de: {
     privacy: "Datenschutz",
@@ -214,6 +229,8 @@ const mainUiText = {
     home: "HOME",
     retry: "NEU",
     articleUrl: "/de/mentalc/two-digit-multiplication/",
+    articleStrategies: "Multiplikationsstrategien",
+    articleStrategiesUrl: "/de/mentalc/mental-math-multiplication-strategies/",
   },
   nl: {
     privacy: "Privacy",
@@ -230,6 +247,8 @@ const mainUiText = {
     home: "HOME",
     retry: "OPNIEUW",
     articleUrl: "/nl/mentalc/two-digit-multiplication/",
+    articleStrategies: "Vermenigvuldigstrategieen",
+    articleStrategiesUrl: "/nl/mentalc/mental-math-multiplication-strategies/",
   },
   ko: {
     privacy: "개인정보",
@@ -245,6 +264,8 @@ const mainUiText = {
     home: "HOME",
     retry: "RETRY",
     articleUrl: "/ko/mentalc/two-digit-multiplication/",
+    articleStrategies: "곱셈 전략",
+    articleStrategiesUrl: "/ko/mentalc/mental-math-multiplication-strategies/",
   },
 };
 
@@ -258,6 +279,14 @@ const translations = {
     htmlLang: "ja",
     dailyChallenge: "D",
     dailyChallengeRecord: "デイリー",
+    dailyChallengePreviewLabel: "デイリーチャレンジ",
+    dailyChallengePreviewTitle: "毎日5問",
+    dailyChallengePreviewBody: "今日だけの固定問題に挑戦します。",
+    dailyChallengeStart: "挑戦する",
+    dailyBestLabel: "今日の自己ベスト",
+    dailyBestEmpty: "まだ記録はありません",
+    dailyBestBody: "完了すると、この端末に今日のベストタイムを保存します。",
+    dailyBestDetail: "{time} / 正答率 {accuracy}",
     polyoleDailyChallenge: "デイリーチャレンジ",
     shareResult: "共有",
     shareMentalcText: "Mentalc {time} / 1問 {average}",
@@ -366,6 +395,14 @@ const translations = {
     htmlLang: "en",
     dailyChallenge: "Daily Challenge",
     dailyChallengeRecord: "Daily",
+    dailyChallengePreviewLabel: "Daily Challenge",
+    dailyChallengePreviewTitle: "5 questions every day",
+    dailyChallengePreviewBody: "Try today's fixed set of questions.",
+    dailyChallengeStart: "Start daily",
+    dailyBestLabel: "Today's best",
+    dailyBestEmpty: "No record yet",
+    dailyBestBody: "Complete today's challenge to save your best time on this device.",
+    dailyBestDetail: "{time} / accuracy {accuracy}",
     polyoleDailyChallenge: "Daily Challenge",
     shareResult: "Share",
     shareMentalcText: "I cleared {questions} on Mentalc in {time}.",
@@ -474,6 +511,14 @@ const translations = {
     htmlLang: "es",
     dailyChallenge: "Reto diario",
     dailyChallengeRecord: "Diario",
+    dailyChallengePreviewLabel: "Reto diario",
+    dailyChallengePreviewTitle: "5 preguntas al día",
+    dailyChallengePreviewBody: "Prueba la serie fija de preguntas de hoy.",
+    dailyChallengeStart: "Empezar",
+    dailyBestLabel: "Mejor de hoy",
+    dailyBestEmpty: "Aún sin registro",
+    dailyBestBody: "Completa el reto de hoy para guardar tu mejor tiempo en este dispositivo.",
+    dailyBestDetail: "{time} / precisión {accuracy}",
     polyoleDailyChallenge: "Reto diario",
     shareResult: "Compartir",
     shareMentalcText: "Completé {questions} en Mentalc en {time}.",
@@ -585,6 +630,14 @@ const translations = {
     htmlLang: "pt",
     dailyChallenge: "Desafio diário",
     dailyChallengeRecord: "Diário",
+    dailyChallengePreviewLabel: "Desafio diário",
+    dailyChallengePreviewTitle: "5 perguntas por dia",
+    dailyChallengePreviewBody: "Tente a sequência fixa de perguntas de hoje.",
+    dailyChallengeStart: "Começar",
+    dailyBestLabel: "Melhor de hoje",
+    dailyBestEmpty: "Ainda sem registro",
+    dailyBestBody: "Complete o desafio de hoje para salvar seu melhor tempo neste dispositivo.",
+    dailyBestDetail: "{time} / precisão {accuracy}",
     polyoleDailyChallenge: "Desafio diário",
     shareResult: "Compartilhar",
     shareMentalcText: "Completei {questions} no Mentalc em {time}.",
@@ -690,6 +743,14 @@ const translations = {
     htmlLang: "fr",
     dailyChallenge: "Défi quotidien",
     dailyChallengeRecord: "Quotidien",
+    dailyChallengePreviewLabel: "Défi quotidien",
+    dailyChallengePreviewTitle: "5 questions par jour",
+    dailyChallengePreviewBody: "Essayez la série fixe de questions du jour.",
+    dailyChallengeStart: "Commencer",
+    dailyBestLabel: "Meilleur du jour",
+    dailyBestEmpty: "Aucun record",
+    dailyBestBody: "Terminez le défi du jour pour enregistrer votre meilleur temps sur cet appareil.",
+    dailyBestDetail: "{time} / précision {accuracy}",
     polyoleDailyChallenge: "Défi quotidien",
     shareResult: "Partager",
     shareMentalcText: "J'ai terminé {questions} sur Mentalc en {time}.",
@@ -795,6 +856,14 @@ const translations = {
     htmlLang: "zh-Hans",
     dailyChallenge: "每日挑战",
     dailyChallengeRecord: "每日",
+    dailyChallengePreviewLabel: "每日挑战",
+    dailyChallengePreviewTitle: "每天 5 题",
+    dailyChallengePreviewBody: "挑战今天固定的题组。",
+    dailyChallengeStart: "开始挑战",
+    dailyBestLabel: "今日最佳",
+    dailyBestEmpty: "还没有记录",
+    dailyBestBody: "完成今天的挑战后，会在此设备保存你的最佳时间。",
+    dailyBestDetail: "{time} / 正确率 {accuracy}",
     polyoleDailyChallenge: "每日挑战",
     shareResult: "分享",
     shareMentalcText: "我在 Mentalc 中用 {time} 完成了 {questions}。",
@@ -897,6 +966,14 @@ const translations = {
     htmlLang: "de",
     dailyChallenge: "Tageschallenge",
     dailyChallengeRecord: "Taeglich",
+    dailyChallengePreviewLabel: "Tageschallenge",
+    dailyChallengePreviewTitle: "5 Aufgaben pro Tag",
+    dailyChallengePreviewBody: "Spiele die feste Aufgabenrunde des Tages.",
+    dailyChallengeStart: "Starten",
+    dailyBestLabel: "Heutige Bestzeit",
+    dailyBestEmpty: "Noch kein Ergebnis",
+    dailyBestBody: "Schliesse die Tageschallenge ab, um deine Bestzeit auf diesem Geraet zu speichern.",
+    dailyBestDetail: "{time} / Treffer {accuracy}",
     polyoleDailyChallenge: "Tageschallenge",
     shareResult: "Teilen",
     shareMentalcText: "Ich habe {questions} bei Mentalc in {time} geschafft.",
@@ -999,6 +1076,14 @@ const translations = {
     htmlLang: "nl",
     dailyChallenge: "Dagelijkse uitdaging",
     dailyChallengeRecord: "Dagelijks",
+    dailyChallengePreviewLabel: "Dagelijkse uitdaging",
+    dailyChallengePreviewTitle: "5 vragen per dag",
+    dailyChallengePreviewBody: "Speel de vaste set vragen van vandaag.",
+    dailyChallengeStart: "Start dagelijks",
+    dailyBestLabel: "Beste van vandaag",
+    dailyBestEmpty: "Nog geen record",
+    dailyBestBody: "Voltooi de uitdaging van vandaag om je beste tijd op dit apparaat op te slaan.",
+    dailyBestDetail: "{time} / score {accuracy}",
     polyoleDailyChallenge: "Dagelijkse uitdaging",
     shareResult: "Delen",
     shareMentalcText: "Ik heb {questions} op Mentalc voltooid in {time}.",
@@ -1101,6 +1186,14 @@ const translations = {
     htmlLang: "ko",
     dailyChallenge: "데일리 챌린지",
     dailyChallengeRecord: "데일리",
+    dailyChallengePreviewLabel: "데일리 챌린지",
+    dailyChallengePreviewTitle: "매일 5문제",
+    dailyChallengePreviewBody: "오늘의 고정 문제 세트에 도전합니다.",
+    dailyChallengeStart: "도전하기",
+    dailyBestLabel: "오늘의 최고 기록",
+    dailyBestEmpty: "아직 기록이 없습니다",
+    dailyBestBody: "오늘의 챌린지를 완료하면 이 기기에 최고 기록이 저장됩니다.",
+    dailyBestDetail: "{time} / 정확도 {accuracy}",
     polyoleDailyChallenge: "데일리 챌린지",
     shareResult: "공유",
     shareMentalcText: "Mentalc에서 {questions}를 {time}에 완료했습니다.",
@@ -1355,6 +1448,7 @@ function applyLanguage(language) {
   refreshResultStats();
   renderHistory();
   renderStoredRecords();
+  renderDailyChallengeSummary();
   renderPolyoleRecords();
   renderPolyomino();
   updateContactFormLink();
@@ -1450,6 +1544,11 @@ function updateMainUiText() {
   document.querySelectorAll(".article-link").forEach((link) => {
     link.textContent = ui.article;
     link.href = ui.articleUrl;
+  });
+
+  document.querySelectorAll(".article-extra-link").forEach((link) => {
+    link.textContent = ui.articleStrategies;
+    link.href = ui.articleStrategiesUrl;
   });
 
   document.querySelectorAll('.quick-row[data-setting="questionCount"] button[data-value]').forEach((button) => {
@@ -2027,6 +2126,8 @@ function saveRecord() {
   records.unshift({
     totalTime: state.totalTime,
     averageTime: state.averageTime,
+    accuracy: getAccuracyPercent(),
+    mistakes: state.mistakes,
     questionCount: state.settings.questionCount,
     operation: state.settings.operation,
     leftDigits: state.settings.leftDigits,
@@ -2037,11 +2138,57 @@ function saveRecord() {
   });
   saveStoredRecords(records);
   renderStoredRecords();
+  renderDailyChallengeSummary();
 }
 
 function clearStoredRecords() {
   localStorage.removeItem(recordStorageKey);
   renderStoredRecords();
+  renderDailyChallengeSummary();
+}
+
+function getRecordAccuracyPercent(record) {
+  if (Number.isFinite(record.accuracy)) {
+    return record.accuracy;
+  }
+
+  if (Number.isFinite(record.mistakes) && Number.isFinite(record.questionCount) && record.questionCount > 0) {
+    return Math.max(0, Math.round(((record.questionCount - record.mistakes) / record.questionCount) * 100));
+  }
+
+  return 100;
+}
+
+function getTodayDailyBestRecord() {
+  const todayKey = getDailyDateKey();
+  return getStoredRecords()
+    .filter((record) => record.isDaily && record.dailyDate === todayKey)
+    .sort((a, b) => {
+      const accuracyDiff = getRecordAccuracyPercent(b) - getRecordAccuracyPercent(a);
+      if (accuracyDiff !== 0) {
+        return accuracyDiff;
+      }
+      return a.totalTime - b.totalTime;
+    })[0];
+}
+
+function renderDailyChallengeSummary() {
+  if (!els.dailyBestTime || !els.dailyBestDetail) {
+    return;
+  }
+
+  const bestRecord = getTodayDailyBestRecord();
+  if (!bestRecord) {
+    els.dailyBestTime.textContent = t("dailyBestEmpty");
+    els.dailyBestDetail.textContent = t("dailyBestBody");
+    return;
+  }
+
+  const accuracy = `${getRecordAccuracyPercent(bestRecord)}%`;
+  els.dailyBestTime.textContent = formatDuration(bestRecord.totalTime);
+  els.dailyBestDetail.textContent = t("dailyBestDetail")
+    .replace("{time}", formatDuration(bestRecord.totalTime))
+    .replace("{accuracy}", accuracy);
 }
 
 function getPolyoleRecords() {
@@ -2850,6 +2997,7 @@ els.openMentalMathButton?.addEventListener("click", openMentalMath);
 els.openPolyominoButton?.addEventListener("click", openPolyomino);
 els.startButton.addEventListener("click", startGame);
 els.dailyChallengeButton.addEventListener("click", startDailyChallenge);
+els.dailyChallengeStartButton?.addEventListener("click", startDailyChallenge);
 els.backToGamesButton.addEventListener("click", resetToGameSelect);
 els.polyominoBackButton?.addEventListener("click", resetToGameSelect);
 els.polyominoNewButton?.addEventListener("click", createPolyominoPuzzle);
@@ -2928,3 +3076,5 @@ applyTheme(getInitialTheme());
 applyLanguage(getInitialLanguage());
 resetToSetup();
 initAdsense();
+
+
