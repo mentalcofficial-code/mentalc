@@ -1,10 +1,16 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mentalc.net/</loc>
   </url>
   <url>
     <loc>https://mentalc.net/ja/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/id/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/hi/</loc>
   </url>
   <url>
     <loc>https://mentalc.net/es/</loc>
@@ -43,6 +49,12 @@
     <loc>https://mentalc.net/en/mentalc/two-digit-multiplication/</loc>
   </url>
   <url>
+    <loc>https://mentalc.net/id/mentalc/two-digit-multiplication/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/hi/mentalc/two-digit-multiplication/</loc>
+  </url>
+  <url>
     <loc>https://mentalc.net/es/mentalc/two-digit-multiplication/</loc>
   </url>
   <url>
@@ -64,10 +76,16 @@
     <loc>https://mentalc.net/ko/mentalc/two-digit-multiplication/</loc>
   </url>
   <url>
+    <loc>https://mentalc.net/ja/mentalc/mental-math-multiplication-strategies/</loc>
+  </url>
+  <url>
     <loc>https://mentalc.net/en/mentalc/mental-math-multiplication-strategies/</loc>
   </url>
   <url>
-    <loc>https://mentalc.net/ja/mentalc/mental-math-multiplication-strategies/</loc>
+    <loc>https://mentalc.net/id/mentalc/mental-math-multiplication-strategies/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/hi/mentalc/mental-math-multiplication-strategies/</loc>
   </url>
   <url>
     <loc>https://mentalc.net/es/mentalc/mental-math-multiplication-strategies/</loc>
@@ -89,5 +107,71 @@
   </url>
   <url>
     <loc>https://mentalc.net/ko/mentalc/mental-math-multiplication-strategies/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/ja/mentalc/single-digit-addition-subtraction/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/en/mentalc/single-digit-addition-subtraction/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/id/mentalc/single-digit-addition-subtraction/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/hi/mentalc/single-digit-addition-subtraction/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/es/mentalc/single-digit-addition-subtraction/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/pt/mentalc/single-digit-addition-subtraction/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/fr/mentalc/single-digit-addition-subtraction/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/zh/mentalc/single-digit-addition-subtraction/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/de/mentalc/single-digit-addition-subtraction/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/nl/mentalc/single-digit-addition-subtraction/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/ko/mentalc/single-digit-addition-subtraction/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/ja/mentalc/single-digit-multiplication-division/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/en/mentalc/single-digit-multiplication-division/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/id/mentalc/single-digit-multiplication-division/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/hi/mentalc/single-digit-multiplication-division/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/es/mentalc/single-digit-multiplication-division/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/pt/mentalc/single-digit-multiplication-division/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/fr/mentalc/single-digit-multiplication-division/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/zh/mentalc/single-digit-multiplication-division/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/de/mentalc/single-digit-multiplication-division/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/nl/mentalc/single-digit-multiplication-division/</loc>
+  </url>
+  <url>
+    <loc>https://mentalc.net/ko/mentalc/single-digit-multiplication-division/</loc>
   </url>
 </urlset>

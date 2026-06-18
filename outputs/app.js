@@ -94,6 +94,8 @@ const contactFormUrls = {
   de: "https://forms.gle/J5XhqanZigZy7Z2WA",
   nl: "https://forms.gle/5bNF625gQJNMMKjD8",
   ko: "https://forms.gle/yFVoziJk8YTiyABo6",
+  id: "https://forms.gle/x8UeECY6yNUYmV2A7",
+  hi: "https://forms.gle/Z4uqDzg7fs6Eh9A1A",
 };
 
 const languageUrls = {
@@ -106,6 +108,8 @@ const languageUrls = {
   de: "/de/",
   nl: "/nl/",
   ko: "/ko/",
+  id: "/id/",
+  hi: "/hi/",
 };
 
 const mainUiText = {
@@ -125,6 +129,10 @@ const mainUiText = {
     articleUrl: "/ja/mentalc/two-digit-multiplication/",
     articleStrategies: "掛け算のコツ",
     articleStrategiesUrl: "/ja/mentalc/mental-math-multiplication-strategies/",
+    articleBasic: "1桁の足し算・引き算",
+    articleBasicUrl: "/ja/mentalc/single-digit-addition-subtraction/",
+    articleMulDiv: "1桁の掛け算・割り算",
+    articleMulDivUrl: "/ja/mentalc/single-digit-multiplication-division/",
   },
   en: {
     privacy: "Privacy",
@@ -143,6 +151,10 @@ const mainUiText = {
     articleUrl: "/en/mentalc/two-digit-multiplication/",
     articleStrategies: "Multiplication strategies",
     articleStrategiesUrl: "/en/mentalc/mental-math-multiplication-strategies/",
+    articleBasic: "Addition & subtraction",
+    articleBasicUrl: "/en/mentalc/single-digit-addition-subtraction/",
+    articleMulDiv: "Multiplication & division",
+    articleMulDivUrl: "/en/mentalc/single-digit-multiplication-division/",
   },
   es: {
     privacy: "Privacidad",
@@ -161,6 +173,10 @@ const mainUiText = {
     articleUrl: "/es/mentalc/two-digit-multiplication/",
     articleStrategies: "Estrategias de multiplicación",
     articleStrategiesUrl: "/es/mentalc/mental-math-multiplication-strategies/",
+    articleBasic: "Suma y resta",
+    articleBasicUrl: "/es/mentalc/single-digit-addition-subtraction/",
+    articleMulDiv: "Multiplicación y división",
+    articleMulDivUrl: "/es/mentalc/single-digit-multiplication-division/",
   },
   pt: {
     privacy: "Privacidade",
@@ -179,6 +195,10 @@ const mainUiText = {
     articleUrl: "/pt/mentalc/two-digit-multiplication/",
     articleStrategies: "Estratégias de multiplicação",
     articleStrategiesUrl: "/pt/mentalc/mental-math-multiplication-strategies/",
+    articleBasic: "Adição e subtração",
+    articleBasicUrl: "/pt/mentalc/single-digit-addition-subtraction/",
+    articleMulDiv: "Multiplicação e divisão",
+    articleMulDivUrl: "/pt/mentalc/single-digit-multiplication-division/",
   },
   fr: {
     privacy: "Confidentialité",
@@ -197,6 +217,10 @@ const mainUiText = {
     articleUrl: "/fr/mentalc/two-digit-multiplication/",
     articleStrategies: "Stratégies de multiplication",
     articleStrategiesUrl: "/fr/mentalc/mental-math-multiplication-strategies/",
+    articleBasic: "Addition et soustraction",
+    articleBasicUrl: "/fr/mentalc/single-digit-addition-subtraction/",
+    articleMulDiv: "Multiplication et division",
+    articleMulDivUrl: "/fr/mentalc/single-digit-multiplication-division/",
   },
   zh: {
     privacy: "隐私",
@@ -214,6 +238,10 @@ const mainUiText = {
     articleUrl: "/zh/mentalc/two-digit-multiplication/",
     articleStrategies: "乘法策略",
     articleStrategiesUrl: "/zh/mentalc/mental-math-multiplication-strategies/",
+    articleBasic: "一位数加减法",
+    articleBasicUrl: "/zh/mentalc/single-digit-addition-subtraction/",
+    articleMulDiv: "一位数乘除法",
+    articleMulDivUrl: "/zh/mentalc/single-digit-multiplication-division/",
   },
   de: {
     privacy: "Datenschutz",
@@ -231,6 +259,10 @@ const mainUiText = {
     articleUrl: "/de/mentalc/two-digit-multiplication/",
     articleStrategies: "Multiplikationsstrategien",
     articleStrategiesUrl: "/de/mentalc/mental-math-multiplication-strategies/",
+    articleBasic: "Addition und Subtraktion",
+    articleBasicUrl: "/de/mentalc/single-digit-addition-subtraction/",
+    articleMulDiv: "Multiplikation und Division",
+    articleMulDivUrl: "/de/mentalc/single-digit-multiplication-division/",
   },
   nl: {
     privacy: "Privacy",
@@ -249,6 +281,10 @@ const mainUiText = {
     articleUrl: "/nl/mentalc/two-digit-multiplication/",
     articleStrategies: "Vermenigvuldigstrategieen",
     articleStrategiesUrl: "/nl/mentalc/mental-math-multiplication-strategies/",
+    articleBasic: "Optellen en aftrekken",
+    articleBasicUrl: "/nl/mentalc/single-digit-addition-subtraction/",
+    articleMulDiv: "Vermenigvuldigen en delen",
+    articleMulDivUrl: "/nl/mentalc/single-digit-multiplication-division/",
   },
   ko: {
     privacy: "개인정보",
@@ -266,7 +302,57 @@ const mainUiText = {
     articleUrl: "/ko/mentalc/two-digit-multiplication/",
     articleStrategies: "곱셈 전략",
     articleStrategiesUrl: "/ko/mentalc/mental-math-multiplication-strategies/",
+    articleBasic: "덧셈과 뺄셈",
+    articleBasicUrl: "/ko/mentalc/single-digit-addition-subtraction/",
+    articleMulDiv: "곱셈과 나눗셈",
+    articleMulDivUrl: "/ko/mentalc/single-digit-multiplication-division/",
   },
+};
+
+mainUiText.id = {
+  privacy: "Privasi",
+  terms: "Ketentuan",
+  contact: "Kontak",
+  article: "Artikel",
+  questionUnitShort: "soal",
+  digitUnitShort: "digit",
+  digitUnitPlural: "digit",
+  time: "Waktu",
+  accuracy: "Akurasi",
+  shareResult: "Bagikan hasil",
+  share: "Bagikan",
+  home: "HOME",
+  retry: "ULANGI",
+  articleUrl: "/id/mentalc/two-digit-multiplication/",
+  articleStrategies: "Strategi perkalian",
+  articleStrategiesUrl: "/id/mentalc/mental-math-multiplication-strategies/",
+  articleBasic: "Penjumlahan & pengurangan",
+  articleBasicUrl: "/id/mentalc/single-digit-addition-subtraction/",
+  articleMulDiv: "Perkalian & pembagian",
+  articleMulDivUrl: "/id/mentalc/single-digit-multiplication-division/",
+};
+
+mainUiText.hi = {
+  privacy: "गोपनीयता",
+  terms: "नियम",
+  contact: "संपर्क",
+  article: "लेख",
+  questionUnitShort: "प्रश्न",
+  digitUnitShort: "अंक",
+  digitUnitPlural: "अंक",
+  time: "समय",
+  accuracy: "सटीकता",
+  shareResult: "परिणाम साझा करें",
+  share: "साझा करें",
+  home: "HOME",
+  retry: "फिर से",
+  articleUrl: "/hi/mentalc/two-digit-multiplication/",
+  articleStrategies: "गुणा की रणनीतियां",
+  articleStrategiesUrl: "/hi/mentalc/mental-math-multiplication-strategies/",
+  articleBasic: "जोड़ और घटाव",
+  articleBasicUrl: "/hi/mentalc/single-digit-addition-subtraction/",
+  articleMulDiv: "गुणा और भाग",
+  articleMulDivUrl: "/hi/mentalc/single-digit-multiplication-division/",
 };
 
 const recordStorageKey = "mentalc-records-v1";
@@ -1294,6 +1380,160 @@ const translations = {
   },
 };
 
+translations.id = {
+  ...translations.en,
+  htmlLang: "id",
+  dailyChallenge: "Tantangan harian",
+  dailyChallengeRecord: "Harian",
+  dailyChallengePreviewLabel: "Tantangan harian",
+  dailyChallengePreviewTitle: "5 soal setiap hari",
+  dailyChallengePreviewBody: "Coba set soal tetap untuk hari ini.",
+  dailyChallengeStart: "Mulai harian",
+  dailyBestLabel: "Terbaik hari ini",
+  dailyBestEmpty: "Belum ada catatan",
+  dailyBestBody: "Selesaikan tantangan hari ini untuk menyimpan waktu terbaik di perangkat ini.",
+  dailyBestDetail: "{time} / akurasi {accuracy}",
+  shareResult: "Bagikan",
+  shareMentalcText: "Saya menyelesaikan {questions} di Mentalc dalam {time}.",
+  siteTagline: "Latihan otak sederhana untuk jeda singkat.",
+  tagline: "Mental math, singkat dan stabil.",
+  language: "Bahasa",
+  progressStatus: "Kemajuan",
+  gameArea: "Game matematika mental",
+  settings: "Pengaturan",
+  gameSelectTitle: "Pilih game",
+  gameSelectIntro: "Mentalc adalah situs sederhana untuk game latihan otak, mental math, latihan berhitung, dan permainan matematika singkat.",
+  mentalMathLabel: "Game matematika mental",
+  mentalMathTitle: "Mentalc",
+  mentalMathBody: "Pilih digit, operasi aritmetika, dan jumlah soal untuk melatih mental math, kecepatan hitung, dan respons cepat.",
+  playMentalMath: "Mainkan",
+  start: "Mulai",
+  leftDigits: "Kiri",
+  rightDigits: "Kanan",
+  operation: "Operasi",
+  questionCount: "Soal",
+  result: "Hasil",
+  retry: "Ulangi",
+  backToSettings: "Kembali ke pengaturan",
+  totalTime: "Waktu total",
+  averageTime: "Waktu per soal",
+  question: "Soal",
+  answer: "Jawaban",
+  time: "Waktu",
+  mistakes: "Salah",
+  keypad: "Keypad",
+  inputHint: "Masukkan dengan keypad",
+  wrong: "Salah",
+  ad: "Iklan",
+  adPlaceholder: "Ruang iklan",
+  digitUnit: " digit",
+  questionUnit: " soal",
+  secondUnit: " dtk",
+  operations: ["Penjumlahan", "Pengurangan", "Perkalian", "Pembagian"],
+  aboutTitle: "Tentang Mentalc",
+  aboutBody: "Mentalc adalah game mental math sederhana untuk latihan penjumlahan, pengurangan, perkalian, dan pembagian.",
+  howToTitle: "Cara bermain",
+  howToBody: "Pilih jumlah digit, operasi, dan jumlah soal, lalu mulai. Masukkan jawaban dengan keypad layar atau keyboard.",
+  practiceTitle: "Tips latihan",
+  practiceBody: "Mulailah dari penjumlahan satu digit. Setelah nyaman, tingkatkan digit atau tambahkan perkalian.",
+  siteGuideTitle: "Yang bisa dilatih di Mentalc",
+  siteGuideBody: "Mentalc membantu latihan penjumlahan, pengurangan, perkalian, dan pembagian dengan kecepatan Anda sendiri.",
+  siteGuideHowTitle: "Cocok untuk latihan harian singkat",
+  siteGuideHowBody: "Saat jawaban benar, soal berikutnya langsung muncul. Layar hasil menampilkan waktu, akurasi, dan catatan terbaru.",
+  siteGuideArticleTitle: "Artikel belajar mental math",
+  siteGuideArticleBody: "Mentalc juga menyediakan artikel tentang cara menghitung perkalian dua digit secara mental.",
+  recordsTitle: "Catatan terbaru",
+  clearRecords: "Hapus",
+  noRecords: "Belum ada catatan.",
+  bestRecord: "Terbaik",
+  latestRecord: "Terbaru",
+  privacyTitle: "Kebijakan Privasi",
+  privacyBody: "Mentalc menyimpan catatan game terbaru hanya di browser perangkat ini. Catatan ini tidak dikirim ke server. Jika iklan atau analitik diaktifkan, penyedia pihak ketiga dapat menggunakan cookie, ID iklan, alamat IP, informasi browser, atau teknologi serupa.",
+  termsTitle: "Ketentuan Penggunaan",
+  termsBody: "Mentalc adalah situs gratis untuk latihan otak, mental math, dan game matematika. Akurasi dan ketersediaan berkelanjutan tidak dijamin. Pengguna memakai situs ini atas tanggung jawab sendiri.",
+  contactTitle: "Kontak",
+  contactBody: "Untuk masukan, laporan bug, iklan, atau pertanyaan operasional situs, gunakan Google Form.",
+  contactFormLink: "Buka formulir kontak",
+  footerBack: "Kembali ke game",
+};
+
+translations.hi = {
+  ...translations.en,
+  htmlLang: "hi",
+  dailyChallenge: "दैनिक चुनौती",
+  dailyChallengeRecord: "दैनिक",
+  dailyChallengePreviewLabel: "दैनिक चुनौती",
+  dailyChallengePreviewTitle: "हर दिन 5 प्रश्न",
+  dailyChallengePreviewBody: "आज के निश्चित प्रश्नों को हल करें.",
+  dailyChallengeStart: "दैनिक शुरू करें",
+  dailyBestLabel: "आज का सर्वश्रेष्ठ",
+  dailyBestEmpty: "अभी कोई रिकॉर्ड नहीं",
+  dailyBestBody: "आज की चुनौती पूरी करके इस डिवाइस पर अपना सर्वश्रेष्ठ समय सेव करें.",
+  dailyBestDetail: "{time} / सटीकता {accuracy}",
+  shareResult: "साझा करें",
+  shareMentalcText: "मैंने Mentalc पर {questions} को {time} में पूरा किया.",
+  siteTagline: "छोटे ब्रेक के लिए सरल ब्रेन ट्रेनिंग.",
+  tagline: "Mental math, छोटा और स्थिर.",
+  language: "भाषा",
+  progressStatus: "प्रगति",
+  gameArea: "मानसिक गणना गेम",
+  settings: "सेटिंग",
+  gameSelectTitle: "गेम चुनें",
+  gameSelectIntro: "Mentalc ब्रेन ट्रेनिंग, mental math, गणित अभ्यास और छोटे arithmetic drills के लिए एक सरल साइट है.",
+  mentalMathLabel: "मानसिक गणना गेम",
+  mentalMathTitle: "Mentalc",
+  mentalMathBody: "अंकों, गणितीय क्रिया और प्रश्नों की संख्या चुनकर mental math, calculation speed और तेज प्रतिक्रिया का अभ्यास करें.",
+  playMentalMath: "खेलें",
+  start: "शुरू",
+  leftDigits: "बायां",
+  rightDigits: "दायां",
+  operation: "क्रिया",
+  questionCount: "प्रश्न",
+  result: "परिणाम",
+  retry: "फिर से",
+  backToSettings: "सेटिंग पर लौटें",
+  totalTime: "कुल समय",
+  averageTime: "प्रति प्रश्न समय",
+  question: "प्रश्न",
+  answer: "उत्तर",
+  time: "समय",
+  mistakes: "गलतियां",
+  keypad: "कीपैड",
+  inputHint: "कीपैड से उत्तर दें",
+  wrong: "गलत",
+  ad: "विज्ञापन",
+  adPlaceholder: "विज्ञापन स्थान",
+  digitUnit: " अंक",
+  questionUnit: " प्रश्न",
+  secondUnit: " सेकंड",
+  operations: ["जोड़", "घटाव", "गुणा", "भाग"],
+  aboutTitle: "Mentalc के बारे में",
+  aboutBody: "Mentalc जोड़, घटाव, गुणा और भाग के अभ्यास के लिए एक सरल mental math game है.",
+  howToTitle: "कैसे खेलें",
+  howToBody: "अंकों की संख्या, क्रिया और प्रश्नों की संख्या चुनें, फिर शुरू करें. स्क्रीन कीपैड या keyboard से उत्तर दें.",
+  practiceTitle: "अभ्यास टिप्स",
+  practiceBody: "एक अंक के जोड़ से शुरू करें. सहज होने पर अंक बढ़ाएं या गुणा जोड़ें.",
+  siteGuideTitle: "Mentalc में क्या अभ्यास कर सकते हैं",
+  siteGuideBody: "Mentalc में आप जोड़, घटाव, गुणा और भाग का अभ्यास अपनी गति से कर सकते हैं.",
+  siteGuideHowTitle: "छोटे दैनिक अभ्यास के लिए बनाया गया",
+  siteGuideHowBody: "सही उत्तर देते ही अगला प्रश्न तुरंत आता है. परिणाम स्क्रीन समय, सटीकता और हाल के रिकॉर्ड दिखाती है.",
+  siteGuideArticleTitle: "Mental math सीखने का लेख",
+  siteGuideArticleBody: "Mentalc में दो अंकों की गुणा को मन में हल करने का लेख भी है.",
+  recordsTitle: "हाल के रिकॉर्ड",
+  clearRecords: "हटाएं",
+  noRecords: "अभी कोई रिकॉर्ड नहीं.",
+  bestRecord: "सर्वश्रेष्ठ",
+  latestRecord: "नया",
+  privacyTitle: "गोपनीयता नीति",
+  privacyBody: "Mentalc हाल के गेम रिकॉर्ड केवल इसी डिवाइस के browser में सेव करता है. ये रिकॉर्ड server पर नहीं भेजे जाते. यदि विज्ञापन या analytics सक्षम हैं, तो third-party providers cookies, advertising IDs, IP address, browser information या समान तकनीक का उपयोग कर सकते हैं.",
+  termsTitle: "उपयोग की शर्तें",
+  termsBody: "Mentalc brain training, mental math और गणित अभ्यास के लिए एक मुफ्त साइट है. सटीकता या निरंतर उपलब्धता की गारंटी नहीं है. उपयोगकर्ता इस साइट का उपयोग अपनी जिम्मेदारी पर करते हैं.",
+  contactTitle: "संपर्क",
+  contactBody: "प्रतिक्रिया, bug report, विज्ञापन या साइट संचालन से जुड़ी पूछताछ के लिए Google Form का उपयोग करें.",
+  contactFormLink: "संपर्क फॉर्म खोलें",
+  footerBack: "गेम पर लौटें",
+};
+
 const operationKeys = ["add", "subtract", "multiply", "divide", "all"];
 const operationSymbols = {
   add: "＋",
@@ -1385,7 +1625,7 @@ function formatSeconds(value) {
 }
 
 function formatPreciseSeconds(milliseconds) {
-  return `${(milliseconds / 1000).toFixed(2)}秒`;
+  return formatDuration(milliseconds);
 }
 
 function clampNumericInput(input, min, max) {
@@ -1549,6 +1789,31 @@ function updateMainUiText() {
   document.querySelectorAll(".article-extra-link").forEach((link) => {
     link.textContent = ui.articleStrategies;
     link.href = ui.articleStrategiesUrl;
+  });
+
+  document.querySelectorAll(".article-basic-link").forEach((link) => {
+    link.textContent = ui.articleBasic;
+    link.href = ui.articleBasicUrl;
+  });
+
+  document.querySelectorAll(".article-muldiv-link").forEach((link) => {
+    link.textContent = ui.articleMulDiv;
+    link.href = ui.articleMulDivUrl;
+  });
+
+  document.querySelectorAll(".footer-privacy-link").forEach((link) => {
+    link.textContent = ui.privacy;
+    link.href = "/privacy/";
+  });
+
+  document.querySelectorAll(".footer-terms-link").forEach((link) => {
+    link.textContent = ui.terms;
+    link.href = "/terms/";
+  });
+
+  document.querySelectorAll(".footer-contact-link").forEach((link) => {
+    link.textContent = ui.contact;
+    link.href = "/contact/";
   });
 
   document.querySelectorAll('.quick-row[data-setting="questionCount"] button[data-value]').forEach((button) => {
@@ -2087,7 +2352,7 @@ function refreshResultStats() {
   els.totalTimeStat.textContent = formatDuration(state.totalTime);
   els.averageTimeStat.textContent = formatSeconds(state.averageTime / 1000);
   if (els.simpleTotalTimeStat) {
-    els.simpleTotalTimeStat.textContent = formatPreciseSeconds(state.totalTime);
+    els.simpleTotalTimeStat.textContent = formatDuration(state.totalTime);
   }
   if (els.accuracyStat) {
     els.accuracyStat.textContent = `${getAccuracyPercent()}%`;
@@ -2281,11 +2546,11 @@ function renderPolyoleRecords() {
 }
 
 function formatDuration(ms) {
-  const totalTenths = Math.floor(ms / 100);
-  const minutes = Math.floor(totalTenths / 600);
-  const seconds = Math.floor((totalTenths % 600) / 10);
-  const tenths = totalTenths % 10;
-  return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}.${tenths}`;
+  const totalCentiseconds = Math.floor(ms / 10);
+  const minutes = Math.floor(totalCentiseconds / 6000);
+  const seconds = Math.floor((totalCentiseconds % 6000) / 100);
+  const centiseconds = totalCentiseconds % 100;
+  return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}.${String(centiseconds).padStart(2, "0")}`;
 }
 
 function getShareUrl() {
