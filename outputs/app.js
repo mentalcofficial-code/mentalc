@@ -6,6 +6,7 @@
   tagline: document.querySelector("[data-i18n='tagline']"),
   adFallback: document.querySelector("#adFallback"),
   adsenseContainer: document.querySelector("#adsenseContainer"),
+  adsterraContainer: document.querySelector("#adsterraContainer"),
   contactFormLink: document.querySelector("#contactFormLink"),
   footerBackLink: document.querySelector("[data-i18n='footerBack']"),
   miniStats: document.querySelector(".mini-stats"),
@@ -1851,13 +1852,23 @@ function updateFooterBackLink() {
 
 function initAdsense() {
   if (!adsenseConfig.clientId || !adsenseConfig.slotId) {
-    els.adFallback.classList.remove("is-hidden");
+    if (els.adsterraContainer) {
+      els.adFallback.classList.add("is-hidden");
+      els.adsterraContainer.classList.remove("is-hidden");
+      els.adsterraContainer.removeAttribute("aria-hidden");
+    } else {
+      els.adFallback.classList.remove("is-hidden");
+    }
     els.adsenseContainer.classList.add("is-hidden");
     els.adsenseContainer.setAttribute("aria-hidden", "true");
     return;
   }
 
   els.adFallback.classList.add("is-hidden");
+  if (els.adsterraContainer) {
+    els.adsterraContainer.classList.add("is-hidden");
+    els.adsterraContainer.setAttribute("aria-hidden", "true");
+  }
   els.adsenseContainer.classList.remove("is-hidden");
   els.adsenseContainer.removeAttribute("aria-hidden");
 

@@ -987,6 +987,31 @@ tbody tr:last-child td {
   min-height: 250px;
 }
 
+.adsterra-container {
+  width: 320px;
+  max-width: 100%;
+  min-height: 50px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.adsterra-container iframe {
+  max-width: 100%;
+}
+
+.native-ad-slot {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto 28px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.native-ad-slot > div {
+  max-width: 100%;
+}
+
 .site-info {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto 28px;
