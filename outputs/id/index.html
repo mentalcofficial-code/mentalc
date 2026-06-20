@@ -51,7 +51,7 @@
       gtag("js", new Date());
       gtag("config", "G-GH29NN7Y5D");
     </script>
-    <link rel="stylesheet" href="./styles.css?v=20260619-adsterra2" />
+    <link rel="stylesheet" href="./styles.css?v=20260620-article-native-ad1" />
   </head>
   <body>
     <header class="topbar">
@@ -59,12 +59,12 @@
         <img class="menta-header" src="/assets/menta-header.png?v=20260617-menta2" alt="" aria-hidden="true" />
         <div class="topbar-title">
           <h1>Mentalc</h1>
-        <p data-i18n="tagline">短く遊べる、シンプルな脳トレ。</p>
+        <p data-i18n="tagline">Mental math, short and steady.</p>
               </div>
       </div>
       <div class="topbar-tools">
         <label class="language-control">
-          <span data-i18n="language">言語</span>
+          <span data-i18n="language">Language</span>
           <select id="languageSelect">
             <option value="ja">日本語</option>
             <option value="en">English</option>
@@ -80,7 +80,7 @@
           </select>
         </label>
         <button id="themeToggle" class="theme-toggle" type="button" aria-label="Dark mode" title="Dark mode">☾</button>
-        <div class="mini-stats is-hidden" data-i18n-aria="progressStatus" aria-label="進行状況">
+        <div class="mini-stats is-hidden" data-i18n-aria="progressStatus" aria-label="Progress">
           <span id="progressText">0 / 20</span>
           <span id="timerText">00:00.0</span>
         </div>
@@ -88,14 +88,12 @@
     </header>
 
     <main class="layout">
-      <section class="workspace" data-i18n-aria="gameArea" aria-label="暗算ゲーム">
+      <section class="workspace" data-i18n-aria="gameArea" aria-label="Mental math game">
         <div id="gameSelectPanel" class="panel is-hidden">
           <div class="panel-head">
             <div>
-              <h2 data-i18n="gameSelectTitle">ゲーム選択</h2>
-              <p class="panel-subtitle" data-i18n="gameSelectIntro">
-                Mentalcは、暗算、脳トレ、パズルなどを短い時間で遊べるシンプルなゲームサイトです。
-              </p>
+              <h2 data-i18n="gameSelectTitle">Choose a game</h2>
+              <p class="panel-subtitle" data-i18n="gameSelectIntro">Mentalc is a simple site for brain training games, mental math practice, math games, and logic puzzles. More games for focus, calculation speed, and spatial thinking will be added over time.</p>
             </div>
           </div>
 
@@ -103,12 +101,12 @@
             <article class="game-card">
               <img class="game-card-image" src="/assets/mentalc-card.png" alt="Mentalc" loading="lazy" />
               <div>
-                <span class="game-card-label" data-i18n="mentalMathLabel">暗算ゲーム</span>
+                <span class="game-card-label" data-i18n="mentalMathLabel">Mental math game</span>
                 <h3 data-i18n="mentalMathTitle">Mentalc</h3>
-                <p data-i18n="mentalMathBody">桁数、演算、問題数を選んで、計算力と反応の速さを練習します。</p>
+                <p data-i18n="mentalMathBody">Choose digits, arithmetic operations, and question count to practice mental math, calculation speed, and quick responses.</p>
               </div>
               <div class="game-card-links">
-                <button id="openMentalMathButton" class="primary-button" type="button" data-i18n="playMentalMath">このゲームで遊ぶ</button>
+                <button id="openMentalMathButton" class="primary-button" type="button" data-i18n="playMentalMath">Play this game</button>
                 
               </div>
             </article>
@@ -117,93 +115,94 @@
 
         <div id="setupPanel" class="panel is-hidden">
           <div class="panel-head">
-            <h2 data-i18n="settings">設定</h2>
+            <h2 data-i18n="settings">Settings</h2>
             <div class="panel-actions">
-              <button id="backToGamesButton" class="ghost-button is-hidden" type="button" data-i18n="backToGames">ゲーム選択へ戻る</button>
+              <button id="backToGamesButton" class="ghost-button is-hidden" type="button" data-i18n="backToGames">Back to games</button>
               <button id="dailyChallengeButton" class="ghost-button daily-button" type="button" data-i18n="dailyChallenge">Daily Challenge</button>
-              <button id="startButton" class="primary-button" type="button" data-i18n="start">開始</button>
+              <button id="startButton" class="primary-button" type="button" data-i18n="start">Start</button>
             </div>
           </div>
 
           <div class="quick-settings" aria-label="Mentalc settings">
             <div class="quick-row" data-setting="questionCount">
-              <button type="button" data-value="10">10問</button>
-              <button type="button" data-value="20">20問</button>
-              <button type="button" data-value="50">50問</button>
-              <button type="button" data-value="100">100問</button>
-              <label><input id="quickQuestionCount" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" aria-label="問題数を入力" /><span>問</span></label>
+              <button type="button" data-value="10">10 Q</button>
+              <button type="button" data-value="20">20 Q</button>
+              <button type="button" data-value="50">50 Q</button>
+              <button type="button" data-value="100">100 Q</button>
+              <label><input id="quickQuestionCount" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" aria-label="Q" /><span>Q</span></label>
             </div>
             <div class="quick-row" data-setting="leftDigits">
-              <button type="button" data-value="1">1桁</button>
-              <button type="button" data-value="2">2桁</button>
-              <button type="button" data-value="3">3桁</button>
-              <button type="button" data-value="4">4桁</button>
-              <label><input id="quickLeftDigits" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" aria-label="左の桁数を入力" /><span>桁</span></label>
+              <button type="button" data-value="1">1 digit</button>
+              <button type="button" data-value="2">2 digits</button>
+              <button type="button" data-value="3">3 digits</button>
+              <button type="button" data-value="4">4 digits</button>
+              <label><input id="quickLeftDigits" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" aria-label="L" /><span>digit</span></label>
             </div>
             <div class="quick-row" data-setting="rightDigits">
-              <button type="button" data-value="1">1桁</button>
-              <button type="button" data-value="2">2桁</button>
-              <button type="button" data-value="3">3桁</button>
-              <button type="button" data-value="4">4桁</button>
-              <label><input id="quickRightDigits" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" aria-label="右の桁数を入力" /><span>桁</span></label>
+              <button type="button" data-value="1">1 digit</button>
+              <button type="button" data-value="2">2 digits</button>
+              <button type="button" data-value="3">3 digits</button>
+              <button type="button" data-value="4">4 digits</button>
+              <label><input id="quickRightDigits" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" aria-label="R" /><span>digit</span></label>
             </div>
             <div class="quick-row operation-row" data-setting="operation">
               <button type="button" data-value="0">＋</button>
               <button type="button" data-value="1">－</button>
               <button type="button" data-value="2">×</button>
               <button type="button" data-value="3">÷</button>
-              <button type="button" data-value="4">＋−×÷</button>
+              <button type="button" data-value="4">%</button>
+              <button type="button" data-value="5">＋−×÷</button>
             </div>
           </div>
 
           <div class="setup-records">
             <div class="setup-records-head">
-              <span data-i18n="recordsTitle">最近の記録</span>
-              <button id="clearRecordsButton" class="ghost-button compact-button" type="button" data-i18n="clearRecords">消去</button>
+              <span data-i18n="recordsTitle">Recent Records</span>
+              <button id="clearRecordsButton" class="ghost-button compact-button" type="button" data-i18n="clearRecords">Clear</button>
             </div>
-            <p id="recordSummary" class="record-summary" data-i18n="noRecords">まだ記録はありません。</p>
+            <p id="recordSummary" class="record-summary" data-i18n="noRecords">No records yet.</p>
             <ol id="recordList" class="record-list"></ol>
           </div>
 
           <div class="settings-grid">
             <div class="setting-control">
               <div class="setting-label">
-                <span data-i18n="leftDigits">左の桁数</span>
-                <strong id="leftDigitsValue">1桁</strong>
+                <span data-i18n="leftDigits">L</span>
+                <strong id="leftDigitsValue">1 digit</strong>
               </div>
               <input id="leftDigits" type="range" min="1" max="10" value="1" />
             </div>
 
             <div class="setting-control">
               <div class="setting-label">
-                <span data-i18n="rightDigits">右の桁数</span>
-                <strong id="rightDigitsValue">1桁</strong>
+                <span data-i18n="rightDigits">R</span>
+                <strong id="rightDigitsValue">1 digit</strong>
               </div>
               <input id="rightDigits" type="range" min="1" max="10" value="1" />
             </div>
 
             <div class="setting-control">
               <div class="setting-label">
-                <span data-i18n="operation">演算</span>
-                <strong id="operationValue">足し算</strong>
+                <span data-i18n="operation">Op</span>
+                <strong id="operationValue">+</strong>
               </div>
-              <input id="operation" type="range" min="0" max="4" value="0" />
+              <input id="operation" type="range" min="0" max="5" value="0" />
             </div>
 
             <div class="setting-control question-control">
               <div class="setting-label">
-                <span data-i18n="questionCount">問題数</span>
+                <span data-i18n="questionCount">Q</span>
                 <input id="questionCount" type="number" min="1" max="500" value="20" />
               </div>
               <input id="questionCountSlider" type="range" min="1" max="500" value="20" />
             </div>
           </div>
-          <div class="challenge-preview" aria-label="Daily challenge">
+          <div class="challenge-preview" aria-label="Daily Challenge">
             <article class="challenge-preview-card challenge-action-card">
               <img class="menta-card" src="/assets/menta-card.png?v=20260618-menta4" alt="" aria-hidden="true" />
               <span data-i18n="dailyChallengePreviewLabel">Daily Challenge</span>
               <strong data-i18n="dailyChallengePreviewTitle">5 questions every day</strong>
-              <p data-i18n="dailyChallengePreviewBody">A fixed daily set can go here.</p>
+              <p data-i18n="dailyChallengePreviewBody">Try today's fixed set of questions.</p>
               <button id="dailyChallengeStartButton" class="ghost-button daily-button" type="button" data-i18n="dailyChallengeStart">Start daily</button>
             </article>
             <article class="challenge-preview-card daily-best-card">
@@ -219,9 +218,9 @@
             <span id="questionText" class="question">3 + 5</span>
             <span id="answerText" class="answer" aria-live="polite"></span>
           </div>
-          <div id="feedbackText" class="feedback" aria-live="polite">テンキーで入力</div>
+          <div id="feedbackText" class="feedback" aria-live="polite">Enter with keypad</div>
 
-          <div class="keypad" data-i18n-aria="keypad" aria-label="テンキー">
+          <div class="keypad" data-i18n-aria="keypad" aria-label="Keypad">
             <button type="button" data-key="7">7</button>
             <button type="button" data-key="8">8</button>
             <button type="button" data-key="9">9</button>
@@ -237,33 +236,33 @@
           </div>
 
           <div class="game-actions">
-            <button id="resetButton" class="ghost-button" type="button" data-i18n="backToSettings">設定へ戻る</button>
+            <button id="resetButton" class="ghost-button" type="button" data-i18n="backToSettings">Back to settings</button>
           </div>
         </div>
 
         <div id="resultPanel" class="panel is-hidden">
           <img class="menta-result" src="/assets/menta-result.png?v=20260618-menta4" alt="" aria-hidden="true" />
           <div class="panel-head">
-            <h2 data-i18n="result">結果</h2>
+            <h2 data-i18n="result">Result</h2>
             <div class="result-actions">
-              <button id="shareMentalcButton" class="ghost-button share-button" type="button">シェア</button>
-              <button id="shareMentalcImageButton" class="ghost-button share-button" type="button">画像</button>
-              <button id="retryButton" class="primary-button" type="button" data-i18n="retry">もう一度</button>
-              <button id="backToSetupButton" class="ghost-button" type="button" data-i18n="backToSettings">設定へ戻る</button>
+              <button id="shareMentalcButton" class="ghost-button share-button" type="button">Share</button>
+              <button id="shareMentalcImageButton" class="ghost-button share-button" type="button">Image</button>
+              <button id="retryButton" class="primary-button" type="button" data-i18n="retry">Retry</button>
+              <button id="backToSetupButton" class="ghost-button" type="button" data-i18n="backToSettings">Back to settings</button>
             </div>
           </div>
           <div class="simple-result">
             <div>
-              <span>タイム</span>
+              <span>Time</span>
               <strong id="simpleTotalTimeStat">00:00.00</strong>
             </div>
             <div>
-              <span>正答率</span>
+              <span>Accuracy</span>
               <strong id="accuracyStat">100%</strong>
             </div>
             <div class="simple-share">
-              <span>結果をシェア</span>
-              <button id="simpleShareMentalcButton" class="primary-button share-button" type="button">シェア</button>
+              <span>Share result</span>
+              <button id="simpleShareMentalcButton" class="primary-button share-button" type="button">Share</button>
             </div>
             <div class="simple-result-actions">
               <button id="homeButton" class="ghost-button" type="button">HOME</button>
@@ -272,26 +271,26 @@
           </div>
           <div class="result-grid">
             <div>
-              <span data-i18n="questionCount">問題数</span>
-              <strong id="questionTotalStat">20問</strong>
+              <span data-i18n="questionCount">Q</span>
+              <strong id="questionTotalStat">20 Q</strong>
             </div>
             <div>
-              <span data-i18n="totalTime">合計時間</span>
+              <span data-i18n="totalTime">Total time</span>
               <strong id="totalTimeStat">00:00.00</strong>
             </div>
             <div>
-              <span data-i18n="averageTime">平均時間</span>
-              <strong id="averageTimeStat">0.0秒</strong>
+              <span data-i18n="averageTime">Average time</span>
+              <strong id="averageTimeStat">0.0 sec</strong>
             </div>
           </div>
           <div class="history-wrap">
             <table>
               <thead>
                 <tr>
-                  <th data-i18n="question">問題</th>
-                  <th data-i18n="answer">答え</th>
-                  <th data-i18n="time">時間</th>
-                  <th data-i18n="mistakes">ミス</th>
+                  <th data-i18n="question">Question</th>
+                  <th data-i18n="answer">Answer</th>
+                  <th data-i18n="time">Time</th>
+                  <th data-i18n="mistakes">Misses</th>
                 </tr>
               </thead>
               <tbody id="historyBody"></tbody>
@@ -303,64 +302,64 @@
           <div class="panel-head">
             <div>
               <h2 data-i18n="polyominoTitle">Polyole</h2>
-              <p class="panel-subtitle" data-i18n="polyominoIntro">ピースを選び、盤面をすき間なく埋めてください。</p>
+              <p class="panel-subtitle" data-i18n="polyominoIntro">Choose a piece and fill the board without gaps.</p>
             </div>
             <div class="panel-actions">
-              <button id="polyominoBackButton" class="ghost-button" type="button" data-i18n="backToGames">ゲーム選択へ戻る</button>
-              <button id="polyominoNewButton" class="primary-button" type="button" data-i18n="newPuzzle">新しい問題</button>
+              <button id="polyominoBackButton" class="ghost-button" type="button" data-i18n="backToGames">Back to games</button>
+              <button id="polyominoNewButton" class="primary-button" type="button" data-i18n="newPuzzle">New puzzle</button>
             </div>
           </div>
 
           <div class="polyomino-settings">
             <div class="setting-control">
               <div class="setting-label">
-                <span data-i18n="boardSize">盤面サイズ</span>
+                <span data-i18n="boardSize">Board size</span>
                 <input id="polyominoSizeInput" type="number" min="3" max="8" value="5" />
               </div>
               <input id="polyominoSizeSlider" type="range" min="3" max="8" value="5" />
             </div>
             <div class="polyomino-actions">
               <button id="polyominoDailyButton" class="ghost-button daily-button" type="button" data-i18n="polyoleDailyChallenge">Daily Challenge</button>
-              <button id="polyominoStartButton" class="primary-button" type="button" data-i18n="start">開始</button>
-              <button id="polyominoRotateButton" class="ghost-button" type="button" data-i18n="rotatePiece">回転</button>
-              <button id="polyominoUndoButton" class="ghost-button" type="button" data-i18n="undoMove">戻す</button>
-              <button id="polyominoResetButton" class="ghost-button" type="button" data-i18n="resetPuzzle">リセット</button>
+              <button id="polyominoStartButton" class="primary-button" type="button" data-i18n="start">Start</button>
+              <button id="polyominoRotateButton" class="ghost-button" type="button" data-i18n="rotatePiece">Rotate</button>
+              <button id="polyominoUndoButton" class="ghost-button" type="button" data-i18n="undoMove">Undo</button>
+              <button id="polyominoResetButton" class="ghost-button" type="button" data-i18n="resetPuzzle">Reset</button>
             </div>
           </div>
 
           <p id="polyominoStatus" class="polyomino-status" aria-live="polite"></p>
 
           <div class="polyomino-play is-hidden">
-            <div id="polyominoBoard" class="polyomino-board" aria-label="ポリオミノ盤面"></div>
-            <div id="polyominoPieces" class="polyomino-pieces" aria-label="ポリオミノピース"></div>
+            <div id="polyominoBoard" class="polyomino-board" aria-label="Polyole"></div>
+            <div id="polyominoPieces" class="polyomino-pieces" aria-label="Polyole"></div>
           </div>
 
           <div id="polyoleResult" class="polyole-result is-hidden">
-            <h3 data-i18n="polyoleResultTitle">Polyole 結果</h3>
-            <p data-i18n="completedBoard">完成した盤面</p>
+            <h3 data-i18n="polyoleResultTitle">Polyole Result</h3>
+            <p data-i18n="completedBoard">Completed board</p>
             <div class="result-grid">
               <div>
-                <span data-i18n="boardSize">盤面サイズ</span>
+                <span data-i18n="boardSize">Board size</span>
                 <strong id="polyoleResultSize">5 x 5</strong>
               </div>
               <div>
-                <span data-i18n="totalTime">合計時間</span>
+                <span data-i18n="totalTime">Total time</span>
                 <strong id="polyoleResultTime">00:00.0</strong>
               </div>
             </div>
             <div class="result-actions result-share-actions">
-              <button id="sharePolyoleButton" class="ghost-button share-button" type="button" data-i18n="shareResult">共有</button>
+              <button id="sharePolyoleButton" class="ghost-button share-button" type="button" data-i18n="shareResult">Share</button>
             </div>
           </div>
         </div>
       </section>
 
-      <aside class="ad-slot" data-i18n-aria="ad" aria-label="広告">
+      <aside class="ad-slot" data-i18n-aria="ad" aria-label="Ad">
         <div id="adFallback" class="ad-fallback">
-          <span data-i18n="ad">広告</span>
-          <p data-i18n="adPlaceholder">ここに広告枠を配置</p>
+          <span data-i18n="ad">Ad</span>
+          <p data-i18n="adPlaceholder">Ad space</p>
         </div>
-        <div id="adsterraContainer" class="adsterra-container" aria-label="Advertisement">
+        <div id="adsterraContainer" class="adsterra-container" aria-label="Ad">
           <script>
             atOptions = {
               'key' : 'b489bd726b52798404e1c10878838fa4',
@@ -379,114 +378,90 @@
     <section class="site-info" aria-label="Site information">
       <div class="info-grid">
         <article class="info-panel mental-game-info is-hidden">
-          <h2 data-i18n="aboutTitle">Mentalcについて</h2>
-          <p data-i18n="aboutBody">
-            Mentalcは、足し算、引き算、掛け算、割り算を短い時間で練習できる暗算ゲームです。桁数と問題数を自由に変えて、暗算練習、計算力トレーニング、脳トレに使えます。
-          </p>
+          <h2 data-i18n="aboutTitle">About Mentalc</h2>
+          <p data-i18n="aboutBody">Mentalc is a simple mental math game for practicing addition, subtraction, multiplication, and division. Change the digit length and question count for arithmetic practice, calculation training, math drills, or brain training.</p>
         </article>
 
         <article class="info-panel mental-game-info is-hidden">
-          <h2 data-i18n="howToTitle">使い方</h2>
-          <p data-i18n="howToBody">
-            左右の桁数、演算、問題数を選んで開始します。答えは画面のテンキーかキーボードで入力できます。正解すると自動で次の問題に進み、最後に時間と履歴を確認できます。
-          </p>
+          <h2 data-i18n="howToTitle">How to Use</h2>
+          <p data-i18n="howToBody">Choose the digit length, operation, and number of questions, then start. Enter answers with the on-screen keypad or your keyboard. A correct answer moves to the next question automatically, and the result screen shows your time and history.</p>
         </article>
 
         <article class="info-panel mental-game-info is-hidden">
-          <h2 data-i18n="practiceTitle">暗算練習のコツ</h2>
-          <p data-i18n="practiceBody">
-            最初は1桁の足し算を少ない問題数で始め、慣れてきたら桁数や掛け算を増やすのがおすすめです。毎回の記録を見ながら、正確さを保ったまま少しずつ時間を縮めましょう。
-          </p>
+          <h2 data-i18n="practiceTitle">Practice Tips</h2>
+          <p data-i18n="practiceBody">Start with a small set of one-digit addition questions. As you get comfortable, increase the digit length or add multiplication. Use your recent records to reduce time gradually while keeping your answers accurate.</p>
         </article>
 
         <article class="info-panel record-panel polyole-game-info is-hidden">
           <div class="info-head">
-            <h2 data-i18n="polyoleRecordsTitle">Polyole 最近の記録</h2>
-            <button id="clearPolyoleRecordsButton" class="ghost-button compact-button" type="button" data-i18n="clearRecords">消去</button>
+            <h2 data-i18n="polyoleRecordsTitle">Recent Polyole Records</h2>
+            <button id="clearPolyoleRecordsButton" class="ghost-button compact-button" type="button" data-i18n="clearRecords">Clear</button>
           </div>
-          <p id="polyoleRecordSummary" class="record-summary" data-i18n="noRecords">まだ記録はありません。</p>
+          <p id="polyoleRecordSummary" class="record-summary" data-i18n="noRecords">No records yet.</p>
           <ol id="polyoleRecordList" class="record-list"></ol>
         </article>
 
         <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleAboutTitle">Polyoleについて</h2>
-          <p data-i18n="polyoleAboutBody">
-            Polyoleは、形の違うピースを正方形の盤面にすき間なく配置するパズルゲームです。
-          </p>
+          <h2 data-i18n="polyoleAboutTitle">About Polyole</h2>
+          <p data-i18n="polyoleAboutBody">Polyole is a polyomino-style logic puzzle game where you fill a square board with different shaped pieces. Change the board size to practice spatial thinking, focus, and trial-and-error in short sessions.</p>
         </article>
 
         <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleHowToTitle">Polyoleの遊び方</h2>
-          <p data-i18n="polyoleHowToBody">
-            盤面サイズを選び、ピースを選択して盤面をクリックします。必要に応じてピースを回転させ、すべてのマスを埋めます。
-          </p>
+          <h2 data-i18n="polyoleHowToTitle">How to Play Polyole</h2>
+          <p data-i18n="polyoleHowToBody">Choose a board size and start. Drag pieces onto the board, rotate or undo as needed, and fill every cell to complete the puzzle.</p>
         </article>
 
         <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleTipsTitle">Polyoleのコツ</h2>
-          <p data-i18n="polyoleTipsBody">
-            大きなピースや角に合うピースから置くと進めやすくなります。置けないときは回転や戻す操作を使いましょう。
-          </p>
+          <h2 data-i18n="polyoleTipsTitle">Polyole Tips</h2>
+          <p data-i18n="polyoleTipsBody">Start with large pieces or pieces that fit corners. When space gets tight, rotate pieces or undo moves to reduce awkward gaps.</p>
         </article>
 
         <article class="info-panel home-info article-info">
           <h2 data-i18n="siteGuideTitle">What you can practice with Mentalc</h2>
-          <p data-i18n="siteGuideBody">
-            Mentalc lets you practice addition, subtraction, multiplication, and division at your own pace. You can choose the question count, digit length, and operation, so the game works for quick arithmetic practice, mental math drills, and gradual calculation training.
-          </p>
+          <p data-i18n="siteGuideBody">Mentalc lets you practice addition, subtraction, multiplication, and division at your own pace. You can choose the question count, digit length, and operation, so the game works for quick arithmetic practice, mental math drills, and gradual calculation training.</p>
         </article>
 
         <article class="info-panel home-info">
           <h2 data-i18n="siteGuideHowTitle">Built for short daily sessions</h2>
-          <p data-i18n="siteGuideHowBody">
-            Enter answers with the on-screen keypad or your keyboard. When an answer is correct, the next question appears immediately. The result screen shows total time, accuracy, and recent records, making it easy to track steady progress.
-          </p>
+          <p data-i18n="siteGuideHowBody">Enter answers with the on-screen keypad or your keyboard. When an answer is correct, the next question appears immediately. The result screen shows total time, accuracy, and recent records, making it easy to track steady progress.</p>
         </article>
 
-        <article class="info-panel home-info">
+        <article class="info-panel home-info article-info">
           <h2 data-i18n="siteGuideArticleTitle">Mental math learning article</h2>
-          <p data-i18n="siteGuideArticleBody">
-            Mentalc also includes an article on multiplying two-digit numbers mentally. Reading the method before practicing can make the game more useful for building calculation habits.
-          </p>
-          <a class="contact-link article-link" href="/en/mentalc/two-digit-multiplication/" data-i18n="article">Article</a>
-          <a class="contact-link article-extra-link" href="/en/mentalc/mental-math-multiplication-strategies/">Multiplication strategies</a>
-          <a class="contact-link article-basic-link" href="/en/mentalc/single-digit-addition-subtraction/">Addition & subtraction</a>
-          <a class="contact-link article-muldiv-link" href="/en/mentalc/single-digit-multiplication-division/">Multiplication & division</a>
+          <p data-i18n="siteGuideArticleBody">Mentalc also includes an article on multiplying two-digit numbers mentally. Reading the method before practicing can make the game more useful for building calculation habits.</p>
+          <div class="article-card-grid">
+            <a class="contact-link article-card article-link" href="/id/mentalc/two-digit-multiplication/"><img class="article-card-thumb" src="/assets/articles/two-digit-multiplication-overview.png" alt="" loading="lazy" aria-hidden="true" /><span class="article-card-copy"><small>2 x 2</small><strong>Metode perkalian dua digit</strong></span></a>
+            <a class="contact-link article-card article-extra-link" href="/en/mentalc/mental-math-multiplication-strategies/"><img class="article-card-thumb" src="/assets/articles/mental-math-multiplication-strategies.png" alt="" loading="lazy" aria-hidden="true" /><span class="article-card-copy"><small>Tips</small><strong>Multiplication strategies</strong></span></a>
+            <a class="contact-link article-card article-basic-link" href="/en/mentalc/single-digit-addition-subtraction/"><img class="article-card-thumb" src="/assets/articles/single-digit-add-sub-add-four-three.png" alt="" loading="lazy" aria-hidden="true" /><span class="article-card-copy"><small>Basic</small><strong>Addition & subtraction</strong></span></a>
+            <a class="contact-link article-card article-muldiv-link" href="/en/mentalc/single-digit-multiplication-division/"><img class="article-card-thumb" src="/assets/articles/single-digit-mul-div-multiplication.png" alt="" loading="lazy" aria-hidden="true" /><span class="article-card-copy"><small>Basic</small><strong>Multiplication & division</strong></span></a>
+          </div>
         </article>
 
         <article class="info-panel home-info legal-panel">
           <details>
-            <summary data-i18n="privacyTitle">プライバシーポリシー</summary>
-            <p data-i18n="privacyBody">
-              Mentalcは、ゲームの最近の記録をこの端末のブラウザ内に保存します。サーバーへ送信しません。広告配信を行う場合、広告事業者がCookie等を使用することがあります。
-            </p>
+            <summary data-i18n="privacyTitle">Privacy Policy</summary>
+            <p data-i18n="privacyBody">Mentalc stores recent game records only in this browser on this device. These records are not sent to a server. If advertising or analytics are enabled, third-party providers may use cookies, advertising IDs, IP addresses, browser information, or similar technologies. Users can disable cookies in their browser settings.</p>
           </details>
         </article>
 
         <article class="info-panel home-info legal-panel">
           <details>
-            <summary data-i18n="termsTitle">利用規約</summary>
-            <p data-i18n="termsBody">
-              Mentalcは暗算練習を目的とした無料ゲームです。正確性や継続的な提供を保証するものではありません。利用者は自己の責任で本サイトを利用します。
-            </p>
+            <summary data-i18n="termsTitle">Terms of Use</summary>
+            <p data-i18n="termsBody">Mentalc is a free site for brain training, mental math, puzzle, and similar games. Accuracy and continuous availability are not guaranteed. Users use this site at their own responsibility.</p>
           </details>
         </article>
 
         <article class="info-panel home-info legal-panel">
           <details>
-            <summary data-i18n="contactTitle">お問い合わせ</summary>
-            <p data-i18n="contactBody">
-              お問い合わせはGoogleフォームからお送りください。
-            </p>
-            <a id="contactFormLink" class="contact-link is-hidden" href="#" target="_blank" rel="noopener" data-i18n="contactFormLink">
-              お問い合わせフォームを開く
-            </a>
+            <summary data-i18n="contactTitle">Contact</summary>
+            <p data-i18n="contactBody">For feedback, bug reports, advertising, or site operation inquiries, please use the Google Form.</p>
+            <a id="contactFormLink" class="contact-link is-hidden" href="#" target="_blank" rel="noopener" data-i18n="contactFormLink">Open contact form</a>
           </details>
         </article>
       </div>
     </section>
 
-    <section class="native-ad-slot" aria-label="Advertisement">
+    <section class="native-ad-slot" aria-label="Ad">
       <script async="async" data-cfasync="false" src="https://pl29792292.effectivecpmnetwork.com/e70b2b062f515d021390e5504710a62f/invoke.js"></script>
       <div id="container-e70b2b062f515d021390e5504710a62f"></div>
     </section>
@@ -498,10 +473,10 @@
         <a class="footer-terms-link" href="/terms/">Terms</a>
         <a class="footer-contact-link" href="/contact/">Contact</a>
       </nav>
-      <a href="#gameSelectPanel" data-i18n="footerBack">ゲームへ戻る</a>
+      <a href="#gameSelectPanel" data-i18n="footerBack">Back to game</a>
     </footer>
 
-    <script src="./app.js?v=20260619-adsterra2"></script>
+    <script src="./app.js?v=20260620-article-title-all2"></script>
   </body>
 </html>
 

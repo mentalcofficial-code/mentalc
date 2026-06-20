@@ -118,7 +118,7 @@ const mainUiText = {
     privacy: "プライバシー",
     terms: "規約",
     contact: "お問い合わせ",
-    article: "記事",
+    article: "2桁×2桁の掛け算方法",
     questionUnitShort: "問",
     digitUnitShort: "桁",
     time: "タイム",
@@ -139,7 +139,7 @@ const mainUiText = {
     privacy: "Privacy",
     terms: "Terms",
     contact: "Contact",
-    article: "Article",
+    article: "Two-digit multiplication method",
     questionUnitShort: "Q",
     digitUnitShort: "digit",
     digitUnitPlural: "digits",
@@ -161,7 +161,7 @@ const mainUiText = {
     privacy: "Privacidad",
     terms: "Términos",
     contact: "Contacto",
-    article: "Artículo",
+    article: "Método para multiplicar dos cifras",
     questionUnitShort: "P",
     digitUnitShort: "cifra",
     digitUnitPlural: "cifras",
@@ -183,7 +183,7 @@ const mainUiText = {
     privacy: "Privacidade",
     terms: "Termos",
     contact: "Contato",
-    article: "Artigo",
+    article: "Método de multiplicação de dois dígitos",
     questionUnitShort: "perg.",
     digitUnitShort: "dígito",
     digitUnitPlural: "dígitos",
@@ -205,7 +205,7 @@ const mainUiText = {
     privacy: "Confidentialité",
     terms: "Conditions",
     contact: "Contact",
-    article: "Article",
+    article: "Méthode de multiplication à deux chiffres",
     questionUnitShort: "Q",
     digitUnitShort: "chiffre",
     digitUnitPlural: "chiffres",
@@ -227,7 +227,7 @@ const mainUiText = {
     privacy: "隐私",
     terms: "条款",
     contact: "联系",
-    article: "文章",
+    article: "两位数乘法方法",
     questionUnitShort: "题",
     digitUnitShort: "位",
     time: "时间",
@@ -248,7 +248,7 @@ const mainUiText = {
     privacy: "Datenschutz",
     terms: "Regeln",
     contact: "Kontakt",
-    article: "Artikel",
+    article: "Methode für zweistellige Multiplikation",
     questionUnitShort: "A",
     digitUnitShort: "St.",
     time: "Zeit",
@@ -269,7 +269,7 @@ const mainUiText = {
     privacy: "Privacy",
     terms: "Voorwaarden",
     contact: "Contact",
-    article: "Artikel",
+    article: "Methode voor tweecijferige vermenigvuldiging",
     questionUnitShort: "V",
     digitUnitShort: "cijfer",
     digitUnitPlural: "cijfers",
@@ -280,7 +280,7 @@ const mainUiText = {
     home: "HOME",
     retry: "OPNIEUW",
     articleUrl: "/nl/mentalc/two-digit-multiplication/",
-    articleStrategies: "Vermenigvuldigstrategieen",
+    articleStrategies: "Vermenigvuldigstrategieën",
     articleStrategiesUrl: "/nl/mentalc/mental-math-multiplication-strategies/",
     articleBasic: "Optellen en aftrekken",
     articleBasicUrl: "/nl/mentalc/single-digit-addition-subtraction/",
@@ -291,7 +291,7 @@ const mainUiText = {
     privacy: "개인정보",
     terms: "약관",
     contact: "문의",
-    article: "글",
+    article: "두 자리 수 곱셈 방법",
     questionUnitShort: "문",
     digitUnitShort: "자",
     time: "시간",
@@ -314,7 +314,7 @@ mainUiText.id = {
   privacy: "Privasi",
   terms: "Ketentuan",
   contact: "Kontak",
-  article: "Artikel",
+  article: "Metode perkalian dua digit",
   questionUnitShort: "soal",
   digitUnitShort: "digit",
   digitUnitPlural: "digit",
@@ -337,7 +337,7 @@ mainUiText.hi = {
   privacy: "गोपनीयता",
   terms: "नियम",
   contact: "संपर्क",
-  article: "लेख",
+  article: "दो अंकों के गुणा की विधि",
   questionUnitShort: "प्रश्न",
   digitUnitShort: "अंक",
   digitUnitPlural: "अंक",
@@ -442,7 +442,8 @@ const translations = {
     digitUnit: "桁",
     questionUnit: "問",
     secondUnit: "秒",
-    operations: ["足し算", "引き算", "掛け算", "割り算"],
+    operations: ["足し算", "引き算", "掛け算", "割り算", "パーセント"],
+    percentOf: "of",
     aboutTitle: "Mentalcについて",
     aboutBody:
       "Mentalcは、足し算、引き算、掛け算、割り算を短い時間で練習できる暗算ゲームです。桁数と問題数を自由に変えて、計算練習、算数の反復練習、計算力トレーニング、脳トレに使えます。",
@@ -558,7 +559,8 @@ const translations = {
     digitUnit: " digits",
     questionUnit: " questions",
     secondUnit: " sec",
-    operations: ["Addition", "Subtraction", "Multiplication", "Division"],
+    operations: ["Addition", "Subtraction", "Multiplication", "Division", "Percentage"],
+    percentOf: "of",
     aboutTitle: "About Mentalc",
     aboutBody:
       "Mentalc is a simple mental math game for practicing addition, subtraction, multiplication, and division. Change the digit length and question count for arithmetic practice, calculation training, math drills, or brain training.",
@@ -677,7 +679,8 @@ const translations = {
     digitUnit: " cifras",
     questionUnit: " preguntas",
     secondUnit: " s",
-    operations: ["Suma", "Resta", "Multiplicación", "División"],
+    operations: ["Suma", "Resta", "Multiplicación", "División", "Porcentaje"],
+    percentOf: "de",
     aboutTitle: "Acerca de Mentalc",
     aboutBody:
       "Mentalc es un juego de cálculo mental para practicar suma, resta, multiplicación y división en sesiones cortas. Ajusta las cifras y el número de preguntas para usarlo como práctica de matemáticas, entrenamiento de cálculo y entrenamiento cerebral.",
@@ -746,27 +749,27 @@ const translations = {
     comingSoonLabel: "Em breve",
     comingSoonTitle: "Em breve",
     comingSoonBody: "Mais jogos de treino cerebral serão adicionados aqui.",
-    polyominoLabel: "Quebra-cabeca",
+    polyominoLabel: "Quebra-cabeça",
     polyominoTitle: "Polyole",
-    polyominoBody: "Organize pecas de formas diferentes para preencher um tabuleiro quadrado sem espacos.",
-    polyominoIntro: "Escolha uma peca e preencha o tabuleiro sem espacos.",
+    polyominoBody: "Organize peças de formas diferentes para preencher um tabuleiro quadrado sem espaços.",
+    polyominoIntro: "Escolha uma peça e preencha o tabuleiro sem espaços.",
     playPolyomino: "Jogar",
     boardSize: "Tamanho",
     newPuzzle: "Novo",
     rotatePiece: "Girar",
     undoMove: "Desfazer",
     resetPuzzle: "Reiniciar",
-    selectPiece: "Escolha uma peca.",
-    placePiece: "Arraste a peca para o tabuleiro.",
+    selectPiece: "Escolha uma peça.",
+    placePiece: "Arraste a peça para o tabuleiro.",
     polyominoReady: "Escolha o tamanho do tabuleiro e comece.",
     invalidPlacement: "Nao cabe aqui.",
     puzzleComplete: "Completo!",
     polyoleAboutTitle: "Sobre Polyole",
-    polyoleAboutBody: "Polyole e um quebra-cabeca de logica em que voce preenche um quadrado com pecas diferentes.",
+    polyoleAboutBody: "Polyole é um quebra-cabeça de lógica em que você preenche um quadrado com peças diferentes.",
     polyoleHowToTitle: "Como jogar Polyole",
-    polyoleHowToBody: "Arraste as pecas para o tabuleiro. Preencha todos os espacos para completar.",
+    polyoleHowToBody: "Arraste as peças para o tabuleiro. Preencha todos os espaços para completar.",
     polyoleTipsTitle: "Dicas de Polyole",
-    polyoleTipsBody: "Comece pelos cantos e pelas pecas maiores. Deixe os espacos pequenos para o final.",
+    polyoleTipsBody: "Comece pelos cantos e pelas peças maiores. Deixe os espaços pequenos para o final.",
     polyoleResultTitle: "Resultado de Polyole",
     polyoleResultSize: "Tamanho",
     polyoleResultTime: "Tempo",
@@ -783,7 +786,7 @@ const translations = {
     answer: "Resposta",
     time: "Tempo",
     mistakes: "Erros",
-    keypad: "Teclado numerico",
+    keypad: "Teclado numérico",
     inputHint: "Digite no teclado",
     wrong: "Incorreto",
     ad: "Anuncio",
@@ -791,7 +794,8 @@ const translations = {
     digitUnit: " dígitos",
     questionUnit: " perguntas",
     secondUnit: " s",
-    operations: ["Adição", "Subtração", "Multiplicação", "Divisão"],
+    operations: ["Adição", "Subtração", "Multiplicação", "Divisão", "Porcentagem"],
+    percentOf: "de",
     aboutTitle: "Sobre Mentalc",
     aboutBody:
       "Mentalc é um jogo de cálculo mental para praticar adição, subtração, multiplicação e divisão. Use como treino de matemática, prática de aritmética e treino cerebral.",
@@ -861,26 +865,26 @@ const translations = {
     comingSoonBody: "D'autres jeux d'entraînement cérébral seront ajoutés ici.",
     polyominoLabel: "Puzzle",
     polyominoTitle: "Polyole",
-    polyominoBody: "Placez des pieces de formes differentes pour remplir un plateau carre sans espace.",
-    polyominoIntro: "Choisissez une piece et remplissez le plateau sans espace.",
+    polyominoBody: "Placez des pieces de formes différentes pour remplir un plateau carré sans espace.",
+    polyominoIntro: "Choisissez une pièce et remplissez le plateau sans espace.",
     playPolyomino: "Jouer",
     boardSize: "Taille",
     newPuzzle: "Nouveau",
     rotatePiece: "Tourner",
     undoMove: "Annuler",
-    resetPuzzle: "Reinitialiser",
-    selectPiece: "Choisissez une piece.",
-    placePiece: "Glissez la piece sur le plateau.",
+    resetPuzzle: "Réinitialiser",
+    selectPiece: "Choisissez une pièce.",
+    placePiece: "Glissez la pièce sur le plateau.",
     polyominoReady: "Choisissez la taille du plateau et commencez.",
     invalidPlacement: "Impossible ici.",
-    puzzleComplete: "Termine !",
-    polyoleAboutTitle: "A propos de Polyole",
-    polyoleAboutBody: "Polyole est un puzzle logique ou il faut remplir un carre avec des pieces differentes.",
-    polyoleHowToTitle: "Comment jouer a Polyole",
-    polyoleHowToBody: "Glissez les pieces sur le plateau. Remplissez toutes les cases pour terminer.",
+    puzzleComplete: "Terminé !",
+    polyoleAboutTitle: "À propos de Polyole",
+    polyoleAboutBody: "Polyole est un puzzle logique où il faut remplir un carré avec des pieces différentes.",
+    polyoleHowToTitle: "Comment jouer à Polyole",
+    polyoleHowToBody: "Glissez les pièces sur le plateau. Remplissez toutes les cases pour terminer.",
     polyoleTipsTitle: "Conseils Polyole",
-    polyoleTipsBody: "Commencez par les coins et les grandes pieces. Gardez les petits espaces pour la fin.",
-    polyoleResultTitle: "Resultat Polyole",
+    polyoleTipsBody: "Commencez par les coins et les grandes pièces. Gardez les petits espaces pour la fin.",
+    polyoleResultTitle: "Résultat Polyole",
     polyoleResultSize: "Taille",
     polyoleResultTime: "Temps",
     leftDigits: "Gauche",
@@ -904,7 +908,8 @@ const translations = {
     digitUnit: " chiffres",
     questionUnit: " questions",
     secondUnit: " s",
-    operations: ["Addition", "Soustraction", "Multiplication", "Division"],
+    operations: ["Addition", "Soustraction", "Multiplication", "Division", "Pourcentage"],
+    percentOf: "de",
     aboutTitle: "À propos de Mentalc",
     aboutBody:
       "Mentalc est un jeu de calcul mental pour pratiquer l'addition, la soustraction, la multiplication et la division. Utilisez-le pour l'entraînement au calcul et les exercices de maths.",
@@ -1019,7 +1024,8 @@ const translations = {
     digitUnit: "位",
     questionUnit: "题",
     secondUnit: "秒",
-    operations: ["加法", "减法", "乘法", "除法"],
+    operations: ["加法", "减法", "乘法", "除法", "百分比"],
+    percentOf: "of",
     aboutTitle: "关于 Mentalc",
     aboutBody:
       "Mentalc 是一款简单的心算游戏，可练习加法、减法、乘法和除法。你可以调整位数和题数，用于心算练习、数学练习、计算训练和脑力训练。",
@@ -1059,13 +1065,13 @@ const translations = {
     dailyChallengeStart: "Starten",
     dailyBestLabel: "Heutige Bestzeit",
     dailyBestEmpty: "Noch kein Ergebnis",
-    dailyBestBody: "Schliesse die Tageschallenge ab, um deine Bestzeit auf diesem Geraet zu speichern.",
+    dailyBestBody: "Schliesse die Tageschallenge ab, um deine Bestzeit auf diesem Gerät zu speichern.",
     dailyBestDetail: "{time} / Treffer {accuracy}",
     polyoleDailyChallenge: "Tageschallenge",
     shareResult: "Teilen",
     shareMentalcText: "Ich habe {questions} bei Mentalc in {time} geschafft.",
     sharePolyoleText: "Ich habe Polyole {size} in {time} geschafft.",
-    siteTagline: "Einfaches Gehirntraining fuer kurze Pausen.",
+    siteTagline: "Einfaches Gehirntraining für kurze Pausen.",
     tagline: "Kopfrechnen, kurz und ruhig.",
     language: "Sprache",
     progressStatus: "Fortschritt",
@@ -1073,35 +1079,35 @@ const translations = {
     settings: "Einstellungen",
     gameSelectTitle: "Spiel waehlen",
     gameSelectIntro:
-      "Mentalc ist eine einfache Spielseite fuer Gehirntraining, Kopfrechnen, Mathe-Spiele und Logik-Puzzles in kurzen Pausen. Weitere Spiele fuer Konzentration, Rechentempo und raeumliches Denken werden ergaenzt.",
+      "Mentalc ist eine einfache Spielseite für Gehirntraining, Kopfrechnen, Mathe-Spiele und Logik-Puzzles in kurzen Pausen. Weitere Spiele für Konzentration, Rechentempo und räumliches Denken werden ergänzt.",
     mentalMathLabel: "Kopfrechenspiel",
     mentalMathTitle: "Mentalc",
     mentalMathBody: "Trainiere Kopfrechnen, Grundrechenarten, Rechentempo und schnelle Reaktionen mit Stellenzahl, Rechenart und Aufgabenanzahl.",
     playMentalMath: "Dieses Spiel spielen",
     comingSoonLabel: "In Vorbereitung",
     comingSoonTitle: "Coming soon",
-    comingSoonBody: "Weitere Gehirntrainingsspiele werden hier ergaenzt.",
+    comingSoonBody: "Weitere Gehirntrainingsspiele werden hier ergänzt.",
     polyominoLabel: "Puzzle",
     polyominoTitle: "Polyole",
-    polyominoBody: "Lege verschieden geformte Teile so, dass ein quadratisches Feld ohne Luecken gefuellt wird - ein ruhiges Logik-Puzzle.",
-    polyominoIntro: "Waehle ein Teil und fuelle das Feld ohne Luecken.",
+    polyominoBody: "Lege verschieden geformte Teile so, dass ein quadratisches Feld ohne Lücken gefuellt wird - ein ruhiges Logik-Puzzle.",
+    polyominoIntro: "Wähle ein Teil und fülle das Feld ohne Lücken.",
     playPolyomino: "Dieses Spiel spielen",
     boardSize: "Feldgroesse",
     newPuzzle: "Neues Puzzle",
     rotatePiece: "Drehen",
     undoMove: "Rueckgaengig",
     resetPuzzle: "Zuruecksetzen",
-    selectPiece: "Waehle ein Teil.",
+    selectPiece: "Wähle ein Teil.",
     placePiece: "Ziehe ein Teil auf das Feld, um es zu legen.",
-    polyominoReady: "Waehle die Feldgroesse und druecke Start.",
+    polyominoReady: "Wähle die Feldgroesse und druecke Start.",
     invalidPlacement: "Dort passt es nicht.",
     puzzleComplete: "Fertig.",
-    polyoleAboutTitle: "Ueber Polyole",
-    polyoleAboutBody: "Polyole ist ein Polyomino- und Logik-Puzzle, bei dem du ein quadratisches Feld mit verschieden geformten Teilen ohne Luecken fuellst. Mit verschiedenen Feldgroessen trainierst du raeumliches Denken, Konzentration und Ausprobieren.",
+    polyoleAboutTitle: "Über Polyole",
+    polyoleAboutBody: "Polyole ist ein Polyomino- und Logik-Puzzle, bei dem du ein quadratisches Feld mit verschieden geformten Teilen ohne Lücken füllst. Mit verschiedenen Feldgrößen trainierst du räumliches Denken, Konzentration und Ausprobieren.",
     polyoleHowToTitle: "So spielst du Polyole",
-    polyoleHowToBody: "Waehle die Feldgroesse und starte. Ziehe Teile auf das Feld, drehe sie bei Bedarf oder mache Zuege rueckgaengig. Fuellst du alle Zellen, ist das Puzzle geloest.",
-    polyoleTipsTitle: "Tipps fuer Polyole",
-    polyoleTipsBody: "Beginne mit grossen Teilen oder passenden Eckteilen. Wenn es eng wird, helfen Drehen und Rueckgaengig, um schwierige Luecken zu vermeiden.",
+    polyoleHowToBody: "Wähle die Feldgroesse und starte. Ziehe Teile auf das Feld, drehe sie bei Bedarf oder mache Zuege rueckgaengig. Fuellst du alle Zellen, ist das Puzzle geloest.",
+    polyoleTipsTitle: "Tipps für Polyole",
+    polyoleTipsBody: "Beginne mit grossen Teilen oder passenden Eckteilen. Wenn es eng wird, helfen Drehen und Rueckgaengig, um schwierige Lücken zu vermeiden.",
     polyoleResultTitle: "Polyole Ergebnis",
     completedBoard: "Fertiges Feld",
     polyoleRecordsTitle: "Letzte Polyole Ergebnisse",
@@ -1129,19 +1135,20 @@ const translations = {
     digitUnit: " Stellen",
     questionUnit: " Aufgaben",
     secondUnit: " Sek.",
-    operations: ["Addition", "Subtraktion", "Multiplikation", "Division"],
-    aboutTitle: "Ueber Mentalc",
+    operations: ["Addition", "Subtraktion", "Multiplikation", "Division", "Prozent"],
+    percentOf: "von",
+    aboutTitle: "Über Mentalc",
     aboutBody:
-      "Mentalc ist ein einfaches Kopfrechenspiel zum Ueben von Addition, Subtraktion, Multiplikation und Division. Stelle die Anzahl der Stellen und Aufgaben frei ein und nutze es fuer Kopfrechnen, Mathe-Uebungen, Rechentraining und Gehirntraining.",
+      "Mentalc ist ein einfaches Kopfrechenspiel zum Üben von Addition, Subtraktion, Multiplikation und Division. Stelle die Anzahl der Stellen und Aufgaben frei ein und nutze es für Kopfrechnen, Mathe-Übungen, Rechentraining und Gehirntraining.",
     howToTitle: "So funktioniert es",
     howToBody:
-      "Waehle die Stellenzahl links und rechts, die Rechenart und die Anzahl der Aufgaben aus und starte. Antworten koennen ueber den Ziffernblock auf dem Bildschirm oder ueber die Tastatur eingegeben werden. Bei einer richtigen Antwort geht es automatisch zur naechsten Aufgabe.",
-    practiceTitle: "Tipps zum Ueben",
+      "Wähle die Stellenzahl links und rechts, die Rechenart und die Anzahl der Aufgaben aus und starte. Antworten können über den Ziffernblock auf dem Bildschirm oder über die Tastatur eingegeben werden. Bei einer richtigen Antwort geht es automatisch zur nächsten Aufgabe.",
+    practiceTitle: "Tipps zum Üben",
     practiceBody:
-      "Beginne mit wenigen einstelligen Additionsaufgaben. Wenn du sicherer wirst, erhoehe die Stellenzahl oder uebe Multiplikation. Nutze deine letzten Ergebnisse, um die Zeit Schritt fuer Schritt zu verbessern, ohne an Genauigkeit zu verlieren.",
+      "Beginne mit wenigen einstelligen Additionsaufgaben. Wenn du sicherer wirst, erhöhe die Stellenzahl oder übe Multiplikation. Nutze deine letzten Ergebnisse, um die Zeit Schritt für Schritt zu verbessern, ohne an Genauigkeit zu verlieren.",
     siteGuideArticleTitle: "Artikel zum Kopfrechnen",
     siteGuideArticleBody:
-      "Mentalc enthaelt auch einen Artikel zum Kopfrechnen mit zweistelliger Multiplikation. Lies die Methode vor dem Ueben, um die Rechenschritte leichter zu verstehen.",
+      "Mentalc enthält auch einen Artikel zum Kopfrechnen mit zweistelliger Multiplikation. Lies die Methode vor dem Üben, um die Rechenschritte leichter zu verstehen.",
     recordsTitle: "Letzte Ergebnisse",
     clearRecords: "Loeschen",
     noRecords: "Noch keine Ergebnisse.",
@@ -1149,13 +1156,13 @@ const translations = {
     latestRecord: "Neueste",
     privacyTitle: "Datenschutzerklaerung",
     privacyBody:
-      "Mentalc speichert die letzten Spielergebnisse nur in diesem Browser auf diesem Geraet. Diese Daten werden nicht an einen Server gesendet. Wenn Werbung oder Analysefunktionen aktiviert werden, koennen Drittanbieter Cookies, Werbe-IDs, IP-Adressen, Browserinformationen oder aehnliche Technologien verwenden. Nutzer koennen Cookies in den Browsereinstellungen deaktivieren.",
+      "Mentalc speichert die letzten Spielergebnisse nur in diesem Browser auf diesem Gerät. Diese Daten werden nicht an einen Server gesendet. Wenn Werbung oder Analysefunktionen aktiviert werden, können Drittanbieter Cookies, Werbe-IDs, IP-Adressen, Browserinformationen oder ähnliche Technologien verwenden. Nutzer können Cookies in den Browsereinstellungen deaktivieren.",
     termsTitle: "Nutzungsbedingungen",
     termsBody:
-      "Mentalc ist eine kostenlose Website fuer Gehirntraining, Kopfrechnen, Puzzle- und aehnliche Spiele. Genauigkeit und dauerhafte Verfuegbarkeit werden nicht garantiert. Die Nutzung dieser Website erfolgt auf eigene Verantwortung.",
+      "Mentalc ist eine kostenlose Website für Gehirntraining, Kopfrechnen, Puzzle- und ähnliche Spiele. Genauigkeit und dauerhafte Verfügbarkeit werden nicht garantiert. Die Nutzung dieser Website erfolgt auf eigene Verantwortung.",
     contactTitle: "Kontakt",
     contactBody:
-      "Fuer Feedback, Fehlerberichte, Werbung oder Fragen zum Betrieb der Website nutze bitte das Google-Formular.",
+      "Für Feedback, Fehlerberichte, Werbung oder Fragen zum Betrieb der Website nutze bitte das Google-Formular.",
     contactFormLink: "Kontaktformular oeffnen",
     footerBack: "Zurueck zum Spiel",
   },
@@ -1239,7 +1246,8 @@ const translations = {
     digitUnit: " cijfers",
     questionUnit: " vragen",
     secondUnit: " sec",
-    operations: ["Optellen", "Aftrekken", "Vermenigvuldigen", "Delen"],
+    operations: ["Optellen", "Aftrekken", "Vermenigvuldigen", "Delen", "Percentage"],
+    percentOf: "van",
     aboutTitle: "Over Mentalc",
     aboutBody:
       "Mentalc is een eenvoudig hoofdrekenspel om optellen, aftrekken, vermenigvuldigen en delen te oefenen. Pas het aantal cijfers en vragen aan voor hoofdrekenen, rekensommen, rekentraining en hersentraining.",
@@ -1349,7 +1357,8 @@ const translations = {
     digitUnit: "자리",
     questionUnit: "문제",
     secondUnit: "초",
-    operations: ["덧셈", "뺄셈", "곱셈", "나눗셈"],
+    operations: ["덧셈", "뺄셈", "곱셈", "나눗셈", "백분율"],
+    percentOf: "of",
     aboutTitle: "Mentalc 소개",
     aboutBody:
       "Mentalc는 덧셈, 뺄셈, 곱셈, 나눗셈을 연습할 수 있는 간단한 암산 게임입니다. 자릿수와 문제 수를 자유롭게 설정해 암산 연습, 수학 연습, 계산 훈련, 두뇌 훈련에 사용할 수 있습니다.",
@@ -1430,7 +1439,8 @@ translations.id = {
   digitUnit: " digit",
   questionUnit: " soal",
   secondUnit: " dtk",
-  operations: ["Penjumlahan", "Pengurangan", "Perkalian", "Pembagian"],
+  operations: ["Penjumlahan", "Pengurangan", "Perkalian", "Pembagian", "Persentase"],
+  percentOf: "dari",
   aboutTitle: "Tentang Mentalc",
   aboutBody: "Mentalc adalah game mental math sederhana untuk latihan penjumlahan, pengurangan, perkalian, dan pembagian.",
   howToTitle: "Cara bermain",
@@ -1507,7 +1517,8 @@ translations.hi = {
   digitUnit: " अंक",
   questionUnit: " प्रश्न",
   secondUnit: " सेकंड",
-  operations: ["जोड़", "घटाव", "गुणा", "भाग"],
+  operations: ["जोड़", "घटाव", "गुणा", "भाग", "प्रतिशत"],
+  percentOf: "का",
   aboutTitle: "Mentalc के बारे में",
   aboutBody: "Mentalc जोड़, घटाव, गुणा और भाग के अभ्यास के लिए एक सरल mental math game है.",
   howToTitle: "कैसे खेलें",
@@ -1535,12 +1546,14 @@ translations.hi = {
   footerBack: "गेम पर लौटें",
 };
 
-const operationKeys = ["add", "subtract", "multiply", "divide", "all"];
+const operationKeys = ["add", "subtract", "multiply", "divide", "percent", "all"];
+const arithmeticOperationKeys = ["add", "subtract", "multiply", "divide"];
 const operationSymbols = {
   add: "＋",
   subtract: "−",
   multiply: "×",
   divide: "÷",
+  percent: "%",
   all: "＋−×÷",
 };
 
@@ -1660,9 +1673,10 @@ function readSettings() {
   const rightDigits = clamp(Number(els.rightDigits.value) || 1, 1, 10);
   els.leftDigits.value = leftDigits;
   els.rightDigits.value = rightDigits;
+  enforcePercentLeftDigits();
 
   return {
-    leftDigits,
+    leftDigits: Number(els.leftDigits.value),
     rightDigits,
     operation: getOperationKey(),
     questionCount,
@@ -1764,6 +1778,15 @@ function formatDigitOption(value, ui) {
 
 function updateMainUiText() {
   const ui = getMainText();
+  const updateArticleLink = (link, label, url) => {
+    link.href = url;
+    const title = link.querySelector(".article-card-copy strong");
+    if (title) {
+      title.textContent = label;
+      return;
+    }
+    link.textContent = label;
+  };
   const utilityLinks = document.querySelectorAll(".utility-links a");
   if (utilityLinks[0]) {
     utilityLinks[0].textContent = ui.privacy;
@@ -1783,23 +1806,19 @@ function updateMainUiText() {
   }
 
   document.querySelectorAll(".article-link").forEach((link) => {
-    link.textContent = ui.article;
-    link.href = ui.articleUrl;
+    updateArticleLink(link, ui.article, ui.articleUrl);
   });
 
   document.querySelectorAll(".article-extra-link").forEach((link) => {
-    link.textContent = ui.articleStrategies;
-    link.href = ui.articleStrategiesUrl;
+    updateArticleLink(link, ui.articleStrategies, ui.articleStrategiesUrl);
   });
 
   document.querySelectorAll(".article-basic-link").forEach((link) => {
-    link.textContent = ui.articleBasic;
-    link.href = ui.articleBasicUrl;
+    updateArticleLink(link, ui.articleBasic, ui.articleBasicUrl);
   });
 
   document.querySelectorAll(".article-muldiv-link").forEach((link) => {
-    link.textContent = ui.articleMulDiv;
-    link.href = ui.articleMulDivUrl;
+    updateArticleLink(link, ui.articleMulDiv, ui.articleMulDivUrl);
   });
 
   document.querySelectorAll(".footer-privacy-link").forEach((link) => {
@@ -1904,6 +1923,9 @@ function updateQuickSettingsUI() {
     rightDigits: String(els.rightDigits.value),
     operation: String(els.operation.value),
   };
+  const isPercentMode = getOperationKey() === "percent";
+
+  els.quickSettings.classList.toggle("is-percent-mode", isPercentMode);
 
   els.quickSettings.querySelectorAll(".quick-row").forEach((row) => {
     const setting = row.dataset.setting;
@@ -1950,6 +1972,7 @@ function setQuickSetting(setting, value, source = "button") {
     els.operation.value = clamp(Number(value) || 0, 0, operationKeys.length - 1);
   }
 
+  enforcePercentLeftDigits();
   syncSettingLabels();
 }
 
@@ -1965,10 +1988,23 @@ function syncQuickDigitInput(input, setting) {
 }
 
 function syncSettingLabels() {
+  enforcePercentLeftDigits();
   els.leftDigitsValue.textContent = formatDigits(els.leftDigits.value);
   els.rightDigitsValue.textContent = formatDigits(els.rightDigits.value);
   els.operationValue.textContent = getOperationLabel();
   updateQuickSettingsUI();
+}
+
+function enforcePercentLeftDigits() {
+  if (getOperationKey() !== "percent") {
+    return;
+  }
+
+  els.leftDigits.value = 2;
+  if (els.quickLeftDigits) {
+    els.quickLeftDigits.value = 2;
+  }
+  quickCustomActive.leftDigits = false;
 }
 
 function syncQuestionCount(value) {
@@ -2016,9 +2052,51 @@ function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function getCommonPercentages(rightDigits) {
+  if (Number(rightDigits) <= 1) {
+    return [20, 25, 50, 75];
+  }
+
+  return [5, 10, 12, 15, 20, 25, 30, 40, 50, 60, 75];
+}
+
+function makePercentQuestion(settings) {
+  const percentages = getCommonPercentages(settings.rightDigits);
+  const percent = percentages[randomInt(0, percentages.length - 1)];
+  const minBase = settings.rightDigits === 1 ? 1 : 10 ** (settings.rightDigits - 1);
+  const maxBase = 10 ** settings.rightDigits - 1;
+  const step = 100 / Number(gcd(percent, 100));
+  const minMultiplier = Math.ceil(minBase / step);
+  const maxMultiplier = Math.floor(maxBase / step);
+  const multiplier = Math.max(1, randomInt(Math.max(1, minMultiplier), Math.max(1, maxMultiplier)));
+  const base = step * multiplier;
+  const answer = (base * percent) / 100;
+
+  return {
+    left: percent,
+    right: base,
+    answer: String(answer),
+    label: `${percent}% ${t("percentOf")} ${base}`,
+  };
+}
+
+function gcd(a, b) {
+  let x = Math.abs(Number(a));
+  let y = Math.abs(Number(b));
+  while (y) {
+    [x, y] = [y, x % y];
+  }
+  return x || 1;
+}
+
 function makeQuestion(settings) {
   const operation =
-    settings.operation === "all" ? operationKeys[randomInt(0, operationKeys.length - 2)] : settings.operation;
+    settings.operation === "all" ? arithmeticOperationKeys[randomInt(0, arithmeticOperationKeys.length - 1)] : settings.operation;
+
+  if (operation === "percent") {
+    return makePercentQuestion(settings);
+  }
+
   let left = randomByDigits(settings.leftDigits);
   let right = randomByDigits(settings.rightDigits);
   let answer = "0";
