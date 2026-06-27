@@ -973,36 +973,6 @@ tbody tr:last-child td {
   border-bottom: 0;
 }
 
-.ad-slot {
-  position: sticky;
-  top: 18px;
-  min-height: 280px;
-  border: 1px dashed #d8cdbf;
-  border-radius: 8px;
-  background: rgba(255, 253, 248, 0.66);
-  color: var(--muted);
-  display: grid;
-  place-items: center;
-  align-content: center;
-  gap: 6px;
-  text-align: center;
-  padding: 18px;
-}
-
-.ad-slot span {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-}
-
-.ad-slot p {
-  font-size: 14px;
-}
-
-.ad-fallback {
-  display: grid;
-  gap: 6px;
-}
-
 .adsense-container {
   width: 100%;
   min-height: 250px;
@@ -1010,31 +980,6 @@ tbody tr:last-child td {
 
 .adsense-container .adsbygoogle {
   min-height: 250px;
-}
-
-.adsterra-container {
-  width: 320px;
-  max-width: 100%;
-  min-height: 50px;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
-
-.adsterra-container iframe {
-  max-width: 100%;
-}
-
-.native-ad-slot {
-  width: min(1120px, calc(100% - 32px));
-  margin: 0 auto 28px;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
-
-.native-ad-slot > div {
-  max-width: 100%;
 }
 
 .site-info {
@@ -1149,21 +1094,6 @@ tbody tr:last-child td {
 
 .article-home-link:hover {
   background: rgba(231, 247, 234, 0.85);
-}
-
-.article-native-ad {
-  width: 100%;
-  display: grid;
-  place-items: center;
-  min-height: 120px;
-  margin-top: 8px;
-  padding: 18px 0 0;
-  border-top: 1px solid var(--line);
-  overflow: hidden;
-}
-
-.article-native-ad > div {
-  max-width: 100%;
 }
 
 .article-hero h1 {
@@ -1285,6 +1215,7 @@ tbody tr:last-child td {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin-top: 14px;
+  padding-bottom: 12px;
 }
 
 .article-card-grid .article-card {
@@ -1292,6 +1223,7 @@ tbody tr:last-child td {
   grid-template-columns: 76px minmax(0, 1fr);
   align-items: center;
   min-height: 86px;
+  width: 100%;
   margin: 0;
   padding: 10px;
   border: 1px solid var(--line);
@@ -1346,6 +1278,7 @@ tbody tr:last-child td {
 
   .article-card-grid .article-card {
     grid-template-columns: 66px minmax(0, 1fr);
+    min-height: 88px;
   }
 
   .article-card-thumb {
@@ -1362,6 +1295,8 @@ tbody tr:last-child td {
 .article-info details {
   display: grid;
   gap: 10px;
+  overflow: visible;
+  padding-bottom: 10px;
 }
 
 .article-info summary {
@@ -1486,10 +1421,6 @@ tbody tr:last-child td {
     justify-content: stretch;
   }
 
-  .ad-slot {
-    position: static;
-    min-height: 90px;
-  }
 }
 
 @media (max-width: 520px) {
@@ -1585,6 +1516,20 @@ tbody tr:last-child td {
   .legal-panel details[open] summary {
     background: var(--surface-soft);
   }
+
+  .footer {
+    gap: 10px;
+    padding: 18px 10px 28px;
+  }
+
+  .footer-legal-links {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .footer-legal-links a {
+    font-size: 12px;
+  }
 }
 
 body.is-game-screen {
@@ -1627,7 +1572,6 @@ body.is-game-screen .panel {
   min-height: 0;
 }
 
-body.is-game-screen .ad-slot,
 body.is-game-screen .site-info,
 body.is-game-screen .footer {
   display: none;
@@ -1773,7 +1717,7 @@ body.is-mental-only #setupPanel .panel-actions {
 }
 
 body.is-mental-only #startButton {
-  order: 4;
+  order: 2;
   width: min(520px, 100%);
   min-height: clamp(68px, 12dvh, 112px);
   justify-self: center;
@@ -1790,7 +1734,7 @@ body.is-mental-only .quick-settings {
 }
 
 body.is-mental-only .setup-records {
-  order: 2;
+  order: 3;
   display: grid;
   gap: 8px;
   width: min(940px, 100%);
@@ -1863,7 +1807,7 @@ body.is-mental-only .setup-records .record-list small {
 }
 
 body.is-mental-only .challenge-preview {
-  order: 3;
+  order: 4;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
@@ -2010,6 +1954,13 @@ body.is-mental-only #resultPanel:not(.is-hidden) {
   display: grid;
   align-content: center;
   gap: 18px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+body.is-mental-only #resultPanel.is-history-open {
+  align-content: start;
+  gap: 10px;
 }
 
 body.is-mental-only #resultPanel .panel-head,
@@ -2028,6 +1979,7 @@ body.is-mental-only .simple-result {
   width: min(560px, 100%);
   justify-self: center;
   text-align: center;
+  min-height: 0;
 }
 
 body.is-mental-only .simple-result > div {
@@ -2052,7 +2004,7 @@ body.is-mental-only .simple-share .primary-button {
 }
 
 body.is-mental-only .simple-result-actions {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 10px;
   padding-top: 4px;
 }
@@ -2061,6 +2013,141 @@ body.is-mental-only .simple-result-actions button {
   min-height: 56px;
   font-size: 18px;
   font-weight: 700;
+}
+
+body.is-mental-only #simpleRetryButton {
+  order: 1;
+  min-height: 68px;
+  font-size: clamp(20px, 5vw, 28px);
+}
+
+body.is-mental-only #homeButton {
+  order: 2;
+  min-height: 44px;
+  border-style: dashed;
+  font-size: 14px;
+}
+
+body.is-mental-only .simple-history-section {
+  gap: 10px;
+  padding-top: 0;
+}
+
+body.is-mental-only .simple-history-toggle {
+  width: min(360px, 100%);
+  min-height: 44px;
+  justify-self: center;
+  border-style: dashed;
+}
+
+body.is-mental-only .missed-retry-button {
+  width: min(360px, 100%);
+  min-height: 44px;
+  justify-self: center;
+  border-color: #efaaa5;
+  background: #fff2ef;
+  color: #934943;
+  font-weight: 700;
+}
+
+body.is-mental-only .simple-history-wrap {
+  width: 100%;
+  max-height: min(46dvh, 360px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-soft);
+}
+
+body.is-mental-only #resultPanel.is-history-open .menta-result {
+  display: none;
+}
+
+body.is-mental-only #resultPanel.is-history-open .simple-result {
+  gap: 10px;
+}
+
+body.is-mental-only #resultPanel.is-history-open .simple-result > div {
+  padding-block: 8px;
+}
+
+body.is-mental-only .simple-history-list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+body.is-mental-only .simple-history-list li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+}
+
+body.is-mental-only .simple-history-list li:last-child {
+  border-bottom: 0;
+}
+
+body.is-mental-only .simple-history-list li.is-wrong {
+  border-left: 5px solid #efaaa5;
+  background: #fff2ef;
+  box-shadow: inset 0 0 0 1px rgba(239, 170, 165, 0.35);
+}
+
+body.is-mental-only .history-number {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+body.is-mental-only .history-question {
+  overflow-wrap: anywhere;
+}
+
+body.is-mental-only .history-mark {
+  min-width: 44px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  text-align: center;
+  font-weight: 700;
+}
+
+body.is-mental-only .simple-history-list .is-correct .history-mark {
+  background: var(--green-soft);
+  color: #3f7561;
+}
+
+body.is-mental-only .simple-history-list .is-wrong .history-mark {
+  background: #ffe3df;
+  color: #a7554e;
+}
+
+:root[data-theme="dark"] body.is-mental-only .missed-retry-button {
+  border-color: #8f5a55;
+  background: #3b2928;
+  color: #f2c2bd;
+}
+
+:root[data-theme="dark"] body.is-mental-only .simple-history-list li.is-wrong {
+  border-left-color: #8f5a55;
+  background: #322523;
+  box-shadow: inset 0 0 0 1px rgba(143, 90, 85, 0.5);
+}
+
+:root[data-theme="dark"] body.is-mental-only .simple-history-list .is-correct .history-mark {
+  background: #233b31;
+  color: #b9ddcc;
+}
+
+:root[data-theme="dark"] body.is-mental-only .simple-history-list .is-wrong .history-mark {
+  background: #4b2d2b;
+  color: #f0c1bb;
 }
 
 body.is-game-screen .question-row {
@@ -2368,6 +2455,30 @@ body.is-game-screen .polyole-result .result-grid div {
 
   body.is-mental-only #resultPanel .result-grid strong {
     font-size: 34px;
+  }
+
+  body.is-mental-only #resultPanel.is-history-open {
+    gap: 6px;
+  }
+
+  body.is-mental-only #resultPanel.is-history-open .simple-result {
+    gap: 7px;
+  }
+
+  body.is-mental-only #resultPanel.is-history-open .simple-result span {
+    font-size: 15px;
+  }
+
+  body.is-mental-only #resultPanel.is-history-open .simple-result strong {
+    font-size: clamp(28px, 9vw, 42px);
+  }
+
+  body.is-mental-only #resultPanel.is-history-open .simple-share {
+    display: none;
+  }
+
+  body.is-mental-only #resultPanel.is-history-open .simple-history-wrap {
+    max-height: 42dvh;
   }
 
   body.is-game-screen .question {

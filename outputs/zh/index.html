@@ -54,7 +54,7 @@
       gtag("js", new Date());
       gtag("config", "G-GH29NN7Y5D");
     </script>
-    <link rel="stylesheet" href="./styles.css?v=20260620-article-native-ad1" />
+    <link rel="stylesheet" href="./styles.css?v=20260627-legal-bottom1" />
   </head>
   <body>
     <header class="topbar">
@@ -96,7 +96,7 @@
           <div class="panel-head">
             <div>
               <h2 data-i18n="gameSelectTitle">选择游戏</h2>
-              <p class="panel-subtitle" data-i18n="gameSelectIntro">Mentalc 是一个简洁的游戏网站，可用于心算游戏、数学练习、脑力训练和逻辑益智游戏。今后还会继续添加训练专注力、计算速度和空间思维的游戏。</p>
+              <p class="panel-subtitle" data-i18n="gameSelectIntro">Mentalc 是一个简洁的网站，可用于心算练习、四则运算训练和轻量脑力训练。你可以按自己的节奏练习加法、减法、乘法、除法和百分比。</p>
             </div>
           </div>
 
@@ -271,7 +271,13 @@
               <button id="homeButton" class="ghost-button" type="button">主页</button>
               <button id="simpleRetryButton" class="primary-button" type="button">重试</button>
             </div>
-          </div>
+            <div class="simple-history-section">
+              <button id="historyToggleButton" class="ghost-button simple-history-toggle" type="button" aria-expanded="false">Show question history</button>
+              <button id="missedRetryButton" class="ghost-button missed-retry-button" type="button" hidden>Retry missed only</button>
+              <div id="simpleHistoryWrap" class="simple-history-wrap is-hidden">
+                <ol id="simpleHistoryList" class="simple-history-list"></ol>
+              </div>
+            </div>          </div>
           <div class="result-grid">
             <div>
               <span data-i18n="questionCount">题</span>
@@ -301,81 +307,7 @@
           </div>
         </div>
 
-        <div id="polyominoPanel" class="panel polyomino-panel is-hidden">
-          <div class="panel-head">
-            <div>
-              <h2 data-i18n="polyominoTitle">Polyole</h2>
-              <p class="panel-subtitle" data-i18n="polyominoIntro">选择一个方块，并将棋盘无空隙地填满。</p>
-            </div>
-            <div class="panel-actions">
-              <button id="polyominoBackButton" class="ghost-button" type="button" data-i18n="backToGames">返回游戏选择</button>
-              <button id="polyominoNewButton" class="primary-button" type="button" data-i18n="newPuzzle">新题目</button>
-            </div>
-          </div>
-
-          <div class="polyomino-settings">
-            <div class="setting-control">
-              <div class="setting-label">
-                <span data-i18n="boardSize">棋盘大小</span>
-                <input id="polyominoSizeInput" type="number" min="3" max="8" value="5" />
-              </div>
-              <input id="polyominoSizeSlider" type="range" min="3" max="8" value="5" />
-            </div>
-            <div class="polyomino-actions">
-              <button id="polyominoDailyButton" class="ghost-button daily-button" type="button" data-i18n="polyoleDailyChallenge">每日挑战</button>
-              <button id="polyominoStartButton" class="primary-button" type="button" data-i18n="start">开始</button>
-              <button id="polyominoRotateButton" class="ghost-button" type="button" data-i18n="rotatePiece">旋转</button>
-              <button id="polyominoUndoButton" class="ghost-button" type="button" data-i18n="undoMove">撤销</button>
-              <button id="polyominoResetButton" class="ghost-button" type="button" data-i18n="resetPuzzle">重置</button>
-            </div>
-          </div>
-
-          <p id="polyominoStatus" class="polyomino-status" aria-live="polite"></p>
-
-          <div class="polyomino-play is-hidden">
-            <div id="polyominoBoard" class="polyomino-board" aria-label="Polyole"></div>
-            <div id="polyominoPieces" class="polyomino-pieces" aria-label="Polyole"></div>
-          </div>
-
-          <div id="polyoleResult" class="polyole-result is-hidden">
-            <h3 data-i18n="polyoleResultTitle">Polyole 结果</h3>
-            <p data-i18n="completedBoard">完成的棋盘</p>
-            <div class="result-grid">
-              <div>
-                <span data-i18n="boardSize">棋盘大小</span>
-                <strong id="polyoleResultSize">5 x 5</strong>
-              </div>
-              <div>
-                <span data-i18n="totalTime">总时间</span>
-                <strong id="polyoleResultTime">00:00.0</strong>
-              </div>
-            </div>
-            <div class="result-actions result-share-actions">
-              <button id="sharePolyoleButton" class="ghost-button share-button" type="button" data-i18n="shareResult">分享</button>
-            </div>
-          </div>
-        </div>
       </section>
-
-      <aside class="ad-slot" data-i18n-aria="ad" aria-label="广告">
-        <div id="adFallback" class="ad-fallback">
-          <span data-i18n="ad">广告</span>
-          <p data-i18n="adPlaceholder">广告位</p>
-        </div>
-        <div id="adsterraContainer" class="adsterra-container" aria-label="广告">
-          <script>
-            atOptions = {
-              'key' : 'b489bd726b52798404e1c10878838fa4',
-              'format' : 'iframe',
-              'height' : 50,
-              'width' : 320,
-              'params' : {}
-            };
-          </script>
-          <script src="https://www.highperformanceformat.com/b489bd726b52798404e1c10878838fa4/invoke.js"></script>
-        </div>
-        <div id="adsenseContainer" class="adsense-container" aria-hidden="true"></div>
-      </aside>
     </main>
 
     <section class="site-info" aria-label="Site information">
@@ -395,30 +327,25 @@
           <p data-i18n="practiceBody">建议先从少量一位数加法开始。熟悉后再增加位数或练习乘法。通过查看最近记录，在保持准确的同时逐步缩短用时。</p>
         </article>
 
-        <article class="info-panel record-panel polyole-game-info is-hidden">
-          <div class="info-head">
-            <h2 data-i18n="polyoleRecordsTitle">Polyole 最近记录</h2>
-            <button id="clearPolyoleRecordsButton" class="ghost-button compact-button" type="button" data-i18n="clearRecords">清除</button>
-          </div>
-          <p id="polyoleRecordSummary" class="record-summary" data-i18n="noRecords">还没有记录。</p>
-          <ol id="polyoleRecordList" class="record-list"></ol>
+
+
+
+
+
+
+
+
+        <article class="info-panel home-info">
+          <h2 data-i18n="siteGuidePracticePlanTitle">Recommended practice order</h2>
+          <p data-i18n="siteGuidePracticePlanBody">Start with one-digit addition and subtraction until you can answer accurately. Then move to two-digit problems, multiplication, division, and percentages so your mental math practice grows step by step.</p>
         </article>
 
-        <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleAboutTitle">关于 Polyole</h2>
-          <p data-i18n="polyoleAboutBody">Polyole 是一款用不同形状的方块填满正方形棋盘的方块拼图和逻辑益智游戏。你可以调整棋盘大小，在短时间内练习空间思考、专注力和试错能力。</p>
+        <article class="info-panel home-info">
+          <h2 data-i18n="siteGuideResultTitle">Use results to improve</h2>
+          <p data-i18n="siteGuideResultBody">The result screen shows time, accuracy, and a history of missed questions. Reviewing mistakes helps you decide what to practice next instead of only chasing speed.</p>
         </article>
 
-        <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleHowToTitle">Polyole 的玩法</h2>
-          <p data-i18n="polyoleHowToBody">选择棋盘大小并开始。将方块拖到棋盘上放置，必要时使用旋转或撤销，填满所有格子即可完成。</p>
-        </article>
-
-        <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleTipsTitle">Polyole 技巧</h2>
-          <p data-i18n="polyoleTipsBody">可以先放较大的方块或适合角落的方块。放不下时使用旋转或撤销，尽量减少难处理的空隙。</p>
-        </article>
-        <article class="info-panel home-info article-info">
+<article class="info-panel home-info article-info">
           <details open>
             <summary data-i18n="siteGuideArticleTitle">心算方法文章</summary>
             <p data-i18n="siteGuideArticleBody">Mentalc 还提供关于两位数乘法心算方法的文章。练习前先了解步骤，可以更容易掌握心算思路。</p>
@@ -442,7 +369,7 @@
         <article class="info-panel home-info legal-panel">
           <details>
             <summary data-i18n="termsTitle">使用条款</summary>
-            <p data-i18n="termsBody">Mentalc 是提供脑力训练、心算、益智等游戏的免费网站。不保证完全准确或持续提供服务。用户应自行承担使用本网站的责任。</p>
+            <p data-i18n="termsBody">Mentalc 是提供心算、算术练习和轻量脑力训练的免费网站。不保证完全准确或持续提供服务。用户应自行承担使用本网站的责任。</p>
           </details>
         </article>
 
@@ -456,11 +383,6 @@
       </div>
     </section>
 
-    <section class="native-ad-slot" aria-label="广告">
-      <script async="async" data-cfasync="false" src="https://pl29792292.effectivecpmnetwork.com/e70b2b062f515d021390e5504710a62f/invoke.js"></script>
-      <div id="container-e70b2b062f515d021390e5504710a62f"></div>
-    </section>
-
     <footer class="footer">
       <span>Mentalc</span>
       <nav class="footer-legal-links" aria-label="Site links">
@@ -471,9 +393,11 @@
       <a href="#gameSelectPanel" data-i18n="footerBack">返回游戏</a>
     </footer>
 
-    <script src="./app.js?v=20260620-article-title-all2"></script>
+    <script src="./app.js?v=20260627-legal-bottom1"></script>
   </body>
 </html>
+
+
 
 
 

@@ -54,7 +54,7 @@
       gtag("js", new Date());
       gtag("config", "G-GH29NN7Y5D");
     </script>
-    <link rel="stylesheet" href="./styles.css?v=20260620-article-native-ad1" />
+    <link rel="stylesheet" href="./styles.css?v=20260627-legal-bottom1" />
   </head>
   <body>
     <header class="topbar">
@@ -96,7 +96,7 @@
           <div class="panel-head">
             <div>
               <h2 data-i18n="gameSelectTitle">Elige un juego</h2>
-              <p class="panel-subtitle" data-i18n="gameSelectIntro">Mentalc es un sitio de juegos sencillos para entrenamiento cerebral, cálculo mental, juegos de matemáticas y rompecabezas. Seguiremos añadiendo juegos para practicar concentración, rapidez de cálculo y lógica.</p>
+              <p class="panel-subtitle" data-i18n="gameSelectIntro">Mentalc es un sitio sencillo para practicar cálculo mental, operaciones aritméticas y entrenamiento cerebral breve. Puedes practicar suma, resta, multiplicación, división y porcentajes a tu ritmo.</p>
             </div>
           </div>
 
@@ -271,7 +271,13 @@
               <button id="homeButton" class="ghost-button" type="button">INICIO</button>
               <button id="simpleRetryButton" class="primary-button" type="button">REINTENTAR</button>
             </div>
-          </div>
+            <div class="simple-history-section">
+              <button id="historyToggleButton" class="ghost-button simple-history-toggle" type="button" aria-expanded="false">Show question history</button>
+              <button id="missedRetryButton" class="ghost-button missed-retry-button" type="button" hidden>Retry missed only</button>
+              <div id="simpleHistoryWrap" class="simple-history-wrap is-hidden">
+                <ol id="simpleHistoryList" class="simple-history-list"></ol>
+              </div>
+            </div>          </div>
           <div class="result-grid">
             <div>
               <span data-i18n="questionCount">Preg.</span>
@@ -301,81 +307,7 @@
           </div>
         </div>
 
-        <div id="polyominoPanel" class="panel polyomino-panel is-hidden">
-          <div class="panel-head">
-            <div>
-              <h2 data-i18n="polyominoTitle">Polyole</h2>
-              <p class="panel-subtitle" data-i18n="polyominoIntro">Elige una pieza y llena el tablero sin huecos.</p>
-            </div>
-            <div class="panel-actions">
-              <button id="polyominoBackButton" class="ghost-button" type="button" data-i18n="backToGames">Volver a juegos</button>
-              <button id="polyominoNewButton" class="primary-button" type="button" data-i18n="newPuzzle">Nuevo puzzle</button>
-            </div>
-          </div>
-
-          <div class="polyomino-settings">
-            <div class="setting-control">
-              <div class="setting-label">
-                <span data-i18n="boardSize">Tamaño del tablero</span>
-                <input id="polyominoSizeInput" type="number" min="3" max="8" value="5" />
-              </div>
-              <input id="polyominoSizeSlider" type="range" min="3" max="8" value="5" />
-            </div>
-            <div class="polyomino-actions">
-              <button id="polyominoDailyButton" class="ghost-button daily-button" type="button" data-i18n="polyoleDailyChallenge">Reto diario</button>
-              <button id="polyominoStartButton" class="primary-button" type="button" data-i18n="start">Iniciar</button>
-              <button id="polyominoRotateButton" class="ghost-button" type="button" data-i18n="rotatePiece">Girar</button>
-              <button id="polyominoUndoButton" class="ghost-button" type="button" data-i18n="undoMove">Deshacer</button>
-              <button id="polyominoResetButton" class="ghost-button" type="button" data-i18n="resetPuzzle">Reiniciar</button>
-            </div>
-          </div>
-
-          <p id="polyominoStatus" class="polyomino-status" aria-live="polite"></p>
-
-          <div class="polyomino-play is-hidden">
-            <div id="polyominoBoard" class="polyomino-board" aria-label="Polyole"></div>
-            <div id="polyominoPieces" class="polyomino-pieces" aria-label="Polyole"></div>
-          </div>
-
-          <div id="polyoleResult" class="polyole-result is-hidden">
-            <h3 data-i18n="polyoleResultTitle">Resultado de Polyole</h3>
-            <p data-i18n="completedBoard">Tablero completado</p>
-            <div class="result-grid">
-              <div>
-                <span data-i18n="boardSize">Tamaño del tablero</span>
-                <strong id="polyoleResultSize">5 x 5</strong>
-              </div>
-              <div>
-                <span data-i18n="totalTime">Tiempo total</span>
-                <strong id="polyoleResultTime">00:00.0</strong>
-              </div>
-            </div>
-            <div class="result-actions result-share-actions">
-              <button id="sharePolyoleButton" class="ghost-button share-button" type="button" data-i18n="shareResult">Compartir</button>
-            </div>
-          </div>
-        </div>
       </section>
-
-      <aside class="ad-slot" data-i18n-aria="ad" aria-label="Anuncio">
-        <div id="adFallback" class="ad-fallback">
-          <span data-i18n="ad">Anuncio</span>
-          <p data-i18n="adPlaceholder">Espacio publicitario</p>
-        </div>
-        <div id="adsterraContainer" class="adsterra-container" aria-label="Anuncio">
-          <script>
-            atOptions = {
-              'key' : 'b489bd726b52798404e1c10878838fa4',
-              'format' : 'iframe',
-              'height' : 50,
-              'width' : 320,
-              'params' : {}
-            };
-          </script>
-          <script src="https://www.highperformanceformat.com/b489bd726b52798404e1c10878838fa4/invoke.js"></script>
-        </div>
-        <div id="adsenseContainer" class="adsense-container" aria-hidden="true"></div>
-      </aside>
     </main>
 
     <section class="site-info" aria-label="Site information">
@@ -395,30 +327,25 @@
           <p data-i18n="practiceBody">Empieza con pocas sumas de una cifra. Cuando te sientas cómodo, aumenta las cifras o prueba multiplicaciones. Usa tus registros recientes para mejorar el tiempo sin perder precisión.</p>
         </article>
 
-        <article class="info-panel record-panel polyole-game-info is-hidden">
-          <div class="info-head">
-            <h2 data-i18n="polyoleRecordsTitle">Registros recientes de Polyole</h2>
-            <button id="clearPolyoleRecordsButton" class="ghost-button compact-button" type="button" data-i18n="clearRecords">Borrar</button>
-          </div>
-          <p id="polyoleRecordSummary" class="record-summary" data-i18n="noRecords">Aún no hay registros.</p>
-          <ol id="polyoleRecordList" class="record-list"></ol>
+
+
+
+
+
+
+
+
+        <article class="info-panel home-info">
+          <h2 data-i18n="siteGuidePracticePlanTitle">Recommended practice order</h2>
+          <p data-i18n="siteGuidePracticePlanBody">Start with one-digit addition and subtraction until you can answer accurately. Then move to two-digit problems, multiplication, division, and percentages so your mental math practice grows step by step.</p>
         </article>
 
-        <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleAboutTitle">Acerca de Polyole</h2>
-          <p data-i18n="polyoleAboutBody">Polyole es un rompecabezas de piezas tipo poliominó en el que llenas un tablero cuadrado con formas diferentes. Cambia el tamaño del tablero para practicar visión espacial, lógica y ensayo y error en partidas cortas.</p>
+        <article class="info-panel home-info">
+          <h2 data-i18n="siteGuideResultTitle">Use results to improve</h2>
+          <p data-i18n="siteGuideResultBody">The result screen shows time, accuracy, and a history of missed questions. Reviewing mistakes helps you decide what to practice next instead of only chasing speed.</p>
         </article>
 
-        <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleHowToTitle">Cómo jugar a Polyole</h2>
-          <p data-i18n="polyoleHowToBody">Elige el tamaño del tablero e inicia la partida. Arrastra piezas al tablero, gíralas o deshaz movimientos cuando sea necesario, y llena todas las casillas para completar el puzzle.</p>
-        </article>
-
-        <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleTipsTitle">Consejos para Polyole</h2>
-          <p data-i18n="polyoleTipsBody">Empieza por las piezas grandes o por las que encajan en las esquinas. Cuando el espacio se reduce, girar piezas y deshacer movimientos ayuda a evitar huecos difíciles.</p>
-        </article>
-        <article class="info-panel home-info article-info">
+<article class="info-panel home-info article-info">
           <details open>
             <summary data-i18n="siteGuideArticleTitle">Artículo de cálculo mental</summary>
             <p data-i18n="siteGuideArticleBody">También hay un artículo sobre multiplicar números de dos cifras mentalmente para aprender el método antes de practicar.</p>
@@ -442,7 +369,7 @@
         <article class="info-panel home-info legal-panel">
           <details>
             <summary data-i18n="termsTitle">Términos de uso</summary>
-            <p data-i18n="termsBody">Mentalc es un sitio gratuito de juegos de entrenamiento cerebral, cálculo mental, puzzles y juegos similares. No se garantiza la exactitud ni la disponibilidad continua. El uso del sitio queda bajo responsabilidad del usuario.</p>
+            <p data-i18n="termsBody">Mentalc es un sitio gratuito para cálculo mental, práctica aritmética y entrenamiento cerebral sencillo. No se garantiza la exactitud ni la disponibilidad continua. El uso del sitio queda bajo responsabilidad del usuario.</p>
           </details>
         </article>
 
@@ -456,11 +383,6 @@
       </div>
     </section>
 
-    <section class="native-ad-slot" aria-label="Anuncio">
-      <script async="async" data-cfasync="false" src="https://pl29792292.effectivecpmnetwork.com/e70b2b062f515d021390e5504710a62f/invoke.js"></script>
-      <div id="container-e70b2b062f515d021390e5504710a62f"></div>
-    </section>
-
     <footer class="footer">
       <span>Mentalc</span>
       <nav class="footer-legal-links" aria-label="Site links">
@@ -471,9 +393,11 @@
       <a href="#gameSelectPanel" data-i18n="footerBack">Volver al juego</a>
     </footer>
 
-    <script src="./app.js?v=20260620-article-title-all2"></script>
+    <script src="./app.js?v=20260627-legal-bottom1"></script>
   </body>
 </html>
+
+
 
 
 

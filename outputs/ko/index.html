@@ -54,7 +54,7 @@
       gtag("js", new Date());
       gtag("config", "G-GH29NN7Y5D");
     </script>
-    <link rel="stylesheet" href="./styles.css?v=20260620-article-native-ad1" />
+    <link rel="stylesheet" href="./styles.css?v=20260627-legal-bottom1" />
   </head>
   <body>
     <header class="topbar">
@@ -96,7 +96,7 @@
           <div class="panel-head">
             <div>
               <h2 data-i18n="gameSelectTitle">게임 선택</h2>
-              <p class="panel-subtitle" data-i18n="gameSelectIntro">Mentalc는 암산 게임, 수학 연습, 두뇌 훈련, 논리 퍼즐을 짧게 즐길 수 있는 간단한 게임 사이트입니다. 집중력, 계산 속도, 공간 사고력을 연습할 수 있는 게임을 계속 추가할 예정입니다.</p>
+              <p class="panel-subtitle" data-i18n="gameSelectIntro">Mentalc는 암산, 사칙연산 연습, 짧은 두뇌 훈련을 할 수 있는 간단한 사이트입니다. 덧셈, 뺄셈, 곱셈, 나눗셈, 퍼센트를 자신의 속도에 맞춰 연습할 수 있습니다.</p>
             </div>
           </div>
 
@@ -271,6 +271,13 @@
               <button id="homeButton" class="ghost-button" type="button">HOME</button>
               <button id="simpleRetryButton" class="primary-button" type="button">RETRY</button>
             </div>
+            <div class="simple-history-section">
+              <button id="historyToggleButton" class="ghost-button simple-history-toggle" type="button" aria-expanded="false">Show question history</button>
+              <button id="missedRetryButton" class="ghost-button missed-retry-button" type="button" hidden>Retry missed only</button>
+              <div id="simpleHistoryWrap" class="simple-history-wrap is-hidden">
+                <ol id="simpleHistoryList" class="simple-history-list"></ol>
+              </div>
+            </div>
           </div>
           <div class="result-grid">
             <div>
@@ -301,81 +308,7 @@
           </div>
         </div>
 
-        <div id="polyominoPanel" class="panel polyomino-panel is-hidden">
-          <div class="panel-head">
-            <div>
-              <h2 data-i18n="polyominoTitle">Polyole</h2>
-              <p class="panel-subtitle" data-i18n="polyominoIntro">조각을 선택하고 판을 빈틈없이 채워 보세요.</p>
-            </div>
-            <div class="panel-actions">
-              <button id="polyominoBackButton" class="ghost-button" type="button" data-i18n="backToGames">게임 선택으로 돌아가기</button>
-              <button id="polyominoNewButton" class="primary-button" type="button" data-i18n="newPuzzle">새 퍼즐</button>
-            </div>
-          </div>
-
-          <div class="polyomino-settings">
-            <div class="setting-control">
-              <div class="setting-label">
-                <span data-i18n="boardSize">판 크기</span>
-                <input id="polyominoSizeInput" type="number" min="3" max="8" value="5" />
-              </div>
-              <input id="polyominoSizeSlider" type="range" min="3" max="8" value="5" />
-            </div>
-            <div class="polyomino-actions">
-              <button id="polyominoDailyButton" class="ghost-button daily-button" type="button" data-i18n="polyoleDailyChallenge">데일리 챌린지</button>
-              <button id="polyominoStartButton" class="primary-button" type="button" data-i18n="start">시작</button>
-              <button id="polyominoRotateButton" class="ghost-button" type="button" data-i18n="rotatePiece">회전</button>
-              <button id="polyominoUndoButton" class="ghost-button" type="button" data-i18n="undoMove">되돌리기</button>
-              <button id="polyominoResetButton" class="ghost-button" type="button" data-i18n="resetPuzzle">리셋</button>
-            </div>
-          </div>
-
-          <p id="polyominoStatus" class="polyomino-status" aria-live="polite"></p>
-
-          <div class="polyomino-play is-hidden">
-            <div id="polyominoBoard" class="polyomino-board" aria-label="Polyole"></div>
-            <div id="polyominoPieces" class="polyomino-pieces" aria-label="Polyole"></div>
-          </div>
-
-          <div id="polyoleResult" class="polyole-result is-hidden">
-            <h3 data-i18n="polyoleResultTitle">Polyole 결과</h3>
-            <p data-i18n="completedBoard">완성된 판</p>
-            <div class="result-grid">
-              <div>
-                <span data-i18n="boardSize">판 크기</span>
-                <strong id="polyoleResultSize">5 x 5</strong>
-              </div>
-              <div>
-                <span data-i18n="totalTime">전체 시간</span>
-                <strong id="polyoleResultTime">00:00.0</strong>
-              </div>
-            </div>
-            <div class="result-actions result-share-actions">
-              <button id="sharePolyoleButton" class="ghost-button share-button" type="button" data-i18n="shareResult">공유</button>
-            </div>
-          </div>
-        </div>
       </section>
-
-      <aside class="ad-slot" data-i18n-aria="ad" aria-label="광고">
-        <div id="adFallback" class="ad-fallback">
-          <span data-i18n="ad">광고</span>
-          <p data-i18n="adPlaceholder">광고 영역</p>
-        </div>
-        <div id="adsterraContainer" class="adsterra-container" aria-label="광고">
-          <script>
-            atOptions = {
-              'key' : 'b489bd726b52798404e1c10878838fa4',
-              'format' : 'iframe',
-              'height' : 50,
-              'width' : 320,
-              'params' : {}
-            };
-          </script>
-          <script src="https://www.highperformanceformat.com/b489bd726b52798404e1c10878838fa4/invoke.js"></script>
-        </div>
-        <div id="adsenseContainer" class="adsense-container" aria-hidden="true"></div>
-      </aside>
     </main>
 
     <section class="site-info" aria-label="Site information">
@@ -395,30 +328,25 @@
           <p data-i18n="practiceBody">처음에는 한 자리 덧셈을 적은 문제 수로 시작해 보세요. 익숙해지면 자릿수를 늘리거나 곱셈을 연습하는 것이 좋습니다. 최근 기록을 보면서 정확도를 유지한 채 조금씩 시간을 줄여 보세요.</p>
         </article>
 
-        <article class="info-panel record-panel polyole-game-info is-hidden">
-          <div class="info-head">
-            <h2 data-i18n="polyoleRecordsTitle">최근 Polyole 기록</h2>
-            <button id="clearPolyoleRecordsButton" class="ghost-button compact-button" type="button" data-i18n="clearRecords">삭제</button>
-          </div>
-          <p id="polyoleRecordSummary" class="record-summary" data-i18n="noRecords">아직 기록이 없습니다.</p>
-          <ol id="polyoleRecordList" class="record-list"></ol>
+
+
+
+
+
+
+
+
+        <article class="info-panel home-info">
+          <h2 data-i18n="siteGuidePracticePlanTitle">Recommended practice order</h2>
+          <p data-i18n="siteGuidePracticePlanBody">Start with one-digit addition and subtraction until you can answer accurately. Then move to two-digit problems, multiplication, division, and percentages so your mental math practice grows step by step.</p>
         </article>
 
-        <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleAboutTitle">Polyole 소개</h2>
-          <p data-i18n="polyoleAboutBody">Polyole은 서로 다른 모양의 조각으로 정사각형 판을 빈틈없이 채우는 폴리오미노 스타일의 논리 퍼즐 게임입니다. 판 크기를 바꾸며 공간 감각, 집중력, 시행착오를 짧게 연습할 수 있습니다.</p>
+        <article class="info-panel home-info">
+          <h2 data-i18n="siteGuideResultTitle">Use results to improve</h2>
+          <p data-i18n="siteGuideResultBody">The result screen shows time, accuracy, and a history of missed questions. Reviewing mistakes helps you decide what to practice next instead of only chasing speed.</p>
         </article>
 
-        <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleHowToTitle">Polyole 플레이 방법</h2>
-          <p data-i18n="polyoleHowToBody">판 크기를 고르고 시작합니다. 조각을 판 위로 드래그해 놓고, 필요하면 회전이나 되돌리기를 사용하세요. 모든 칸을 채우면 완성입니다.</p>
-        </article>
-
-        <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleTipsTitle">Polyole 팁</h2>
-          <p data-i18n="polyoleTipsBody">큰 조각이나 모서리에 맞는 조각부터 놓으면 쉽습니다. 빈틈이 애매할 때는 회전과 되돌리기를 사용하세요.</p>
-        </article>
-        <article class="info-panel home-info article-info">
+<article class="info-panel home-info article-info">
           <details open>
             <summary data-i18n="siteGuideArticleTitle">암산 방법 글</summary>
             <p data-i18n="siteGuideArticleBody">Mentalc에는 두 자리 수 곱셈을 암산하는 방법을 설명한 글도 있습니다. 연습 전에 방법을 읽으면 계산 순서를 익히는 데 도움이 됩니다.</p>
@@ -442,7 +370,7 @@
         <article class="info-panel home-info legal-panel">
           <details>
             <summary data-i18n="termsTitle">이용 약관</summary>
-            <p data-i18n="termsBody">Mentalc는 두뇌 훈련, 암산, 퍼즐 등 다양한 게임을 제공하는 무료 사이트입니다. 정확성이나 지속적인 제공을 보장하지 않습니다. 사용자는 본인의 책임하에 이 사이트를 이용합니다.</p>
+            <p data-i18n="termsBody">Mentalc는 암산, 계산 연습, 간단한 두뇌 훈련을 제공하는 무료 사이트입니다. 정확성이나 지속적인 제공을 보장하지 않습니다. 사용자는 본인의 책임하에 이 사이트를 이용합니다.</p>
           </details>
         </article>
 
@@ -456,11 +384,6 @@
       </div>
     </section>
 
-    <section class="native-ad-slot" aria-label="광고">
-      <script async="async" data-cfasync="false" src="https://pl29792292.effectivecpmnetwork.com/e70b2b062f515d021390e5504710a62f/invoke.js"></script>
-      <div id="container-e70b2b062f515d021390e5504710a62f"></div>
-    </section>
-
     <footer class="footer">
       <span>Mentalc</span>
       <nav class="footer-legal-links" aria-label="Site links">
@@ -471,9 +394,11 @@
       <a href="#gameSelectPanel" data-i18n="footerBack">게임으로 돌아가기</a>
     </footer>
 
-    <script src="./app.js?v=20260620-article-title-all2"></script>
+    <script src="./app.js?v=20260627-legal-bottom1"></script>
   </body>
 </html>
+
+
 
 
 

@@ -13,7 +13,7 @@
     </script><meta property="og:site_name" content="Mentalc" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Mentalc" />
-    <meta property="og:description" content="Brain training, mental math, and puzzle games." />
+    <meta property="og:description" content="Mental math practice, arithmetic drills, and simple brain training." />
     <meta property="og:image" content="https://mentalc.net/assets/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -21,9 +21,9 @@
     <meta name="twitter:image" content="https://mentalc.net/assets/og-image.png" />
     <meta
       name="description"
-      content="Mentalcは、暗算ゲーム、計算練習、脳トレ、ロジックパズルを短い時間で遊べる無料ゲームサイトです。計算力、集中力、空間認識を練習できます。"
+      content="Mentalcは、暗算ゲーム、計算練習、脳トレを短い時間で行える無料サイトです。足し算、引き算、掛け算、割り算、パーセントを練習できます。"
     />
-    <title>暗算ゲーム・計算練習・脳トレパズル - Mentalc</title>
+    <title>暗算ゲーム・計算練習・脳トレ - Mentalc</title>
     <link rel="canonical" href="https://mentalc.net/ja/" />
     <link rel="alternate" hreflang="ja" href="https://mentalc.net/ja/" />
     <link rel="alternate" hreflang="en" href="https://mentalc.net/" />
@@ -54,7 +54,7 @@
       gtag("js", new Date());
       gtag("config", "G-GH29NN7Y5D");
     </script>
-    <link rel="stylesheet" href="./styles.css?v=20260620-article-native-ad1" />
+    <link rel="stylesheet" href="./styles.css?v=20260627-legal-bottom1" />
   </head>
   <body>
     <header class="topbar">
@@ -96,7 +96,7 @@
           <div class="panel-head">
             <div>
               <h2 data-i18n="gameSelectTitle">ゲーム選択</h2>
-              <p class="panel-subtitle" data-i18n="gameSelectIntro">Mentalcは、暗算ゲーム、計算練習、脳トレ、ロジックパズルを短い時間で遊べるシンプルなゲームサイトです。集中力、計算力、空間認識を鍛えるゲームを追加していきます。</p>
+              <p class="panel-subtitle" data-i18n="gameSelectIntro">Mentalcは、暗算ゲーム、計算練習、脳トレを短い時間で行えるシンプルなサイトです。足し算、引き算、掛け算、割り算、パーセントの練習を自分のペースで進められます。</p>
             </div>
           </div>
 
@@ -271,6 +271,13 @@
               <button id="homeButton" class="ghost-button" type="button">HOME</button>
               <button id="simpleRetryButton" class="primary-button" type="button">RETRY</button>
             </div>
+            <div class="simple-history-section">
+              <button id="historyToggleButton" class="ghost-button simple-history-toggle" type="button" aria-expanded="false">Show question history</button>
+              <button id="missedRetryButton" class="ghost-button missed-retry-button" type="button" hidden>Retry missed only</button>
+              <div id="simpleHistoryWrap" class="simple-history-wrap is-hidden">
+                <ol id="simpleHistoryList" class="simple-history-list"></ol>
+              </div>
+            </div>
           </div>
           <div class="result-grid">
             <div>
@@ -301,81 +308,7 @@
           </div>
         </div>
 
-        <div id="polyominoPanel" class="panel polyomino-panel is-hidden">
-          <div class="panel-head">
-            <div>
-              <h2 data-i18n="polyominoTitle">Polyole</h2>
-              <p class="panel-subtitle" data-i18n="polyominoIntro">ピースを選び、盤面をすき間なく埋めてください。</p>
-            </div>
-            <div class="panel-actions">
-              <button id="polyominoBackButton" class="ghost-button" type="button" data-i18n="backToGames">戻る</button>
-              <button id="polyominoNewButton" class="primary-button" type="button" data-i18n="newPuzzle">新しい問題</button>
-            </div>
-          </div>
-
-          <div class="polyomino-settings">
-            <div class="setting-control">
-              <div class="setting-label">
-                <span data-i18n="boardSize">盤面サイズ</span>
-                <input id="polyominoSizeInput" type="number" min="3" max="8" value="5" />
-              </div>
-              <input id="polyominoSizeSlider" type="range" min="3" max="8" value="5" />
-            </div>
-            <div class="polyomino-actions">
-              <button id="polyominoDailyButton" class="ghost-button daily-button" type="button" data-i18n="polyoleDailyChallenge">デイリーチャレンジ</button>
-              <button id="polyominoStartButton" class="primary-button" type="button" data-i18n="start">START</button>
-              <button id="polyominoRotateButton" class="ghost-button" type="button" data-i18n="rotatePiece">回転</button>
-              <button id="polyominoUndoButton" class="ghost-button" type="button" data-i18n="undoMove">戻す</button>
-              <button id="polyominoResetButton" class="ghost-button" type="button" data-i18n="resetPuzzle">リセット</button>
-            </div>
-          </div>
-
-          <p id="polyominoStatus" class="polyomino-status" aria-live="polite"></p>
-
-          <div class="polyomino-play is-hidden">
-            <div id="polyominoBoard" class="polyomino-board" aria-label="Polyole"></div>
-            <div id="polyominoPieces" class="polyomino-pieces" aria-label="Polyole"></div>
-          </div>
-
-          <div id="polyoleResult" class="polyole-result is-hidden">
-            <h3 data-i18n="polyoleResultTitle">Polyole 結果</h3>
-            <p data-i18n="completedBoard">完成した盤面</p>
-            <div class="result-grid">
-              <div>
-                <span data-i18n="boardSize">盤面サイズ</span>
-                <strong id="polyoleResultSize">5 x 5</strong>
-              </div>
-              <div>
-                <span data-i18n="totalTime">TIME</span>
-                <strong id="polyoleResultTime">00:00.0</strong>
-              </div>
-            </div>
-            <div class="result-actions result-share-actions">
-              <button id="sharePolyoleButton" class="ghost-button share-button" type="button" data-i18n="shareResult">共有</button>
-            </div>
-          </div>
-        </div>
       </section>
-
-      <aside class="ad-slot" data-i18n-aria="ad" aria-label="広告">
-        <div id="adFallback" class="ad-fallback">
-          <span data-i18n="ad">広告</span>
-          <p data-i18n="adPlaceholder">ここに広告枠を配置</p>
-        </div>
-        <div id="adsterraContainer" class="adsterra-container" aria-label="広告">
-          <script>
-            atOptions = {
-              'key' : 'b489bd726b52798404e1c10878838fa4',
-              'format' : 'iframe',
-              'height' : 50,
-              'width' : 320,
-              'params' : {}
-            };
-          </script>
-          <script src="https://www.highperformanceformat.com/b489bd726b52798404e1c10878838fa4/invoke.js"></script>
-        </div>
-        <div id="adsenseContainer" class="adsense-container" aria-hidden="true"></div>
-      </aside>
     </main>
 
     <section class="site-info" aria-label="Site information">
@@ -395,30 +328,25 @@
           <p data-i18n="practiceBody">最初は1桁の足し算を少ない問題数で始め、慣れてきたら桁数や掛け算を増やすのがおすすめです。毎回の記録を見ながら、正確さを保ったまま少しずつ時間を縮めましょう。</p>
         </article>
 
-        <article class="info-panel record-panel polyole-game-info is-hidden">
-          <div class="info-head">
-            <h2 data-i18n="polyoleRecordsTitle">Polyole 最近の記録</h2>
-            <button id="clearPolyoleRecordsButton" class="ghost-button compact-button" type="button" data-i18n="clearRecords">消去</button>
-          </div>
-          <p id="polyoleRecordSummary" class="record-summary" data-i18n="noRecords">まだ記録はありません。</p>
-          <ol id="polyoleRecordList" class="record-list"></ol>
+
+
+
+
+
+
+
+
+        <article class="info-panel home-info">
+          <h2 data-i18n="siteGuidePracticePlanTitle">Recommended practice order</h2>
+          <p data-i18n="siteGuidePracticePlanBody">Start with one-digit addition and subtraction until you can answer accurately. Then move to two-digit problems, multiplication, division, and percentages so your mental math practice grows step by step.</p>
         </article>
 
-        <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleAboutTitle">Polyoleについて</h2>
-          <p data-i18n="polyoleAboutBody">Polyoleは、形の違うピースを正方形の盤面にすき間なく配置するポリオミノ風のロジックパズルゲームです。盤面サイズを変えて、空間認識、集中力、試行錯誤を短い時間で練習できます。</p>
+        <article class="info-panel home-info">
+          <h2 data-i18n="siteGuideResultTitle">Use results to improve</h2>
+          <p data-i18n="siteGuideResultBody">The result screen shows time, accuracy, and a history of missed questions. Reviewing mistakes helps you decide what to practice next instead of only chasing speed.</p>
         </article>
 
-        <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleHowToTitle">Polyoleの遊び方</h2>
-          <p data-i18n="polyoleHowToBody">盤面サイズを選んで開始します。ピースを盤面へドラッグして配置し、必要に応じて回転や戻す操作を使います。すべてのマスを埋めると完成です。</p>
-        </article>
-
-        <article class="info-panel polyole-game-info is-hidden">
-          <h2 data-i18n="polyoleTipsTitle">Polyoleのコツ</h2>
-          <p data-i18n="polyoleTipsBody">大きなピースや角に合うピースから置くと進めやすくなります。置けないときは回転や戻す操作を使い、盤面のすき間を減らしましょう。</p>
-        </article>
-        <article class="info-panel home-info article-info">
+<article class="info-panel home-info article-info">
           <details open>
             <summary data-i18n="siteGuideArticleTitle">暗算方法の記事</summary>
             <p data-i18n="siteGuideArticleBody">2桁×2桁の掛け算を分配法則で考える記事も用意しています。ゲームで練習する前に考え方を確認すると、暗算の手順を身につけやすくなります。</p>
@@ -442,7 +370,7 @@
         <article class="info-panel home-info legal-panel">
           <details>
             <summary data-i18n="termsTitle">利用規約</summary>
-            <p data-i18n="termsBody">Mentalcは脳トレ、暗算、パズルなどのゲームを提供する無料サイトです。正確性や継続的な提供を保証するものではありません。利用者は自己の責任で本サイトを利用します。</p>
+            <p data-i18n="termsBody">Mentalcは脳トレ、暗算、計算練習を提供する無料サイトです。正確性や継続的な提供を保証するものではありません。利用者は自己の責任で本サイトを利用します。</p>
           </details>
         </article>
 
@@ -456,11 +384,6 @@
       </div>
     </section>
 
-    <section class="native-ad-slot" aria-label="広告">
-      <script async="async" data-cfasync="false" src="https://pl29792292.effectivecpmnetwork.com/e70b2b062f515d021390e5504710a62f/invoke.js"></script>
-      <div id="container-e70b2b062f515d021390e5504710a62f"></div>
-    </section>
-
     <footer class="footer">
       <span>Mentalc</span>
       <nav class="footer-legal-links" aria-label="Site links">
@@ -471,9 +394,11 @@
       <a href="#gameSelectPanel" data-i18n="footerBack">ゲームへ戻る</a>
     </footer>
 
-    <script src="./app.js?v=20260620-article-title-all2"></script>
+    <script src="./app.js?v=20260627-legal-bottom1"></script>
   </body>
 </html>
+
+
 
 
 

@@ -4,9 +4,6 @@
   gamePanel: document.querySelector("#gamePanel"),
   resultPanel: document.querySelector("#resultPanel"),
   tagline: document.querySelector("[data-i18n='tagline']"),
-  adFallback: document.querySelector("#adFallback"),
-  adsenseContainer: document.querySelector("#adsenseContainer"),
-  adsterraContainer: document.querySelector("#adsterraContainer"),
   contactFormLink: document.querySelector("#contactFormLink"),
   footerBackLink: document.querySelector("[data-i18n='footerBack']"),
   miniStats: document.querySelector(".mini-stats"),
@@ -60,6 +57,10 @@
   simpleShareMentalcButton: document.querySelector("#simpleShareMentalcButton"),
   homeButton: document.querySelector("#homeButton"),
   simpleRetryButton: document.querySelector("#simpleRetryButton"),
+  historyToggleButton: document.querySelector("#historyToggleButton"),
+  missedRetryButton: document.querySelector("#missedRetryButton"),
+  simpleHistoryWrap: document.querySelector("#simpleHistoryWrap"),
+  simpleHistoryList: document.querySelector("#simpleHistoryList"),
   sharePolyoleButton: document.querySelector("#sharePolyoleButton"),
   clearRecordsButton: document.querySelector("#clearRecordsButton"),
   questionText: document.querySelector("#questionText"),
@@ -127,6 +128,8 @@ const mainUiText = {
     share: "シェア",
     home: "HOME",
     retry: "RETRY",
+    playAgain: "同じ設定でもう一度",
+    dailyAgain: "デイリー再挑戦",
     articleUrl: "/ja/mentalc/two-digit-multiplication/",
     articleStrategies: "掛け算のコツ",
     articleStrategiesUrl: "/ja/mentalc/mental-math-multiplication-strategies/",
@@ -149,6 +152,8 @@ const mainUiText = {
     share: "Share",
     home: "HOME",
     retry: "RETRY",
+    playAgain: "Same settings again",
+    dailyAgain: "Daily again",
     articleUrl: "/en/mentalc/two-digit-multiplication/",
     articleStrategies: "Multiplication strategies",
     articleStrategiesUrl: "/en/mentalc/mental-math-multiplication-strategies/",
@@ -171,6 +176,8 @@ const mainUiText = {
     share: "Compartir",
     home: "INICIO",
     retry: "REINTENTAR",
+    playAgain: "Misma configuración",
+    dailyAgain: "Reto diario otra vez",
     articleUrl: "/es/mentalc/two-digit-multiplication/",
     articleStrategies: "Estrategias de multiplicación",
     articleStrategiesUrl: "/es/mentalc/mental-math-multiplication-strategies/",
@@ -193,6 +200,8 @@ const mainUiText = {
     share: "Compartilhar",
     home: "INÍCIO",
     retry: "TENTAR",
+    playAgain: "Mesmas configurações",
+    dailyAgain: "Desafio diário de novo",
     articleUrl: "/pt/mentalc/two-digit-multiplication/",
     articleStrategies: "Estratégias de multiplicação",
     articleStrategiesUrl: "/pt/mentalc/mental-math-multiplication-strategies/",
@@ -215,6 +224,8 @@ const mainUiText = {
     share: "Partager",
     home: "ACCUEIL",
     retry: "REJOUER",
+    playAgain: "Même réglage",
+    dailyAgain: "Défi du jour encore",
     articleUrl: "/fr/mentalc/two-digit-multiplication/",
     articleStrategies: "Stratégies de multiplication",
     articleStrategiesUrl: "/fr/mentalc/mental-math-multiplication-strategies/",
@@ -236,6 +247,8 @@ const mainUiText = {
     share: "分享",
     home: "主页",
     retry: "重试",
+    playAgain: "按相同设置再玩",
+    dailyAgain: "再次挑战每日题",
     articleUrl: "/zh/mentalc/two-digit-multiplication/",
     articleStrategies: "乘法策略",
     articleStrategiesUrl: "/zh/mentalc/mental-math-multiplication-strategies/",
@@ -257,6 +270,8 @@ const mainUiText = {
     share: "Teilen",
     home: "HOME",
     retry: "NEU",
+    playAgain: "Gleiche Einstellungen",
+    dailyAgain: "Tagesaufgabe erneut",
     articleUrl: "/de/mentalc/two-digit-multiplication/",
     articleStrategies: "Multiplikationsstrategien",
     articleStrategiesUrl: "/de/mentalc/mental-math-multiplication-strategies/",
@@ -279,6 +294,8 @@ const mainUiText = {
     share: "Delen",
     home: "HOME",
     retry: "OPNIEUW",
+    playAgain: "Zelfde instellingen",
+    dailyAgain: "Daguitdaging opnieuw",
     articleUrl: "/nl/mentalc/two-digit-multiplication/",
     articleStrategies: "Vermenigvuldigstrategieën",
     articleStrategiesUrl: "/nl/mentalc/mental-math-multiplication-strategies/",
@@ -300,6 +317,8 @@ const mainUiText = {
     share: "공유",
     home: "HOME",
     retry: "RETRY",
+    playAgain: "같은 설정으로 다시",
+    dailyAgain: "데일리 다시",
     articleUrl: "/ko/mentalc/two-digit-multiplication/",
     articleStrategies: "곱셈 전략",
     articleStrategiesUrl: "/ko/mentalc/mental-math-multiplication-strategies/",
@@ -324,6 +343,8 @@ mainUiText.id = {
   share: "Bagikan",
   home: "HOME",
   retry: "ULANGI",
+  playAgain: "Pengaturan yang sama",
+  dailyAgain: "Tantangan harian lagi",
   articleUrl: "/id/mentalc/two-digit-multiplication/",
   articleStrategies: "Strategi perkalian",
   articleStrategiesUrl: "/id/mentalc/mental-math-multiplication-strategies/",
@@ -347,6 +368,8 @@ mainUiText.hi = {
   share: "साझा करें",
   home: "HOME",
   retry: "फिर से",
+  playAgain: "उसी सेटिंग से फिर",
+  dailyAgain: "दैनिक फिर से",
   articleUrl: "/hi/mentalc/two-digit-multiplication/",
   articleStrategies: "गुणा की रणनीतियां",
   articleStrategiesUrl: "/hi/mentalc/mental-math-multiplication-strategies/",
@@ -354,6 +377,20 @@ mainUiText.hi = {
   articleBasicUrl: "/hi/mentalc/single-digit-addition-subtraction/",
   articleMulDiv: "गुणा और भाग",
   articleMulDivUrl: "/hi/mentalc/single-digit-multiplication-division/",
+};
+
+const historyUiText = {
+  ja: { show: "問題履歴を見る", hide: "問題履歴を閉じる", correct: "○", wrong: "×", yourAnswer: "入力", empty: "履歴はありません", retryMissed: "間違えた問題だけ再挑戦" },
+  en: { show: "Show question history", hide: "Hide question history", correct: "Correct", wrong: "Miss", yourAnswer: "Your answer", empty: "No history yet", retryMissed: "Retry missed only" },
+  es: { show: "Ver historial", hide: "Cerrar historial", correct: "Correcto", wrong: "Error", yourAnswer: "Tu respuesta", empty: "No hay historial", retryMissed: "Reintentar errores" },
+  pt: { show: "Ver histórico", hide: "Fechar histórico", correct: "Correto", wrong: "Erro", yourAnswer: "Sua resposta", empty: "Sem histórico", retryMissed: "Refazer erros" },
+  fr: { show: "Voir l'historique", hide: "Fermer l'historique", correct: "Correct", wrong: "Erreur", yourAnswer: "Votre réponse", empty: "Aucun historique", retryMissed: "Rejouer les erreurs" },
+  zh: { show: "查看题目记录", hide: "关闭题目记录", correct: "正确", wrong: "错误", yourAnswer: "你的答案", empty: "暂无记录", retryMissed: "只重做错题" },
+  de: { show: "Aufgabenverlauf anzeigen", hide: "Verlauf schließen", correct: "Richtig", wrong: "Fehler", yourAnswer: "Deine Antwort", empty: "Kein Verlauf", retryMissed: "Fehler erneut üben" },
+  nl: { show: "Geschiedenis bekijken", hide: "Geschiedenis sluiten", correct: "Goed", wrong: "Fout", yourAnswer: "Jouw antwoord", empty: "Nog geen geschiedenis", retryMissed: "Fouten opnieuw" },
+  ko: { show: "문제 기록 보기", hide: "문제 기록 닫기", correct: "정답", wrong: "오답", yourAnswer: "입력", empty: "기록이 없습니다", retryMissed: "틀린 문제 다시" },
+  id: { show: "Lihat riwayat soal", hide: "Tutup riwayat", correct: "Benar", wrong: "Salah", yourAnswer: "Jawabanmu", empty: "Belum ada riwayat", retryMissed: "Ulangi yang salah" },
+  hi: { show: "प्रश्न इतिहास देखें", hide: "प्रश्न इतिहास बंद करें", correct: "सही", wrong: "गलत", yourAnswer: "आपका उत्तर", empty: "अभी इतिहास नहीं है", retryMissed: "गलत प्रश्न फिर करें" },
 };
 
 const recordStorageKey = "mentalc-records-v1";
@@ -386,7 +423,7 @@ const translations = {
     settings: "SET",
     gameSelectTitle: "ゲーム選択",
     gameSelectIntro:
-      "Mentalcは、暗算ゲーム、計算練習、脳トレ、ロジックパズルを短い時間で遊べるシンプルなゲームサイトです。集中力、計算力、空間認識を鍛えるゲームを追加していきます。",
+      "Mentalcは、暗算ゲーム、計算練習、脳トレを短い時間で行えるシンプルなサイトです。足し算、引き算、掛け算、割り算、パーセントの練習を自分のペースで進められます。",
     mentalMathLabel: "暗算ゲーム",
     mentalMathTitle: "Mentalc",
     mentalMathBody: "桁数、四則演算、問題数を選んで、暗算練習、計算力トレーニング、反応速度を鍛えます。",
@@ -437,8 +474,6 @@ const translations = {
     keypad: "テンキー",
     inputHint: "",
     wrong: "違います",
-    ad: "広告",
-    adPlaceholder: "ここに広告枠を配置",
     digitUnit: "桁",
     questionUnit: "問",
     secondUnit: "秒",
@@ -459,6 +494,12 @@ const translations = {
     siteGuideHowTitle: "短い時間で練習しやすい設計",
     siteGuideHowBody:
       "解答はテンキーで入力でき、正解するとすぐ次の問題へ進みます。結果画面では合計タイム、正答率、最近の記録を確認できるので、毎日の計算力トレーニングに使いやすい構成です。",
+    siteGuidePracticePlanTitle: "おすすめの練習順",
+    siteGuidePracticePlanBody:
+      "最初は1桁の足し算や引き算で正確に答える練習をします。慣れてきたら2桁、掛け算、割り算、パーセントへ進むと、無理なく暗算力を伸ばしやすくなります。",
+    siteGuideResultTitle: "結果を使って伸ばす",
+    siteGuideResultBody:
+      "結果画面ではタイム、正答率、間違えた問題の履歴を確認できます。速さだけでなく、間違えた問題を見直すことで次の練習内容を決めやすくなります。",
     siteGuideArticleTitle: "暗算方法の記事",
     siteGuideArticleBody:
       "2桁×2桁の掛け算を分配法則で考える記事も用意しています。ゲームで練習する前に考え方を確認すると、暗算の手順を身につけやすくなります。",
@@ -472,7 +513,7 @@ const translations = {
       "Mentalcは、最近のゲーム記録をこの端末のブラウザ内に保存します。この記録はサーバーへ送信されません。広告配信やアクセス解析を導入する場合、第三者事業者がCookie、広告ID、IPアドレス、ブラウザ情報などを利用することがあります。利用者はブラウザ設定からCookieを無効にできます。",
     termsTitle: "利用規約",
     termsBody:
-      "Mentalcは脳トレ、暗算、パズルなどのゲームを提供する無料サイトです。正確性や継続的な提供を保証するものではありません。利用者は自己の責任で本サイトを利用します。",
+      "Mentalcは脳トレ、暗算、計算練習を提供する無料サイトです。正確性や継続的な提供を保証するものではありません。利用者は自己の責任で本サイトを利用します。",
     contactTitle: "お問い合わせ",
     contactBody:
       "Mentalcへのご意見、不具合報告、広告掲載や運営に関するお問い合わせは、Googleフォームからお送りください。",
@@ -503,7 +544,7 @@ const translations = {
     settings: "Settings",
     gameSelectTitle: "Choose a game",
     gameSelectIntro:
-      "Mentalc is a simple site for brain training games, mental math practice, math games, and logic puzzles. More games for focus, calculation speed, and spatial thinking will be added over time.",
+      "Mentalc is a simple site for mental math practice, arithmetic drills, and quick brain training. Practice addition, subtraction, multiplication, division, and percentages at your own pace.",
     mentalMathLabel: "Mental math game",
     mentalMathTitle: "Mentalc",
     mentalMathBody: "Choose digits, arithmetic operations, and question count to practice mental math, calculation speed, and quick responses.",
@@ -554,8 +595,6 @@ const translations = {
     keypad: "Keypad",
     inputHint: "Enter with keypad",
     wrong: "Incorrect",
-    ad: "Ad",
-    adPlaceholder: "Ad space",
     digitUnit: " digits",
     questionUnit: " questions",
     secondUnit: " sec",
@@ -576,6 +615,12 @@ const translations = {
     siteGuideHowTitle: "Built for short daily sessions",
     siteGuideHowBody:
       "Enter answers with the on-screen keypad or your keyboard. When an answer is correct, the next question appears immediately. The result screen shows total time, accuracy, and recent records, making it easy to track steady progress.",
+    siteGuidePracticePlanTitle: "Recommended practice order",
+    siteGuidePracticePlanBody:
+      "Start with one-digit addition and subtraction until you can answer accurately. Then move to two-digit problems, multiplication, division, and percentages so your mental math practice grows step by step.",
+    siteGuideResultTitle: "Use results to improve",
+    siteGuideResultBody:
+      "The result screen shows time, accuracy, and a history of missed questions. Reviewing mistakes helps you decide what to practice next instead of only chasing speed.",
     siteGuideArticleTitle: "Mental math learning article",
     siteGuideArticleBody:
       "Mentalc also includes an article on multiplying two-digit numbers mentally. Reading the method before practicing can make the game more useful for building calculation habits.",
@@ -589,7 +634,7 @@ const translations = {
       "Mentalc stores recent game records only in this browser on this device. These records are not sent to a server. If advertising or analytics are enabled, third-party providers may use cookies, advertising IDs, IP addresses, browser information, or similar technologies. Users can disable cookies in their browser settings.",
     termsTitle: "Terms of Use",
     termsBody:
-      "Mentalc is a free site for brain training, mental math, puzzle, and similar games. Accuracy and continuous availability are not guaranteed. Users use this site at their own responsibility.",
+      "Mentalc is a free site for mental math, arithmetic practice, and simple brain training. Accuracy and continuous availability are not guaranteed. Users use this site at their own responsibility.",
     contactTitle: "Contact",
     contactBody:
       "For feedback, bug reports, advertising, or site operation inquiries, please use the Google Form.",
@@ -620,7 +665,7 @@ const translations = {
     settings: "Configuración",
     gameSelectTitle: "Elige un juego",
     gameSelectIntro:
-      "Mentalc es un sitio de juegos sencillos para entrenamiento cerebral, cálculo mental, juegos de matemáticas y rompecabezas. Seguiremos añadiendo juegos para practicar concentración, rapidez de cálculo y lógica.",
+      "Mentalc es un sitio sencillo para practicar cálculo mental, operaciones aritméticas y entrenamiento cerebral breve. Puedes practicar suma, resta, multiplicación, división y porcentajes a tu ritmo.",
     mentalMathLabel: "Juego de cálculo mental",
     mentalMathTitle: "Mentalc",
     mentalMathBody: "Elige cifras, operaciones y número de preguntas para practicar cálculo mental, rapidez y reflejos matemáticos.",
@@ -696,6 +741,12 @@ const translations = {
     siteGuideHowTitle: "Diseñado para sesiones cortas",
     siteGuideHowBody:
       "Introduce respuestas con el teclado en pantalla o el teclado físico. Al acertar, aparece la siguiente pregunta de inmediato. El resultado muestra tiempo, precisión y registros recientes.",
+    siteGuidePracticePlanTitle: "Orden recomendado de práctica",
+    siteGuidePracticePlanBody:
+      "Empieza con sumas y restas de una cifra hasta responder con precisión. Después avanza a dos cifras, multiplicación, división y porcentajes para mejorar el cálculo mental paso a paso.",
+    siteGuideResultTitle: "Usa los resultados para mejorar",
+    siteGuideResultBody:
+      "La pantalla de resultados muestra tiempo, precisión e historial de errores. Revisar los fallos ayuda a elegir qué practicar después, no solo a buscar velocidad.",
     siteGuideArticleTitle: "Artículo de cálculo mental",
     siteGuideArticleBody:
       "También hay un artículo sobre multiplicar números de dos cifras mentalmente para aprender el método antes de practicar.",
@@ -709,7 +760,7 @@ const translations = {
       "Mentalc guarda los registros recientes solo en el navegador de este dispositivo. Estos datos no se envían a un servidor. Si se activan anuncios o analíticas, proveedores externos pueden usar cookies, identificadores publicitarios, direcciones IP, información del navegador o tecnologías similares. Puedes desactivar las cookies desde la configuración del navegador.",
     termsTitle: "Términos de uso",
     termsBody:
-      "Mentalc es un sitio gratuito de juegos de entrenamiento cerebral, cálculo mental, puzzles y juegos similares. No se garantiza la exactitud ni la disponibilidad continua. El uso del sitio queda bajo responsabilidad del usuario.",
+      "Mentalc es un sitio gratuito para cálculo mental, práctica aritmética y entrenamiento cerebral sencillo. No se garantiza la exactitud ni la disponibilidad continua. El uso del sitio queda bajo responsabilidad del usuario.",
     contactTitle: "Contacto",
     contactBody:
       "Para comentarios, informes de errores, publicidad o consultas sobre el sitio, utiliza el formulario de Google.",
@@ -811,6 +862,12 @@ const translations = {
     siteGuideHowTitle: "Feito para sessões curtas",
     siteGuideHowBody:
       "Digite as respostas no teclado da tela ou no teclado físico. Ao acertar, a próxima pergunta aparece imediatamente. O resultado mostra tempo, precisão e registros recentes.",
+    siteGuidePracticePlanTitle: "Ordem recomendada de treino",
+    siteGuidePracticePlanBody:
+      "Comece com adição e subtração de um dígito até responder com precisão. Depois avance para dois dígitos, multiplicação, divisão e porcentagens para evoluir passo a passo.",
+    siteGuideResultTitle: "Use os resultados para melhorar",
+    siteGuideResultBody:
+      "A tela de resultado mostra tempo, precisão e histórico de erros. Rever os erros ajuda a escolher o próximo treino, não apenas a buscar mais velocidade.",
     siteGuideArticleTitle: "Artigo de cálculo mental",
     siteGuideArticleBody:
       "Há também um artigo sobre multiplicar números de dois dígitos mentalmente para aprender o método antes de praticar.",
@@ -925,6 +982,12 @@ const translations = {
     siteGuideHowTitle: "Conçu pour de courtes sessions",
     siteGuideHowBody:
       "Saisissez les réponses avec le pavé à l'écran ou le clavier. Après une bonne réponse, la question suivante apparaît immédiatement. Le résultat indique le temps, la précision et les records récents.",
+    siteGuidePracticePlanTitle: "Ordre d'entraînement conseillé",
+    siteGuidePracticePlanBody:
+      "Commencez par des additions et soustractions à un chiffre jusqu'à répondre avec précision. Passez ensuite aux nombres à deux chiffres, à la multiplication, à la division et aux pourcentages.",
+    siteGuideResultTitle: "Utiliser les résultats pour progresser",
+    siteGuideResultBody:
+      "L'écran de résultat indique le temps, la précision et l'historique des erreurs. Revoir les erreurs aide à choisir le prochain entraînement, pas seulement à aller plus vite.",
     siteGuideArticleTitle: "Article de calcul mental",
     siteGuideArticleBody:
       "Un article explique aussi comment multiplier mentalement deux nombres à deux chiffres avant de pratiquer.",
@@ -968,7 +1031,7 @@ const translations = {
     settings: "设置",
     gameSelectTitle: "选择游戏",
     gameSelectIntro:
-      "Mentalc 是一个简洁的游戏网站，可用于心算游戏、数学练习、脑力训练和逻辑益智游戏。今后还会继续添加训练专注力、计算速度和空间思维的游戏。",
+      "Mentalc 是一个简洁的网站，可用于心算练习、四则运算训练和轻量脑力训练。你可以按自己的节奏练习加法、减法、乘法、除法和百分比。",
     mentalMathLabel: "心算游戏",
     mentalMathTitle: "Mentalc",
     mentalMathBody: "选择位数、四则运算和题数，练习心算、计算速度和反应能力。",
@@ -1035,6 +1098,12 @@ const translations = {
     practiceTitle: "心算练习建议",
     practiceBody:
       "建议先从少量一位数加法开始。熟悉后再增加位数或练习乘法。通过查看最近记录，在保持准确的同时逐步缩短用时。",
+    siteGuidePracticePlanTitle: "推荐练习顺序",
+    siteGuidePracticePlanBody:
+      "可以先从一位数加减法开始，确保答题准确。熟练后再练习两位数、乘法、除法和百分比，让心算能力一步步提高。",
+    siteGuideResultTitle: "用结果改进练习",
+    siteGuideResultBody:
+      "结果页面会显示用时、准确率和错题记录。回顾错题可以帮助你决定下一次练习什么，而不只是追求速度。",
     siteGuideArticleTitle: "心算方法文章",
     siteGuideArticleBody:
       "Mentalc 还提供关于两位数乘法心算方法的文章。练习前先了解步骤，可以更容易掌握心算思路。",
@@ -1048,7 +1117,7 @@ const translations = {
       "Mentalc 只会把最近的游戏记录保存在此设备的浏览器中，不会发送到服务器。如果启用广告或访问分析，第三方服务商可能会使用 Cookie、广告 ID、IP 地址、浏览器信息或类似技术。用户可以在浏览器设置中禁用 Cookie。",
     termsTitle: "使用条款",
     termsBody:
-      "Mentalc 是提供脑力训练、心算、益智等游戏的免费网站。不保证完全准确或持续提供服务。用户应自行承担使用本网站的责任。",
+      "Mentalc 是提供心算、算术练习和轻量脑力训练的免费网站。不保证完全准确或持续提供服务。用户应自行承担使用本网站的责任。",
     contactTitle: "联系我们",
     contactBody:
       "如需反馈意见、报告问题，或咨询广告和网站运营相关事项，请使用 Google 表单。",
@@ -1079,7 +1148,7 @@ const translations = {
     settings: "Einstellungen",
     gameSelectTitle: "Spiel waehlen",
     gameSelectIntro:
-      "Mentalc ist eine einfache Spielseite für Gehirntraining, Kopfrechnen, Mathe-Spiele und Logik-Puzzles in kurzen Pausen. Weitere Spiele für Konzentration, Rechentempo und räumliches Denken werden ergänzt.",
+      "Mentalc ist eine einfache Website für Kopfrechnen, Rechenübungen und kurzes Gehirntraining. Du kannst Addition, Subtraktion, Multiplikation, Division und Prozentrechnen in deinem Tempo üben.",
     mentalMathLabel: "Kopfrechenspiel",
     mentalMathTitle: "Mentalc",
     mentalMathBody: "Trainiere Kopfrechnen, Grundrechenarten, Rechentempo und schnelle Reaktionen mit Stellenzahl, Rechenart und Aufgabenanzahl.",
@@ -1146,6 +1215,12 @@ const translations = {
     practiceTitle: "Tipps zum Üben",
     practiceBody:
       "Beginne mit wenigen einstelligen Additionsaufgaben. Wenn du sicherer wirst, erhöhe die Stellenzahl oder übe Multiplikation. Nutze deine letzten Ergebnisse, um die Zeit Schritt für Schritt zu verbessern, ohne an Genauigkeit zu verlieren.",
+    siteGuidePracticePlanTitle: "Empfohlene Übungsreihenfolge",
+    siteGuidePracticePlanBody:
+      "Beginne mit einstelliger Addition und Subtraktion, bis du sicher antwortest. Danach kannst du zu zweistelligen Aufgaben, Multiplikation, Division und Prozentrechnen wechseln.",
+    siteGuideResultTitle: "Mit Ergebnissen besser üben",
+    siteGuideResultBody:
+      "Der Ergebnisbildschirm zeigt Zeit, Genauigkeit und falsch gelöste Aufgaben. So erkennst du, was du als Nächstes üben solltest, statt nur schneller werden zu wollen.",
     siteGuideArticleTitle: "Artikel zum Kopfrechnen",
     siteGuideArticleBody:
       "Mentalc enthält auch einen Artikel zum Kopfrechnen mit zweistelliger Multiplikation. Lies die Methode vor dem Üben, um die Rechenschritte leichter zu verstehen.",
@@ -1159,7 +1234,7 @@ const translations = {
       "Mentalc speichert die letzten Spielergebnisse nur in diesem Browser auf diesem Gerät. Diese Daten werden nicht an einen Server gesendet. Wenn Werbung oder Analysefunktionen aktiviert werden, können Drittanbieter Cookies, Werbe-IDs, IP-Adressen, Browserinformationen oder ähnliche Technologien verwenden. Nutzer können Cookies in den Browsereinstellungen deaktivieren.",
     termsTitle: "Nutzungsbedingungen",
     termsBody:
-      "Mentalc ist eine kostenlose Website für Gehirntraining, Kopfrechnen, Puzzle- und ähnliche Spiele. Genauigkeit und dauerhafte Verfügbarkeit werden nicht garantiert. Die Nutzung dieser Website erfolgt auf eigene Verantwortung.",
+      "Mentalc ist eine kostenlose Website für Kopfrechnen, Rechenübungen und einfaches Gehirntraining. Genauigkeit und dauerhafte Verfügbarkeit werden nicht garantiert. Die Nutzung dieser Website erfolgt auf eigene Verantwortung.",
     contactTitle: "Kontakt",
     contactBody:
       "Für Feedback, Fehlerberichte, Werbung oder Fragen zum Betrieb der Website nutze bitte das Google-Formular.",
@@ -1190,7 +1265,7 @@ const translations = {
     settings: "Instellingen",
     gameSelectTitle: "Kies een spel",
     gameSelectIntro:
-      "Mentalc is een eenvoudige spelsite voor hersentraining, hoofdrekenen, rekenspelletjes en logische puzzels in korte pauzes. Later worden meer spellen voor focus, rekensnelheid en ruimtelijk inzicht toegevoegd.",
+      "Mentalc is een eenvoudige site voor hoofdrekenen, rekenoefeningen en korte hersentraining. Oefen optellen, aftrekken, vermenigvuldigen, delen en percentages in je eigen tempo.",
     mentalMathLabel: "Hoofdrekenspel",
     mentalMathTitle: "Mentalc",
     mentalMathBody: "Oefen hoofdrekenen, basisbewerkingen, rekensnelheid en snelle reacties met cijfers, bewerkingen en aantal vragen.",
@@ -1257,6 +1332,12 @@ const translations = {
     practiceTitle: "Oefentips",
     practiceBody:
       "Begin met een kleine set optelsommen met een cijfer. Als dat goed gaat, verhoog je het aantal cijfers of oefen je vermenigvuldigen. Gebruik je recente resultaten om stap voor stap sneller te worden zonder nauwkeurigheid te verliezen.",
+    siteGuidePracticePlanTitle: "Aanbevolen oefenvolgorde",
+    siteGuidePracticePlanBody:
+      "Begin met optellen en aftrekken met één cijfer tot je nauwkeurig antwoordt. Ga daarna naar twee cijfers, vermenigvuldigen, delen en percentages om stap voor stap beter te worden.",
+    siteGuideResultTitle: "Gebruik resultaten om te verbeteren",
+    siteGuideResultBody:
+      "Het resultaatscherm toont tijd, nauwkeurigheid en gemiste vragen. Door fouten te bekijken weet je beter wat je daarna moet oefenen, in plaats van alleen sneller te willen zijn.",
     siteGuideArticleTitle: "Artikel over hoofdrekenen",
     siteGuideArticleBody:
       "Mentalc bevat ook een artikel over het hoofdrekenen van vermenigvuldigingen met twee cijfers. Lees de methode voor je oefent om de stappen beter te begrijpen.",
@@ -1270,7 +1351,7 @@ const translations = {
       "Mentalc bewaart recente spelresultaten alleen in deze browser op dit apparaat. Deze gegevens worden niet naar een server verzonden. Als advertenties of analysefuncties worden ingeschakeld, kunnen externe aanbieders cookies, advertentie-ID's, IP-adressen, browserinformatie of vergelijkbare technologieen gebruiken. Gebruikers kunnen cookies uitschakelen in de browserinstellingen.",
     termsTitle: "Gebruiksvoorwaarden",
     termsBody:
-      "Mentalc is een gratis site voor hersentraining, hoofdrekenen, puzzels en vergelijkbare spellen. Nauwkeurigheid en voortdurende beschikbaarheid worden niet gegarandeerd. Gebruik van deze site is op eigen verantwoordelijkheid.",
+      "Mentalc is een gratis site voor hoofdrekenen, rekenoefeningen en eenvoudige hersentraining. Nauwkeurigheid en voortdurende beschikbaarheid worden niet gegarandeerd. Gebruik van deze site is op eigen verantwoordelijkheid.",
     contactTitle: "Contact",
     contactBody:
       "Gebruik het Google-formulier voor feedback, foutmeldingen, advertenties of vragen over het beheer van de site.",
@@ -1301,7 +1382,7 @@ const translations = {
     settings: "설정",
     gameSelectTitle: "게임 선택",
     gameSelectIntro:
-      "Mentalc는 암산 게임, 수학 연습, 두뇌 훈련, 논리 퍼즐을 짧게 즐길 수 있는 간단한 게임 사이트입니다. 집중력, 계산 속도, 공간 사고력을 연습할 수 있는 게임을 계속 추가할 예정입니다.",
+      "Mentalc는 암산, 사칙연산 연습, 짧은 두뇌 훈련을 할 수 있는 간단한 사이트입니다. 덧셈, 뺄셈, 곱셈, 나눗셈, 퍼센트를 자신의 속도에 맞춰 연습할 수 있습니다.",
     mentalMathLabel: "암산 게임",
     mentalMathTitle: "Mentalc",
     mentalMathBody: "자릿수, 사칙연산, 문제 수를 선택해 암산, 계산 속도, 빠른 반응을 연습합니다.",
@@ -1368,6 +1449,12 @@ const translations = {
     practiceTitle: "암산 연습 팁",
     practiceBody:
       "처음에는 한 자리 덧셈을 적은 문제 수로 시작해 보세요. 익숙해지면 자릿수를 늘리거나 곱셈을 연습하는 것이 좋습니다. 최근 기록을 보면서 정확도를 유지한 채 조금씩 시간을 줄여 보세요.",
+    siteGuidePracticePlanTitle: "추천 연습 순서",
+    siteGuidePracticePlanBody:
+      "먼저 한 자리 덧셈과 뺄셈을 정확하게 풀어 보세요. 익숙해지면 두 자리 문제, 곱셈, 나눗셈, 퍼센트로 넘어가며 단계적으로 암산 실력을 키울 수 있습니다.",
+    siteGuideResultTitle: "결과로 다음 연습 정하기",
+    siteGuideResultBody:
+      "결과 화면에서는 시간, 정확도, 틀린 문제 기록을 확인할 수 있습니다. 틀린 문제를 다시 보면 속도뿐 아니라 다음에 무엇을 연습할지도 정하기 쉽습니다.",
     siteGuideArticleTitle: "암산 방법 글",
     siteGuideArticleBody:
       "Mentalc에는 두 자리 수 곱셈을 암산하는 방법을 설명한 글도 있습니다. 연습 전에 방법을 읽으면 계산 순서를 익히는 데 도움이 됩니다.",
@@ -1381,7 +1468,7 @@ const translations = {
       "Mentalc는 최근 게임 기록을 이 기기의 브라우저 안에만 저장합니다. 이 기록은 서버로 전송되지 않습니다. 광고 또는 분석 기능을 사용하는 경우, 제3자 제공업체가 쿠키, 광고 ID, IP 주소, 브라우저 정보 또는 유사한 기술을 사용할 수 있습니다. 사용자는 브라우저 설정에서 쿠키를 비활성화할 수 있습니다.",
     termsTitle: "이용 약관",
     termsBody:
-      "Mentalc는 두뇌 훈련, 암산, 퍼즐 등 다양한 게임을 제공하는 무료 사이트입니다. 정확성이나 지속적인 제공을 보장하지 않습니다. 사용자는 본인의 책임하에 이 사이트를 이용합니다.",
+      "Mentalc는 암산, 계산 연습, 간단한 두뇌 훈련을 제공하는 무료 사이트입니다. 정확성이나 지속적인 제공을 보장하지 않습니다. 사용자는 본인의 책임하에 이 사이트를 이용합니다.",
     contactTitle: "문의",
     contactBody:
       "의견, 오류 신고, 광고 또는 사이트 운영 관련 문의는 Google 양식을 이용해 주세요.",
@@ -1451,6 +1538,10 @@ translations.id = {
   siteGuideBody: "Mentalc membantu latihan penjumlahan, pengurangan, perkalian, dan pembagian dengan kecepatan Anda sendiri.",
   siteGuideHowTitle: "Cocok untuk latihan harian singkat",
   siteGuideHowBody: "Saat jawaban benar, soal berikutnya langsung muncul. Layar hasil menampilkan waktu, akurasi, dan catatan terbaru.",
+  siteGuidePracticePlanTitle: "Urutan latihan yang disarankan",
+  siteGuidePracticePlanBody: "Mulailah dari penjumlahan dan pengurangan satu digit sampai akurat. Setelah itu lanjutkan ke dua digit, perkalian, pembagian, dan persentase secara bertahap.",
+  siteGuideResultTitle: "Gunakan hasil untuk berkembang",
+  siteGuideResultBody: "Layar hasil menampilkan waktu, akurasi, dan soal yang salah. Melihat kembali kesalahan membantu menentukan latihan berikutnya, bukan hanya mengejar kecepatan.",
   siteGuideArticleTitle: "Artikel belajar mental math",
   siteGuideArticleBody: "Mentalc juga menyediakan artikel tentang cara menghitung perkalian dua digit secara mental.",
   recordsTitle: "Catatan terbaru",
@@ -1529,6 +1620,10 @@ translations.hi = {
   siteGuideBody: "Mentalc में आप जोड़, घटाव, गुणा और भाग का अभ्यास अपनी गति से कर सकते हैं.",
   siteGuideHowTitle: "छोटे दैनिक अभ्यास के लिए बनाया गया",
   siteGuideHowBody: "सही उत्तर देते ही अगला प्रश्न तुरंत आता है. परिणाम स्क्रीन समय, सटीकता और हाल के रिकॉर्ड दिखाती है.",
+  siteGuidePracticePlanTitle: "सुझाया गया अभ्यास क्रम",
+  siteGuidePracticePlanBody: "पहले एक अंक के जोड़ और घटाव को सही-सही हल करें. फिर दो अंकों, गुणा, भाग और प्रतिशत की ओर धीरे-धीरे बढ़ें.",
+  siteGuideResultTitle: "परिणाम से सुधार करें",
+  siteGuideResultBody: "परिणाम स्क्रीन समय, सटीकता और गलत प्रश्न दिखाती है. गलतियों को देखकर अगला अभ्यास चुनना आसान होता है.",
   siteGuideArticleTitle: "Mental math सीखने का लेख",
   siteGuideArticleBody: "Mentalc में दो अंकों की गुणा को मन में हल करने का लेख भी है.",
   recordsTitle: "हाल के रिकॉर्ड",
@@ -1664,6 +1759,19 @@ function getAccuracyPercent() {
     total
   );
   return Math.round((correct / total) * 100);
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function getHistoryUiText() {
+  return { ...historyUiText.en, ...(historyUiText[currentLanguage] || {}) };
 }
 
 function readSettings() {
@@ -1856,7 +1964,10 @@ function updateMainUiText() {
   if (els.simpleShareMentalcButton) els.simpleShareMentalcButton.textContent = ui.share;
   if (els.shareMentalcButton) els.shareMentalcButton.textContent = ui.share;
   if (els.homeButton) els.homeButton.textContent = ui.home;
-  if (els.simpleRetryButton) els.simpleRetryButton.textContent = ui.retry;
+  if (els.simpleRetryButton) {
+    els.simpleRetryButton.textContent =
+      currentPanel === "result" ? (state.isDaily ? ui.dailyAgain || ui.retry : ui.playAgain || ui.retry) : ui.retry;
+  }
 }
 
 function updateFooterBackLink() {
@@ -1865,31 +1976,18 @@ function updateFooterBackLink() {
   }
 
   const languageUrl = languageUrls[currentLanguage] || languageUrls.ja;
-  const targetId = currentPanel === "select" || currentPanel === "polyomino" ? "gameSelectPanel" : "setupPanel";
+  const targetId = currentPanel === "select" ? "gameSelectPanel" : "setupPanel";
   els.footerBackLink.href = `${languageUrl}#${targetId}`;
 }
 
 function initAdsense() {
-  if (!adsenseConfig.clientId || !adsenseConfig.slotId) {
-    if (els.adsterraContainer) {
-      els.adFallback.classList.add("is-hidden");
-      els.adsterraContainer.classList.remove("is-hidden");
-      els.adsterraContainer.removeAttribute("aria-hidden");
-    } else {
-      els.adFallback.classList.remove("is-hidden");
-    }
-    els.adsenseContainer.classList.add("is-hidden");
-    els.adsenseContainer.setAttribute("aria-hidden", "true");
+  const adsenseContainer = document.querySelector("#adsenseContainer");
+  if (!adsenseContainer || !adsenseConfig.clientId || !adsenseConfig.slotId) {
     return;
   }
 
-  els.adFallback.classList.add("is-hidden");
-  if (els.adsterraContainer) {
-    els.adsterraContainer.classList.add("is-hidden");
-    els.adsterraContainer.setAttribute("aria-hidden", "true");
-  }
-  els.adsenseContainer.classList.remove("is-hidden");
-  els.adsenseContainer.removeAttribute("aria-hidden");
+  adsenseContainer.classList.remove("is-hidden");
+  adsenseContainer.removeAttribute("aria-hidden");
 
   const script = document.createElement("script");
   script.async = true;
@@ -1904,7 +2002,7 @@ function initAdsense() {
   ad.dataset.adSlot = adsenseConfig.slotId;
   ad.dataset.adFormat = "auto";
   ad.dataset.fullWidthResponsive = "true";
-  els.adsenseContainer.appendChild(ad);
+  adsenseContainer.appendChild(ad);
 
   script.addEventListener("load", () => {
     window.adsbygoogle = window.adsbygoogle || [];
@@ -2257,7 +2355,7 @@ function showPanel(name) {
   els.setupPanel.classList.toggle("is-hidden", name !== "setup");
   els.gamePanel.classList.toggle("is-hidden", name !== "game");
   els.resultPanel.classList.toggle("is-hidden", name !== "result");
-  els.polyominoPanel.classList.toggle("is-hidden", name !== "polyomino");
+  els.polyominoPanel?.classList.toggle("is-hidden", true);
   els.miniStats.classList.toggle("is-hidden", name === "select");
   updateTagline();
   updateFooterBackLink();
@@ -2292,7 +2390,7 @@ function setHomeInfoVisible(isVisible) {
 function startTimer() {
   stopTimer();
   timerId = window.setInterval(() => {
-    const startedAt = currentPanel === "polyomino" ? polyominoState.startedAt : state.startedAt;
+    const startedAt = state.startedAt;
     els.timerText.textContent = formatDuration(performance.now() - startedAt);
   }, 100);
 }
@@ -2430,6 +2528,7 @@ function finishGame() {
 
   els.timerText.textContent = formatDuration(state.totalTime);
   els.progressText.textContent = `${state.settings.questionCount} / ${state.settings.questionCount}`;
+  setHistoryExpanded(false);
   refreshResultStats();
   renderHistory();
   saveRecord();
@@ -2437,6 +2536,8 @@ function finishGame() {
 }
 
 function refreshResultStats() {
+  const ui = getMainText();
+  const historyText = getHistoryUiText();
   els.questionTotalStat.textContent = formatQuestionCount(state.settings.questionCount);
   els.totalTimeStat.textContent = formatDuration(state.totalTime);
   els.averageTimeStat.textContent = formatSeconds(state.averageTime / 1000);
@@ -2446,20 +2547,112 @@ function refreshResultStats() {
   if (els.accuracyStat) {
     els.accuracyStat.textContent = `${getAccuracyPercent()}%`;
   }
+  if (els.simpleRetryButton) {
+    els.simpleRetryButton.textContent = state.isDaily ? ui.dailyAgain || ui.retry : ui.playAgain || ui.retry;
+  }
+  if (els.historyToggleButton && els.simpleHistoryWrap) {
+    els.historyToggleButton.textContent = els.simpleHistoryWrap.classList.contains("is-hidden")
+      ? historyText.show
+      : historyText.hide;
+  }
+  if (els.missedRetryButton) {
+    els.missedRetryButton.textContent = historyText.retryMissed;
+    els.missedRetryButton.hidden = getMissedRecords().length === 0;
+  }
+}
+
+function setHistoryExpanded(expanded) {
+  if (!els.historyToggleButton || !els.simpleHistoryWrap) {
+    return;
+  }
+  const historyText = getHistoryUiText();
+  els.simpleHistoryWrap.classList.toggle("is-hidden", !expanded);
+  els.resultPanel?.classList.toggle("is-history-open", expanded);
+  els.historyToggleButton.setAttribute("aria-expanded", String(expanded));
+  els.historyToggleButton.textContent = expanded ? historyText.hide : historyText.show;
+}
+
+function getMissedRecords() {
+  return state.records.filter((record) => record.correct === false);
+}
+
+function startMissedRetry() {
+  const missed = getMissedRecords();
+  if (missed.length === 0) {
+    return;
+  }
+
+  const previousSettings = { ...state.settings };
+  const questions = missed.map((record) => ({
+    label: record.label,
+    answer: record.answer,
+  }));
+
+  state = createInitialState();
+  state.settings = {
+    ...previousSettings,
+    questionCount: questions.length,
+  };
+  state.questions = questions;
+  state.startedAt = performance.now();
+  setHistoryExpanded(false);
+  showPanel("game");
+  startQuestion();
+  startTimer();
 }
 
 function renderHistory() {
-  els.historyBody.innerHTML = state.records
-    .map(
-      (record) => `
+  const historyText = getHistoryUiText();
+  const missedRecords = getMissedRecords();
+
+  if (els.historyBody) {
+    els.historyBody.innerHTML = state.records
+      .map(
+        (record) => `
         <tr>
-          <td>${record.label}</td>
-          <td>${record.answer}</td>
+          <td>${escapeHtml(record.label)}</td>
+          <td>${escapeHtml(record.answer)}</td>
           <td>${formatSeconds(record.duration / 1000)}</td>
           <td>${record.mistakes}</td>
         </tr>
       `
-    )
+      )
+      .join("");
+  }
+
+  if (!els.simpleHistoryList || !els.historyToggleButton || !els.simpleHistoryWrap) {
+    return;
+  }
+
+  els.historyToggleButton.hidden = state.records.length === 0;
+  els.historyToggleButton.textContent = els.simpleHistoryWrap.classList.contains("is-hidden")
+    ? historyText.show
+    : historyText.hide;
+
+  if (els.missedRetryButton) {
+    els.missedRetryButton.hidden = missedRecords.length === 0;
+    els.missedRetryButton.textContent = historyText.retryMissed;
+  }
+
+  if (state.records.length === 0) {
+    els.simpleHistoryList.innerHTML = `<li class="simple-history-empty">${escapeHtml(historyText.empty)}</li>`;
+    return;
+  }
+
+  els.simpleHistoryList.innerHTML = state.records
+    .map((record, index) => {
+      const isCorrect = record.correct !== false;
+      const answerLine = isCorrect
+        ? `= ${escapeHtml(record.answer)}`
+        : `= ${escapeHtml(record.answer)} / ${escapeHtml(historyText.yourAnswer)}: ${escapeHtml(record.input || "-")}`;
+      return `
+        <li class="${isCorrect ? "is-correct" : "is-wrong"}">
+          <span class="history-number">${index + 1}</span>
+          <span class="history-question">${escapeHtml(record.label)} ${answerLine}</span>
+          <span class="history-mark">${isCorrect ? escapeHtml(historyText.correct) : escapeHtml(historyText.wrong)}</span>
+        </li>
+      `;
+    })
     .join("");
 }
 
@@ -3420,6 +3613,10 @@ els.simpleRetryButton?.addEventListener("click", () => {
   }
   startGame();
 });
+els.historyToggleButton?.addEventListener("click", () => {
+  setHistoryExpanded(els.simpleHistoryWrap?.classList.contains("is-hidden"));
+});
+els.missedRetryButton?.addEventListener("click", startMissedRetry);
 els.shareMentalcImageButton?.addEventListener("click", shareMentalcImageResult);
 els.sharePolyoleButton?.addEventListener("click", sharePolyoleResult);
 els.clearRecordsButton.addEventListener("click", clearStoredRecords);
